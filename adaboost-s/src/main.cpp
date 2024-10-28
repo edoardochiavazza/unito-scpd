@@ -47,14 +47,6 @@ arma::Mat<size_t> predict_all_dataset(const std::vector<std::tuple<mlpack::Decis
 }
 
 
-
-
-
-
-
-
-
-
 int main() {
 
     constexpr int n_model = 3;

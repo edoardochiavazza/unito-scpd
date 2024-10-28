@@ -13,10 +13,7 @@ find_package(MPI REQUIRED)
 
 file(GLOB HEADERS src/*.hpp)
 file(GLOB SOURCES src/*.cpp)
-include_directories(/opt/homebrew/include/)
-set(CMAKE_C_COMPILER /opt/homebrew/bin/gcc-13)
+
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
-# Enable OpenMP support
-target_compile_options(adaboost_mpi PRIVATE -Wall ${OpenMP_CXX_FLAGS})
-target_link_libraries(adaboost_mpi PRIVATE ${OpenMP_CXX_FLAGS})
+
 target_link_libraries(adaboost_mpi PRIVATE MPI::MPI_CXX)
