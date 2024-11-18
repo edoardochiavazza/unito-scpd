@@ -108,9 +108,8 @@ int main() {
         calculate_new_weights(train_result, alpha, weights);
 
     }
-    std::cout << "STOP 1 "<< std::endl;
+
     arma::Mat<size_t> prediction_matrix = predict_all_dataset(ensemble, testDataset);
-    std::cout << "STOP 2"<< std::endl;
 // Estrai la colonna dalla matrice
     std::cout<<"Weighted vote start"<< std::endl;
     std::vector<double> final_predictions;
