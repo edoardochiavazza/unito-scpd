@@ -43,72 +43,68 @@ void send_data_to_client(const arma::mat &local_dataset,const int &client_rank) 
     MPI_Send(local_dataset.memptr(), rows * cols, MPI_DOUBLE, client_rank, 0, MPI_COMM_WORLD);
 
 }
-
-// Funzione per serializzare l'albero di decisione
-template<typename Archive>
-void serialize(Archive& ar, mlpack::DecisionTree<>& tree)
+// Funzioni per inviare e ricevere alberi
+void send_tree(const mlpack::DecisionTree<>& tree, int dest_rank)
 {
-    // Serializzazione dell'albero usando Cereal
-    ar(CEREAL_NVP(tree));
-}
-
-std::istringstream receive_tree(int source_rank, MPI_Comm comm)
-{
-    // Ricevere la lunghezza del buffer
-    size_t length;
-    MPI_Recv(&length, 1, MPI_UNSIGNED_LONG, source_rank, 0, comm, MPI_STATUS_IGNORE);
-
-    // Ricevere il buffer serializzato
-    std::vector<char> buffer(length);
-    MPI_Recv(buffer.data(), length, MPI_BYTE, source_rank, 1, comm, MPI_STATUS_IGNORE);
-
-    // Convertire il buffer in una stringa
-    std::string serialized_data(buffer.begin(), buffer.end());
-
-    // Caricare l'albero direttamente dal buffer usando Cereal
-    mlpack::DecisionTree<> tree;
-    std::istringstream iss(serialized_data);
-    {
-        cereal::BinaryInputArchive iarchive(iss); // Cereal binary archive// Deserializzare l'albero
-    }
-    return iss;
-}
-
-void send_tree(const mlpack::DecisionTree<>& tree, int dest_rank, MPI_Comm comm)
-{
-    // Serializzare l'albero in un buffer di memoria usando Cereal
     std::ostringstream oss;
     {
-        cereal::BinaryOutputArchive oarchive(oss); // Cereal binary archive
-        oarchive(tree);  // Serializzare l'albero
+        cereal::BinaryOutputArchive oarchive(oss);
+        oarchive(tree);
     }
-
-    // Convertiamo il contenuto in un buffer di tipo std::vector<char>
     std::string serialized_data = oss.str();
     size_t length = serialized_data.size();
 
-    // Inviare la lunghezza del buffer
-    MPI_Send(&length, 1, MPI_UNSIGNED_LONG, dest_rank, 0, comm);
+    MPI_Send(&length, 1, MPI_UNSIGNED_LONG, dest_rank, 0, MPI_COMM_WORLD);
+    MPI_Send(serialized_data.data(), length, MPI_BYTE, dest_rank, 1, MPI_COMM_WORLD);
+}
+std::istringstream receive_serialized_tree(int source_rank)
+{
+    size_t length;
+    MPI_Recv(&length, 1, MPI_UNSIGNED_LONG, source_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-    // Inviare il buffer serializzato
-    MPI_Send(serialized_data.data(), length, MPI_BYTE, dest_rank, 1, comm);
+    std::vector<char> buffer(length);
+    MPI_Recv(buffer.data(), length, MPI_BYTE, source_rank, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+    std::istringstream iss(std::string(buffer.begin(), buffer.end()));
+    return iss;
 }
 
+mlpack::DecisionTree<> receive_tree(int source_rank)
+{
+    size_t length;
+    MPI_Recv(&length, 1, MPI_UNSIGNED_LONG, source_rank, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-arma::mat receive_data_from_master() {
+    std::vector<char> buffer(length);
+    MPI_Recv(buffer.data(), length, MPI_BYTE, source_rank, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-    int rows, cols;
-    // send to aggr the size of the local training set needed to compute weighted error and weight of the hyp (alpha)
-    MPI_Recv(&rows, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    MPI_Recv(&cols, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    mlpack::DecisionTree<> tree;
+    std::istringstream iss(std::string(buffer.begin(), buffer.end()));
+    {
+        cereal::BinaryInputArchive iarchive(iss);
+        iarchive(tree);
+    }
 
-    // Crea una matrice vuota per ricevere i dati
-    arma::mat local_training_set(rows, cols);
+    return tree;
+}
 
-    // Ricevi i dati della matrice
-    MPI_Recv(local_training_set.memptr(), rows * cols, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+// Funzione per inviare un intero vettore di alberi
+void send_all_trees(const std::vector<mlpack::DecisionTree<>>& trees, int dest_rank)
+{
+    for (size_t i = 0; i < trees.size(); ++i)
+    {
+        send_tree(trees[i], dest_rank);
+    }
+}
 
-    return local_training_set;
+// Funzione per ricevere un intero vettore di alberi
+std::vector<mlpack::DecisionTree<>> receive_all_trees(int num_trees, int source_rank)
+{
+    std::vector<mlpack::DecisionTree<>> trees(num_trees);
+    for (int i = 0; i < num_trees; ++i)
+    {
+        trees[i] = receive_tree(source_rank);
+    }
+    return trees;
 }
 
  int main(int argc, char ** argv)
@@ -126,6 +122,7 @@ arma::mat receive_data_from_master() {
          arma::mat train_dataset;
          arma::Row<size_t> train_labels;
          mlpack::data::DatasetInfo info;
+
          std::cout << "Loading training data..." << std::endl;
          load_datasets_and_labels(train_dataset, train_labels, info);
          int n_example = train_dataset.n_cols;
@@ -142,6 +139,12 @@ arma::mat receive_data_from_master() {
              arma::mat shuffled_train_dataset = shuffle(train_dataset, 1); // Shuffle sulle colonne (dimensione 1)
              arma::mat client_dataset = shuffled_train_dataset.cols(0, perc_n_example);
              send_data_to_client(client_dataset, i);
+             mlpack::DecisionTree<> client_tree;
+             std::istringstream serialized_tree = receive_serialized_tree(); {
+                 cereal::BinaryInputArchive iarchive(serialized_tree); // Cereal binary archive
+                 iarchive(client_tree);  // Deserializzare l'albero
+             }
+             std::cout<<client_tree.NumClasses()<< " master"    ;
 
          }
      } else{ // client
@@ -158,7 +161,8 @@ arma::mat receive_data_from_master() {
          mlpack::DecisionTree tree(client_training_dataset, info, client_labels, unique_labels.size(), weights, 10, 1e-7, 10);
          tree.Classify(client_training_dataset, predictions);
          arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
-         //send_tree(tree);
+         send_tree(tree,0);
+
 
 
 
