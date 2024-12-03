@@ -93,17 +93,7 @@ int main() {
         tree.Classify(trainDataset, predictions);
         arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == train_labels);
 
-        std::cout << "Computing Total error"<< std::endl;
-        double total_error = calculate_total_error(train_result, weights);
-        std::cout << "total_error = "<< total_error << std::endl;
 
-        // Calcolo di alpha
-        std::cout << "Computing alpha"<< std::endl;
-        double alpha = calculate_alpha(total_error, n_class);
-        if (alpha == -1) {
-            return 0;
-        }
-        std::cout << "alpha = "<< alpha << std::endl;
         ensemble.push_back(std::make_tuple(tree, alpha));
         calculate_new_weights(train_result, alpha, weights);
 
