@@ -92,8 +92,8 @@ int main() {
         mlpack::DecisionTree tree(trainDataset, info, train_labels, unique_labels.size(), weights, 10, 1e-7, 10);
         tree.Classify(trainDataset, predictions);
         arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == train_labels);
-
-
+        double total_error = calculate_total_error(train_result,weights);
+        double alpha = calculate_alpha(total_error,n_class);
         ensemble.push_back(std::make_tuple(tree, alpha));
         calculate_new_weights(train_result, alpha, weights);
 

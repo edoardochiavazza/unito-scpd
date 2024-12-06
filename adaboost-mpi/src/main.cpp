@@ -57,18 +57,34 @@ arma::mat receive_data_from_master() {
     return received_dataset;
 }
 
-// Funzioni per inviare e ricevere alberi
-void send_tree(const mlpack::DecisionTree<>& tree, const int& dest_rank)
-{
-    int rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-
+std::string serialize_tree(mlpack::DecisionTree<> &tree) {
     std::ostringstream oss;
     {
         cereal::BinaryOutputArchive oarchive(oss);
         oarchive(tree);
     }
     std::string serialized_data = oss.str();
+    return serialized_data;
+}
+
+
+mlpack::DecisionTree<> deserialize_tree (const std::string& serializedTree) {
+    mlpack::DecisionTree<> tree; {
+        std::istringstream iss(std::string(serializedTree.begin(), serializedTree.end()));
+        cereal::BinaryInputArchive iarchive(iss);
+        iarchive(tree);
+    }
+    return tree;
+}
+
+// Funzioni per inviare e ricevere alberi
+void send_tree(mlpack::DecisionTree<>& tree, const int& dest_rank)
+{
+    int rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+
+    std::string serialized_data = serialize_tree(tree);
     size_t length = serialized_data.size();
 
     MPI_Send(&length, 1, MPI_UNSIGNED_LONG, dest_rank, 0, MPI_COMM_WORLD);
@@ -86,11 +102,7 @@ mlpack::DecisionTree<> receive_tree(const int& rank)
     std::vector<char> buffer(length);
 
     MPI_Recv(buffer.data(), length, MPI_BYTE, rank, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    mlpack::DecisionTree<> tree; {
-        std::istringstream iss(std::string(buffer.begin(), buffer.end()));
-        cereal::BinaryInputArchive iarchive(iss);
-        iarchive(tree);
-    }
+    mlpack::DecisionTree<> tree = deserialize_tree(std::string(buffer.begin(), buffer.end()));
     std::cout << " MASTER  tree ricevuto "<<std::endl;
     return tree;
 }
@@ -108,15 +120,7 @@ mlpack::DecisionTree<> receive_tree(const int& rank)
     if (rank == 0)  // Processo root
     {
 
-        // Serializza l'albero in un flusso in memoria
-        std::stringstream ss;
-        {
-            cereal::BinaryOutputArchive archive(ss);
-            tree.serialize(archive, 0);
-        }
-
-        // Estrai i dati serializzati come stringa binaria
-        std::string serializedData = ss.str();
+        std::string serializedData = serialize_tree(tree);
         dataSize = serializedData.size();
 
         // Copia i dati in un buffer per MPI_Bcast
@@ -136,12 +140,7 @@ mlpack::DecisionTree<> receive_tree(const int& rank)
     MPI_Bcast(buffer.data(), dataSize, MPI_CHAR, 0, MPI_COMM_WORLD);
 
     // Deserializzazione del modello in tutti i processi
-    mlpack::DecisionTree<> b_tree;
-    {
-        std::stringstream ss(std::string(buffer.begin(), buffer.end()));
-        cereal::BinaryInputArchive archive(ss);
-        b_tree.serialize(archive, 0);
-    }
+    mlpack::DecisionTree<> b_tree = deserialize_tree(std::string(buffer.begin(), buffer.end()));
     return b_tree;
 }
 double calculate_total_error(const arma::rowvec& train_result, const arma::rowvec& weights){
@@ -176,59 +175,57 @@ void calculate_new_weights(const arma::rowvec& train_result, const double& alpha
     weights = (new_weights / arma::sum(new_weights));
 }
 
-std::vector<double> gather_tree(const mlpack::DecisionTree<>& tree, const int rank, const int world_size, int num_elements) {
-    int rank, worldSize;
-    MPI_Comm_rank(comm, &rank);
-    MPI_Comm_size(comm, &worldSize);
 
-    // Serializzare l'albero locale in una stringa
-    std::ostringstream oss;
-    {
-        cereal::BinaryOutputArchive oarchive(oss);
-        localTree.serialize(oarchive);
+ std::vector<mlpack::DecisionTree<>> gather_tree(mlpack::DecisionTree<> &tree, const int rank, const int world_size) {
+
+    size_t localLength;
+    std::vector<char> localBuffer;
+
+    if (rank != 0) {
+        std::string serializedTree;
+        serializedTree = serialize_tree(tree);
+        // Determinare la lunghezza del buffer serializzato
+        localLength = serializedTree.size();
+        localBuffer.resize(localLength);
+        // Copia i dati della stringa nel buffer
+        std::copy(serializedTree.begin(), serializedTree.end(), localBuffer.begin());
+    }else {
+        localLength = 0;
     }
-    std::string serializedTree = oss.str();
 
-    // Determinare la lunghezza del buffer serializzato
-    size_t localLength = serializedTree.size();
-    std::vector<size_t> lengths(worldSize, 0);
+    std::vector<size_t> lengths(world_size, 0);
 
     // Raccolta delle lunghezze nel processo root
-    MPI_Gather(&localLength, 1, MPI_UNSIGNED_LONG, lengths.data(), 1, MPI_UNSIGNED_LONG, rootRank, comm);
+    MPI_Gather(&localLength, 1, MPI_UNSIGNED_LONG, lengths.data(), 1, MPI_UNSIGNED_LONG, 0, MPI_COMM_WORLD);
 
-    // Raccolta dei dati serializzati
-    std::vector<char> localBuffer(serializedTree.begin(), serializedTree.end());
     std::vector<char> recvBuffer;
-    std::vector<int> displacements(worldSize, 0);
+    std::vector<int> recvLengths(world_size, 0);
+    std::vector<int> displacements(world_size, 0);
 
-    if (rank == rootRank) {
+    if (rank == 0) {
         // Calcolo delle dimensioni totali e dei displacements
-        size_t totalSize = 0;
-        for (int i = 0; i < worldSize; ++i) {
+        int totalSize = 0;
+        for (int i = 0; i < world_size; ++i) {
             displacements[i] = totalSize;
             totalSize += lengths[i];
+            recvLengths[i] = lengths[i];
         }
         recvBuffer.resize(totalSize);
     }
 
     // Gather dei dati serializzati
     MPI_Gatherv(localBuffer.data(), localLength, MPI_CHAR,
-                recvBuffer.data(), lengths.data(), displacements.data(), MPI_CHAR, rootRank, comm);
+                recvBuffer.data(), recvLengths.data(), displacements.data(), MPI_CHAR, 0, MPI_COMM_WORLD);
 
     // Deserializzare gli alberi raccolti nel processo root
-    std::vector<TreeType> gatheredTrees;
-    if (rank == rootRank) {
-        for (int i = 0; i < worldSize; ++i) {
+    std::vector<mlpack::DecisionTree<>> gatheredTrees;
+    if (rank == 0) {
+        for (int i = 1; i < world_size; ++i) {
             std::string serializedTree(&recvBuffer[displacements[i]], lengths[i]);
-            std::istringstream iss(serializedTree);
-            cereal::BinaryInputArchive iarchive(iss);
-
-            TreeType tree;
-            tree.serialize(iarchive);
-            gatheredTrees.push_back(std::move(tree));
+            mlpack::DecisionTree<> tree_recev = deserialize_tree(serializedTree);
+            gatheredTrees.push_back(tree_recev);
         }
     }
-
     return gatheredTrees;
 }
 
@@ -254,27 +251,47 @@ std::vector<double> gather_trees_error(const std::vector<double>& local_data, co
     }
 
     MPI_Gatherv(local_data.data(), num_elements, MPI_DOUBLE, recvBuffer.data(), sendCounts.data(), displacements.data(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
     return recvBuffer;
+}
+
+int index_best_model(const arma::mat & trees_error){
+    trees_error.print();
+    arma::rowvec col_sums = arma::sum(trees_error, 0); // Somma lungo le righe (direzione verticale)
+
+    arma::uword max_col_index = col_sums.index_max();
+    std::cout << max_col_index << std::endl;
+    return max_col_index;
+}
+
+ void brodcast_alpha(double alpha) {
+    MPI_Bcast(&alpha, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 }
 
  int main(int argc, char ** argv)
  {
-     int rank, world_size;
+     int rank, world_size,n_class;
      bool idd_settings_enviroment = true;
      MPI_Init(&argc, &argv);
      MPI_Comm_size(MPI_COMM_WORLD, &world_size);
      MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-      std::vector<double> local_data;
-
+     std::vector<double> local_data;
+     std::vector<mlpack::DecisionTree<>> ensable_learning;
+     arma::mat client_training_dataset;
+     arma::Row<size_t> client_labels, unique_labels;
+     arma::rowvec weights;
+     constexpr int epoch = 2;
         // master
-        if(rank == 0){
-
+        if(rank == 0) {
             arma::mat train_dataset;
             arma::Row<size_t> train_labels;
+
             mlpack::data::DatasetInfo info;
             //Distribution data
             std::cout << "Loading training data..." << std::endl;
             load_datasets_and_labels(train_dataset, train_labels, info);
+            unique_labels = arma::unique(train_labels);
+            n_class = unique_labels.n_elem;
             int n_example = train_dataset.n_cols;
             int perc_n_example;
             if(idd_settings_enviroment) {
@@ -291,41 +308,53 @@ std::vector<double> gather_trees_error(const std::vector<double>& local_data, co
                 send_data_to_client(client_dataset, i);
                 //end distribution
             }
-            std::cout<<"MASTER: In attesa di alberi "<<std::endl;
-            std::vector<mlpack::DecisionTree<>> trees_m;
-            for (int i = 1; i < world_size; ++i) {
-                mlpack::DecisionTree<> tree = receive_tree(i);
-                trees_m.push_back(tree);
-            }
-
-            for (int i = 0; i < world_size - 1; ++i) {
-                std::cout<<"brodcast tree from master n: "<<i<<std::endl;
-                broadcast_tree(trees_m[i]);
-            }
-                std::vector<double> trees_error = gather_trees_error(trees_error,rank, world_size,0);
-
-        } else{ // client
-            arma::mat client_training_dataset = receive_data_from_master();
-            arma::Row<size_t> client_labels = arma::conv_to<arma::Row<size_t>>::from(client_training_dataset.row(client_training_dataset.n_rows - 1));
+        }else {
+            client_training_dataset = receive_data_from_master();
+            client_labels = arma::conv_to<arma::Row<size_t>>::from(client_training_dataset.row(client_training_dataset.n_rows - 1));
             client_training_dataset.shed_row(client_training_dataset.n_rows - 1);
             /*
             std::cout<< "RANK " << rank << " clientlabel n "<<client_labels.size()<<std::endl;
             std::cout<< "RANK " << rank << " datapoints n "<<client_training_dataset.n_cols<<std::endl;
             std::cout<< "RANK " << rank << " features n "<<client_training_dataset.n_rows<<std::endl;
             */
-            arma::rowvec weights(client_training_dataset.n_cols, arma::fill::ones);
+            arma::rowvec w_temp(client_training_dataset.n_cols, arma::fill::ones);
+            weights = w_temp;
             weights /= client_training_dataset.n_cols;
-            arma::Row<size_t> unique_labels = arma::unique(client_labels);
+            unique_labels = arma::unique(client_labels);
+        }
+    for(int t = 0; t < epoch; ++t) {
+        if(rank == 0) {
+            std::cout<<"MASTER: In attesa di alberi "<<std::endl;
+            mlpack:: DecisionTree<> model;
+            std::vector<mlpack::DecisionTree<>> trees_m = gather_tree(model, rank, world_size);
+
+            for (int i = 0; i < world_size - 1; ++i) {
+                std::cout<<"brodcast tree from master n: "<<i<<std::endl;
+                broadcast_tree(trees_m[i]);
+            }
+            std::cout<< "RANK " << rank << " gather_trees_error "<<std::endl;
+            std::vector<double> client_tree_errors = gather_trees_error(local_data, rank, world_size,0);
+            // Conversione in arma::vec e creazione matrice 2x4
+            arma::vec arma_vec(client_tree_errors);
+            arma::mat arma_mat = arma::reshape(arma_vec, world_size - 1, world_size - 1).t(); // 2 righe, 4 colonne
+            int best_model_index = index_best_model(arma_mat);
+            ensable_learning.push_back(trees_m[best_model_index]);
+            double average_total_errors = arma::mean(arma_mat.col(best_model_index));
+            double alpha = calculate_alpha(average_total_errors, n_class);
+            brodcast_alpha(alpha);
+            std::cout<< "RANK " << rank << " brodcast_alpha "<<std::endl;
+            broadcast_tree(ensable_learning[0]);
+            std::cout<< "RANK " << rank << " brodcast_alpha_tree"<<std::endl;
+        }else{ // client
             mlpack::DecisionTree tree;
             tree.Train(client_training_dataset,client_labels, unique_labels.size(), weights, 10, 1e-7, 10);
             //std::cout << "Train tree client n: " << rank <<std::endl;
-            send_tree(tree,0);
+            gather_tree(tree, rank, world_size);
             std::vector<mlpack::DecisionTree<>> trees;
             //std::cout<< "RANK " << rank << " number trees receveid " << trees.size() <<std::endl;
             for(int i = 0; i < world_size - 1; ++i) {
                 tree = broadcast_tree(tree);
                 trees.push_back(tree);
-                std::cout<< "Broadcast tree n: " << i <<std::endl;
             }
             std::cout<< "RANK " << rank << " number trees receveid " << trees.size() <<std::endl;
             arma::Row<size_t> predictions;
@@ -338,9 +367,27 @@ std::vector<double> gather_trees_error(const std::vector<double>& local_data, co
                 trees_error.push_back(total_error);
             }
             gather_trees_error(trees_error,rank,world_size, trees_error.size());
+
+            std::cout<< "RANK " << rank << " gather_trees_error "<<std::endl;
+            double alpha;
+            brodcast_alpha(alpha);
+            mlpack::DecisionTree<> best_tree = broadcast_tree(tree);
+            std::cout<< "RANK " << rank << " broadcast_tree "<<std::endl;
+            ensable_learning.push_back(best_tree);
+            best_tree.Classify(client_training_dataset, predictions);
+            std::cout<< "RANK " << rank << " tree_calssify "<<std::endl;
+            arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
+            calculate_new_weights(train_result, alpha,weights);
         }
-        std::cout<< "RANK " << rank << " finito "<<std::endl;
-        MPI_Finalize();
+        if(rank == 0) {
+            std::cout<< "Epoch " << t << " end "<<std::endl;
+        }
+
+    }
+    if(rank == 0) {
+        std::cout<< "Ensamble size: " << ensable_learning.size();
+    }
+    MPI_Finalize();
      return 0;
  }
 
