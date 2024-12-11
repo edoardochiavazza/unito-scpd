@@ -26,6 +26,7 @@ double calculate_alpha(const double& total_error , const int& n_class){
 }
 
 void calculate_new_weights(const arma::rowvec& train_result, const double& alpha, arma::rowvec& weights){
+
     arma::rowvec new_result = arma::exp(alpha * (1.0 - train_result));
     auto unique_w = arma::unique(new_result);
     std::cout << unique_w<< std::endl;
@@ -73,6 +74,8 @@ int main() {
 
     mlpack::data::Load(train_path, trainDataset, info, true);
     mlpack::data::Load(train_labels_path, train_labels, true);
+    std::cout << "exmp n " <<trainDataset.n_cols << std::endl;
+    std::cout << "feature n " <<trainDataset.n_rows << std::endl;
 // Add weights with value of 1/len(dataset) for implementing adaboost
 
     std::cout << "Create weights" << std::endl;
