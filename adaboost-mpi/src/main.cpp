@@ -9,6 +9,7 @@
 #include <cereal/archives/binary.hpp>  // Include Cereal
 
 
+
 // TODO: send info matrix
 int random_federate_distribution(){
 
@@ -320,11 +321,9 @@ mlpack::data::DatasetInfo broadcastDatasetInfo(mlpack::data::DatasetInfo& info) 
  int main(int argc, char ** argv)
  {
      int rank, world_size,n_class;
-     bool idd_settings_enviroment = true;
      MPI_Init(&argc, &argv);
      MPI_Comm_size(MPI_COMM_WORLD, &world_size);
      MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-     std::vector<double> local_data;
      std::vector<mlpack::DecisionTree<>> ensable_learning;
      arma::mat client_training_dataset;
      arma::Row<size_t> client_labels, unique_labels;
@@ -343,15 +342,8 @@ mlpack::data::DatasetInfo broadcastDatasetInfo(mlpack::data::DatasetInfo& info) 
             n_class = static_cast<int>(unique_labels.n_elem);
             int n_example = static_cast<int>(train_dataset.n_cols);
             int perc_n_example;
-            if(idd_settings_enviroment) {
-                perc_n_example = n_example / (world_size - 1) / 100;
-            }
+            perc_n_example = n_example / (world_size - 1) / 100;
             for (int i = 1; i < world_size; ++i) {
-                if(!idd_settings_enviroment) {
-                    //settings non-idd
-                    int random_per_datataset = random_federate_distribution();
-                    perc_n_example = n_example * random_per_datataset / 100;
-                }
                 arma::mat shuffled_train_dataset = shuffle(train_dataset, 1); // Shuffle sulle colonne (dimensione 1)
                 arma::mat client_dataset = shuffled_train_dataset.cols(0, perc_n_example);
                 send_data_to_client(client_dataset, i);
@@ -378,6 +370,7 @@ mlpack::data::DatasetInfo broadcastDatasetInfo(mlpack::data::DatasetInfo& info) 
     MPI_Barrier(MPI_COMM_WORLD);
     for(int t = 0; t < epoch; ++t) {
         if(rank == 0) {
+            std::vector<double> local_data;
             std::cout<<"MASTER: In attesa di alberi "<<std::endl;
             mlpack:: DecisionTree<> model;
             std::vector<mlpack::DecisionTree<>> trees_m = gather_tree(model, rank, world_size);
@@ -436,14 +429,7 @@ mlpack::data::DatasetInfo broadcastDatasetInfo(mlpack::data::DatasetInfo& info) 
             best_tree.Classify(client_training_dataset, predictions);
             //std::cout<< "RANK " << rank << " tree_calssify "<<std::endl;
             arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
-            arma::rowvec old_weights = weights;
             calculate_new_weights(train_result, alpha,weights);
-            old_weights = old_weights - weights;
-            /*
-            for(auto d : old_weights) {
-                std::cout<< "RANK " << rank << " difference_weights = " << d<< std::endl;
-            }
-            */
         }
         if(rank == 0) {
             std::cout<< "Epoch " << t << " end "<<std::endl;
@@ -462,8 +448,8 @@ mlpack::data::DatasetInfo broadcastDatasetInfo(mlpack::data::DatasetInfo& info) 
         for(const auto & i : ensable_learning) {
             i.Classify(testDataset,test_predictions);
             auto prediction_result = arma::conv_to<arma::rowvec>::from( test_predictions == test_labels);
-            double true_predictions = arma::sum(prediction_result == 1.0) * 1.0;
-            float accuracy = true_predictions / prediction_result.n_elem;
+            double true_predictions = static_cast<double>(arma::sum(prediction_result == 1.0) );
+            double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
             std::cout<<"Accuracy = " << accuracy << std::endl;
         }
     }

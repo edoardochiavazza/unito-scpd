@@ -14,6 +14,8 @@ find_package(MPI REQUIRED)
 file(GLOB HEADERS src/*.hpp)
 file(GLOB SOURCES src/*.cpp)
 
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
+add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES}
+        src/communication_lib/libcomm.cpp)
 
-target_link_libraries(adaboost_mpi PRIVATE MPI::MPI_CXX)
+target_link_libraries(adaboost_mpi PUBLIC MPI::MPI_CXX)
+
