@@ -20,7 +20,6 @@ arma::mat receive_data_from_master();
 template <typename T>
 std::string serialize_obj(T &obj);
 
-
 // Function to deserialize a decision tree from a serialized string
 mlpack::DecisionTree<> deserialize_tree(const std::string& serializedTree);
 
@@ -34,7 +33,7 @@ mlpack::DecisionTree<> receive_tree(const int& rank);
 mlpack::DecisionTree<> broadcast_tree(mlpack::DecisionTree<> &tree, MPI_Comm comm = MPI_COMM_WORLD);
 
 // Function to gather decision trees from all nodes in MPI communication
-std::vector<mlpack::DecisionTree<>> gather_tree(mlpack::DecisionTree<> &tree, const int rank, const int& world_size);
+std::vector<mlpack::DecisionTree<>> gather_tree(mlpack::DecisionTree<> &tree, const int& rank, const int& world_size);
 
 // Function to gather error values from all nodes in MPI communication
 std::vector<double> gather_trees_error(const std::vector<double>& local_data, const int& rank, const int& world_size, const int& num_elements);
