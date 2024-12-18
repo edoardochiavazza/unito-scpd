@@ -18,14 +18,8 @@ arma::mat receive_data_from_master();
 
 // Template function to serialize an object to a string
 template <typename T>
-std::string serialize_obj(T &obj) {
-    std::ostringstream oss;
-    {
-        cereal::BinaryOutputArchive oarchive(oss);
-        oarchive(obj);
-    }
-    return oss.str();
-}
+std::string serialize_obj(T &obj);
+
 
 // Function to deserialize a decision tree from a serialized string
 mlpack::DecisionTree<> deserialize_tree(const std::string& serializedTree);
