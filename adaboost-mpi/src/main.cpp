@@ -121,10 +121,7 @@ int main(int argc, char** argv) {
         if (rank == 0) {
             std::cout << "Epoch " << t << " end" << std::endl;
         }
-
-        MPI_Barrier(MPI_COMM_WORLD);
     }
-
     if (rank == 0) {
         const std::string test_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.test.arff";
         const std::string test_labels_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.test.labels.csv";
