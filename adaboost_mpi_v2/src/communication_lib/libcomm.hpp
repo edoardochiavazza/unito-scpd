@@ -50,4 +50,13 @@ mlpack::data::DatasetInfo broadcastDatasetInfo(mlpack::data::DatasetInfo& info);
 // Function to broadcast num_class to all processes in MPI communication
 int broadcast_num_class(int& num_class, const int& root_rank);
 
+arma::mat broadcast_vec_total_error(const std::vector<double> &total_errors);
+
+std::vector<mlpack::DecisionTree<>> broadcast_t(mlpack::DecisionTree<> t);
+
+std::vector<int> broadcast_index_best_tree(const int& index);
+
+std::vector<double> broadcast_total_error_best_tree(const double& total_error);
+
+
 

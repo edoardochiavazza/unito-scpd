@@ -4,6 +4,8 @@
 
 #include "datalib.hpp"
 #include <mlpack/core.hpp>
+#include <mlpack/methods/decision_tree/decision_tree.hpp>
+
 
 void load_datasets_and_labels(arma::mat &train_dataset, arma::Row<size_t>& train_labels, mlpack::data::DatasetInfo& info) {
 
@@ -53,4 +55,64 @@ int index_best_model(const arma::mat & trees_error){
     arma::uword max_col_index = col_sums.index_max();
 
     return static_cast<int>(max_col_index);
+}
+
+void load_testData_and_labels(arma::mat& testDataset, arma::Row<size_t>& test_labels,  mlpack::data::DatasetInfo& info) {
+    const std::string test_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.test.arff";
+    const std::string test_labels_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.test.labels.csv";
+    mlpack::data::Load(test_path, testDataset, info, true);
+    mlpack::data::Load(test_labels_path, test_labels, true);
+}
+
+
+void accuracy_for_model(const std::vector<std::pair<mlpack::DecisionTree<>,double>>& ensemble_learning, const arma::mat& testDataset, const arma::Row<size_t>&test_labels) {
+    int count = 0;
+    for (const auto&[en_tree, en_alpha] : ensemble_learning) {
+        arma::Row<size_t> test_predictions;
+        en_tree.Classify(testDataset, test_predictions);
+        auto prediction_result = arma::conv_to<arma::rowvec>::from(test_predictions == test_labels);
+        double true_predictions = static_cast<double>(arma::sum(prediction_result == 1.0));
+        double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
+        std::cout<<"Tree trained in epoch = " << count << " Accuracy = " << accuracy << std::endl;
+        ++count;
+    }
+}
+
+arma::Mat<size_t> predict_all_dataset(const std::vector<std::pair<mlpack::DecisionTree<>, double>>& ensemble, const arma::mat& dataset){
+    arma::Mat<size_t> prediction_matrix(ensemble.size(), dataset.n_cols);
+    for(int i = 0; i < ensemble.size(); ++i){
+        arma::Row<size_t> predictions;
+        mlpack::DecisionTree t = std::get<0>(ensemble[i]);
+        t.Classify(dataset, predictions);
+        prediction_matrix.row(i) = predictions;
+    }
+    return prediction_matrix;
+}
+
+double accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<std::pair<mlpack::DecisionTree<>, double>>& ensemble,const arma::Row<size_t>& test_labels) {
+    std::vector<double> final_predictions;
+    for(int i = 0; i < prediction_matrix.n_cols; ++i) {
+        arma::Row<size_t> models_prediction = prediction_matrix.col(i).t();
+        std::unordered_map<int, double> frequency_map;
+        for(int j = 0; j < models_prediction.n_elem; ++j){
+            frequency_map[static_cast<int>(models_prediction(j))] += 1.0 * std::get<1>(ensemble[j]);
+        }
+        int most_frequent_value = -1;
+        double max_count = 0;
+        for (const auto &[class_num, frequency]: frequency_map) {
+            if (frequency > max_count) {
+                max_count = frequency;
+                most_frequent_value = class_num;
+            }
+
+        }
+        final_predictions.push_back(most_frequent_value);
+    }
+
+    arma::rowvec p(final_predictions);
+
+    auto prediction_result = arma::conv_to<arma::rowvec>::from(p == test_labels);
+    double true_predictions = arma::sum((prediction_result) == 1.0) * 1.0;
+    double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
+    return accuracy;
 }

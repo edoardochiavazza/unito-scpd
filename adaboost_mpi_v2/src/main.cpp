@@ -5,19 +5,17 @@
 #include "data_lib/datalib.hpp"
 
 
-int main(int argc, char ** argv)
-{
+int main(int argc, char ** argv) {
     int rank, world_size, n_class;
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-    std::vector<mlpack::DecisionTree<>> ensemble_learning;
+    std::vector<std::pair<mlpack::DecisionTree<>,double>> ensemble_learning;
     arma::mat client_training_dataset;
     arma::Row<size_t> client_labels, unique_labels;
     arma::rowvec weights;
     mlpack::data::DatasetInfo info;
-    double alpha;
     constexpr int epoch = 5;
     arma::mat temp_train;
 
@@ -33,7 +31,9 @@ int main(int argc, char ** argv)
         n_class = static_cast<int>(unique_labels.n_elem);
 
         int n_example = static_cast<int>(train_dataset.n_cols);
-        int perc_n_example = n_example / (world_size) / 100;
+
+        int perc_n_example = (n_example / world_size);
+
         for (int i = 0; i < world_size; ++i) {
             train_dataset = shuffle(train_dataset, 1); // Shuffle columns
             client_dataset = train_dataset.cols(0, perc_n_example);
@@ -58,25 +58,49 @@ int main(int argc, char ** argv)
     arma::rowvec w_temp(client_training_dataset.n_cols, arma::fill::ones);
     weights = w_temp / static_cast<double>(client_training_dataset.n_cols);
     unique_labels = arma::unique(client_labels);
-    std::cout<<"Rank " << rank <<" unique: " << unique_labels.n_elem << std::endl;
-    int num_class;
     MPI_Barrier(MPI_COMM_WORLD);
-    arma::Row<size_t> num_classes;
-    for (int i = 0; i < world_size; ++i) {
-        num_class = static_cast<int>(unique_labels.n_elem);
-        auto t = broadcast_num_class(num_class, rank);
-        num_classes.insert_cols(num_classes.n_cols,t);
+    for (int e = 0; e < epoch; ++e) {
+        mlpack::DecisionTree<> tree;
+        tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 10, 1e-7, 10);
+        std::vector<mlpack::DecisionTree<>> vector_received_trees = broadcast_t(tree);
+
+        //Calcolate total error
+        std::vector<double> vector_total_errors;
+        for(const mlpack::DecisionTree<>& t : vector_received_trees) {
+            arma::Row<size_t> predictions;
+            t.Classify(client_training_dataset, predictions);
+            arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
+            double total_error = calculate_total_error(train_result, weights);
+            vector_total_errors.push_back(total_error);
+        }
+        arma::mat m = broadcast_vec_total_error(vector_total_errors);
+        int best_model_index = index_best_model(m);
+        std::vector<int> best_trees_index = broadcast_index_best_tree(best_model_index);
+        best_model_index = get_tree_from_majority_vote(best_trees_index);
+        mlpack::DecisionTree<> best_tree_epoch = vector_received_trees[best_model_index];
+        arma::Row<size_t> predictions;
+        best_tree_epoch.Classify(client_training_dataset, predictions);
+        arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
+        double total_error = calculate_total_error(train_result, weights);
+        std::vector<double> total_clients_errors = broadcast_total_error_best_tree(total_error);
+        double mean_total_error = std::reduce(total_clients_errors.begin(), total_clients_errors.end()) / world_size;
+        double alpha = calculate_alpha(mean_total_error,static_cast<int>(unique_labels.size()),rank);
+        ensemble_learning.emplace_back(best_tree_epoch,alpha);
+        calculate_new_weights(train_result, alpha, weights);
     }
-    size_t num_class_c = arma::max(num_classes);
-    std::cout<<"Rank " << rank <<" numclass: " <<num_class_c << std::endl;
-    MPI_Barrier(MPI_COMM_WORLD);
-    mlpack::DecisionTree<> tree;
-    tree.Train(client_training_dataset, info, client_labels, num_class_c, weights, 10, 1e-7, 10);
-    std::vector<mlpack::DecisionTree<>> vector_received_trees;
-    for (int i = 0; i < world_size; ++i) {
-        auto c = broadcast_tree(tree, i);
-        vector_received_trees.push_back(tree);
+    if (rank == 0) {
+        std::cout << "MASTER: Calculates the accuracy of the ensamble and its trees "<<std::endl;
+        std::cout <<"Ensabmle learning size = "<< ensemble_learning.size() <<std::endl;
+
+        arma::mat testDataset;
+        arma::Row<size_t> test_labels;
+
+        load_testData_and_labels(testDataset,test_labels,info);
+
+        accuracy_for_model(ensemble_learning, testDataset, test_labels);
+        arma::Mat<size_t> en_result = predict_all_dataset(ensemble_learning, testDataset);
+        double accuracy_ensabmle = accuracy_ensamble(en_result, ensemble_learning, test_labels);
+        std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle <<" after " << epoch <<" epochs" <<std::endl;
     }
-    std::cout<<"Rank " << rank <<" size: " <<vector_received_trees.size() << std::endl;
     MPI_Finalize();
 }
