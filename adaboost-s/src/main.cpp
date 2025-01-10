@@ -41,7 +41,6 @@ arma::Mat<size_t> predict_all_dataset(const std::vector<std::pair<mlpack::Decisi
         arma::Row<size_t> predictions;
         mlpack::DecisionTree t = std::get<0>(ensemble[i]);
         t.Classify(dataset, predictions);
-        std::cout<<"Classification start from "<< i << std::endl;
         prediction_matrix.row(i) = predictions;
     }
     return prediction_matrix;
@@ -58,7 +57,6 @@ void accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<std:
         // Conta le occorrenze dei valori nella colonna
         std::cout<<"models_prediction.n_elem = "<< models_prediction.n_elem <<std::endl;
         for(int j = 0; j < models_prediction.n_elem; ++j){
-            std::cout<<"model n: "<< j << " alpha = "<<std::get<1>(ensemble[j]) <<" prediction: " << models_prediction(j)<< std::endl;
             frequency_map[static_cast<int>(models_prediction(j))] += 1.0 * std::get<1>(ensemble[j]);
         }
         int most_frequent_value = -1;
@@ -78,7 +76,7 @@ void accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<std:
     auto prediction_result = arma::conv_to<arma::rowvec>::from(p == test_labels);
     double true_predictions = arma::sum((prediction_result) == 1.0) * 1.0;
     double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
-    std::cout<<"Accuracy = " << accuracy << std::endl;
+    std::cout<<"Ensamble accuracy = " << accuracy << std::endl;
 }
 
 void accuracy_for_model(const std::vector<std::pair<mlpack::DecisionTree<>,double>>& ensemble_learning, const arma::mat& testDataset, const arma::Row<size_t>&test_labels) {
@@ -96,7 +94,7 @@ void accuracy_for_model(const std::vector<std::pair<mlpack::DecisionTree<>,doubl
 
 int main() {
 
-    constexpr int n_model = 3;
+    constexpr int n_model = 5;
     //Define path of test,train dataset and label as constexpr
     const std::string train_path = "../datasets/covertype.train.arff";
     const std::string train_labels_path = "../datasets/covertype.train.labels.csv";
@@ -120,8 +118,6 @@ int main() {
 
     mlpack::data::Load(train_path, trainDataset, info, true);
     mlpack::data::Load(train_labels_path, train_labels, true);
-    std::cout << "exmp n " <<trainDataset.n_cols << std::endl;
-    std::cout << "feature n " <<trainDataset.n_rows << std::endl;
 // Add weights with value of 1/len(dataset) for implementing adaboost
 
     std::cout << "Create weights" << std::endl;

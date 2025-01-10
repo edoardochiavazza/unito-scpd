@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
         n_class = static_cast<int>(unique_labels.n_elem);
 
         int n_example = static_cast<int>(train_dataset.n_cols);
-        int perc_n_example = n_example / (world_size - 1) / 100;
+        int perc_n_example = n_example / (world_size - 1);
 
         for (int i = 1; i < world_size; ++i) {
             arma::mat shuffled_train_dataset = shuffle(train_dataset, 1); // Shuffle columns
