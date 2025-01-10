@@ -20,13 +20,14 @@ int main(int argc, char** argv) {
     mlpack::data::DatasetInfo info;
     double alpha;
     constexpr int epoch = 5;
+    double average_total_error;
 
     if (rank == 0) {
         // Master process
         arma::mat train_dataset;
         arma::Row<size_t> train_labels;
 
-        std::cout << "Loading training data..." << std::endl;
+        std::cout << "MASTER: Uploads and distributes data among "<< world_size - 1 <<" clients " << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
         unique_labels = arma::unique(train_labels);
         n_class = static_cast<int>(unique_labels.n_elem);
@@ -60,7 +61,7 @@ int main(int argc, char** argv) {
         if (rank == 0) {
             // Master process
             std::vector<double> local_data;
-            std::cout << "MASTER: Waiting for trees..." << std::endl;
+
 
             mlpack::DecisionTree<> model;
             std::vector<mlpack::DecisionTree<>> trees_m = gather_tree(model, rank, world_size);
@@ -77,11 +78,10 @@ int main(int argc, char** argv) {
             int best_model_index = index_best_model(arma_mat);
             ensemble_learning.push_back(trees_m[best_model_index]);
 
-            double average_total_errors = arma::mean(arma_mat.col(best_model_index));
-            alpha = calculate_alpha(average_total_errors, n_class);
+            average_total_error = arma::mean(arma_mat.col(best_model_index));
+            alpha = calculate_alpha(average_total_error, n_class);
 
             broadcast_alpha(alpha);
-            std::cout << "MASTER: Broadcasted alpha value: " << alpha << std::endl;
             broadcast_tree(ensemble_learning[t]);
 
         } else {
@@ -119,10 +119,12 @@ int main(int argc, char** argv) {
         }
 
         if (rank == 0) {
-            std::cout << "Epoch " << t << " end" << std::endl;
+            std::cout << "MASTER: Epoch " << t << " end" <<" with average total error = " << average_total_error << " and alpha = " << alpha<<std::endl;
         }
     }
     if (rank == 0) {
+        std::cout << "MASTER: Calculates the accuracy of the ensamble and its trees "<<std::endl;
+        std::cout <<"Ensabmle learning size = "<< ensemble_learning.size() <<std::endl;
         const std::string test_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.test.arff";
         const std::string test_labels_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.test.labels.csv";
 
@@ -131,14 +133,43 @@ int main(int argc, char** argv) {
 
         mlpack::data::Load(test_path, testDataset, info, true);
         mlpack::data::Load(test_labels_path, test_labels, true);
-
+        int count = 0;
         for (const auto& i : ensemble_learning) {
             i.Classify(testDataset, test_predictions);
             auto prediction_result = arma::conv_to<arma::rowvec>::from(test_predictions == test_labels);
             double true_predictions = static_cast<double>(arma::sum(prediction_result == 1.0));
             double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
-            std::cout << "Accuracy = " << accuracy << std::endl;
+            std::cout<<"Tree trained in epoch = " << count << " Accuracy = " << accuracy << std::endl;
+            ++count;
         }
+        std::vector <size_t> test_result_majority_vote_ensamble;
+        for(int i = 0; i < testDataset.n_cols; ++i) {
+            std::vector <size_t> test_result_tree_ensamble;
+            for (const auto& tree_ensamble : ensemble_learning) {
+                size_t predictedClass = tree_ensamble.Classify(testDataset.col(i));
+                test_result_tree_ensamble.push_back(predictedClass);
+            }
+            std::unordered_map<size_t, int> freq_map;
+            // Conta le occorrenze
+            for (size_t num : test_result_tree_ensamble) {
+                freq_map[static_cast<int>(num)]++;
+            }
+            // Trova il valore con la massima frequenza
+            int most_frequent_value = -1;
+            int max_frequency = 0;
+            for (const auto&[fst, snd] : freq_map) {
+                if (snd > max_frequency) {
+                    most_frequent_value = static_cast<int>(fst);
+                    max_frequency = snd;
+                }
+            }
+            test_result_majority_vote_ensamble.push_back(most_frequent_value);
+        }
+        arma::Row<size_t> temp_test(test_result_majority_vote_ensamble.data(), test_result_majority_vote_ensamble.size(), false);
+        auto prediction_result = arma::conv_to<arma::rowvec>::from(temp_test == test_labels);
+        auto true_predictions = static_cast<double>(arma::sum(prediction_result == 1.0));
+        double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
+        std::cout << "Accuracy Ensabmle = " << accuracy <<" after " << epoch <<" epochs" <<std::endl;
     }
 
     MPI_Finalize();

@@ -17,7 +17,6 @@ void load_datasets_and_labels(arma::mat &train_dataset, arma::Row<size_t>& train
 
 double calculate_total_error(const arma::rowvec& train_result, const arma::rowvec& weights){
     double total_error = arma::sum((1.0 - train_result) % weights);
-    //std::cout << total_error<< std::endl;
     double epsilon = 1e-10;
     if (total_error == 0) {
         total_error = epsilon;
@@ -48,10 +47,10 @@ void calculate_new_weights(const arma::rowvec& train_result, const double& alpha
 }
 
 int index_best_model(const arma::mat & trees_error){
-    trees_error.print();
+
     arma::rowvec col_sums = arma::sum(trees_error, 0); // Somma lungo le righe (direzione verticale)
 
     arma::uword max_col_index = col_sums.index_max();
-    std::cout << max_col_index << std::endl;
+
     return static_cast<int>(max_col_index);
 }

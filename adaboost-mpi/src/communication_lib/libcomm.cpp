@@ -15,7 +15,6 @@ void send_data_to_client(const arma::mat &local_dataset,const int &client_rank) 
     const int rows = static_cast<int>(local_dataset.n_rows);
     const int cols = static_cast<int>(local_dataset.n_cols);
 
-    //std::cout << "Sending matrix to "<< client_rank <<std::endl;
     // Invia le dimensioni della matrice
     MPI_Send(&rows, 1, MPI_INT, client_rank, 0, MPI_COMM_WORLD);
     MPI_Send(&cols, 1, MPI_INT, client_rank, 0, MPI_COMM_WORLD);
@@ -34,7 +33,7 @@ arma::mat receive_data_from_master() {
     MPI_Recv(&cols, 1, MPI_INT, 0, 0, MPI_COMM_WORLD,MPI_STATUS_IGNORE);
     arma::mat received_dataset(rows, cols);
     MPI_Recv(received_dataset.memptr(), rows * cols, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    //std::cout << "Received data client n "<< rank <<std::endl;
+
     return received_dataset;
 }
 
@@ -71,7 +70,7 @@ void send_tree(mlpack::DecisionTree<>& tree, const int& dest_rank)
 
     MPI_Send(&length, 1, MPI_UNSIGNED_LONG, dest_rank, 0, MPI_COMM_WORLD);
     MPI_Send(serialized_data.data(), static_cast<int>(length), MPI_BYTE, dest_rank, 1, MPI_COMM_WORLD);
-    std::cout << "RANK " << rank <<" try to send tree to "<< dest_rank << std::endl;
+
 }
 
 
@@ -85,7 +84,7 @@ mlpack::DecisionTree<> receive_tree(const int& rank)
 
     MPI_Recv(buffer.data(), static_cast<int>(length), MPI_BYTE, rank, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     mlpack::DecisionTree<> tree = deserialize_tree(std::string(buffer.begin(), buffer.end()));
-    std::cout << " MASTER  tree ricevuto "<<std::endl;
+
     buffer.clear();
     return tree;
 }
