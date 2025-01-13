@@ -6,7 +6,8 @@
 
 
 int main(int argc, char ** argv) {
-    int rank, world_size, n_class;
+    int rank, world_size;
+    int epochs[7] = { 5,10,20,30,40,50,100};
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -18,17 +19,17 @@ int main(int argc, char ** argv) {
     mlpack::data::DatasetInfo info;
     constexpr int epoch = 5;
     arma::mat temp_train;
+    arma::mat train_dataset;
+    arma::Row<size_t> train_labels;
 
     if (rank == 0) {
         arma::mat client_dataset;
         // Master process
-        arma::mat train_dataset;
-        arma::Row<size_t> train_labels;
 
         std::cout << "Loading training data..." << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
-        unique_labels = arma::unique(train_labels);
-        n_class = static_cast<int>(unique_labels.n_elem);
+        arma::rowvec labels_vec = arma::conv_to<arma::rowvec>::from(arma::conv_to<arma::Row<double>>::from(train_labels));
+        train_dataset.insert_rows(train_dataset.n_rows, labels_vec);
 
         int n_example = static_cast<int>(train_dataset.n_cols);
 
@@ -55,52 +56,96 @@ int main(int argc, char ** argv) {
     }
     client_labels = arma::conv_to<arma::Row<size_t>>::from(client_training_dataset.row(client_training_dataset.n_rows - 1));
     client_training_dataset.shed_row(client_training_dataset.n_rows - 1);
+
     arma::rowvec w_temp(client_training_dataset.n_cols, arma::fill::ones);
     weights = w_temp / static_cast<double>(client_training_dataset.n_cols);
     unique_labels = arma::unique(client_labels);
     MPI_Barrier(MPI_COMM_WORLD);
-    for (int e = 0; e < epoch; ++e) {
-        mlpack::DecisionTree<> tree;
-        tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 10, 1e-7, 10);
-        std::vector<mlpack::DecisionTree<>> vector_received_trees = broadcast_t(tree);
+    for (auto e : epochs){
+        auto start = std::chrono::high_resolution_clock::now();
+        double average_time_epoch = 0;
+        for (int i = 0; i < e; ++i) {
+            double time_epoch = 0;
+            auto start_epoch = std::chrono::high_resolution_clock::now();
+            mlpack::DecisionTree<> tree;
+            tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 10, 1e-7, 10);
+            std::vector<mlpack::DecisionTree<>> vector_received_trees = broadcast_t(tree);
 
-        //Calcolate total error
-        std::vector<double> vector_total_errors;
-        for(const mlpack::DecisionTree<>& t : vector_received_trees) {
+            //Calcolate total error
+            std::vector<double> vector_total_errors;
+            for(const mlpack::DecisionTree<>& t : vector_received_trees) {
+                arma::Row<size_t> predictions;
+                t.Classify(client_training_dataset, predictions);
+                arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
+                double total_error = calculate_total_error(train_result, weights);
+                vector_total_errors.push_back(total_error);
+            }
+            arma::mat m = broadcast_vec_total_error(vector_total_errors);
+            if(rank ==0) {
+                m.print();
+            }
+            int best_model_index = index_best_model(m);
+            std::vector<int> best_trees_index = broadcast_index_best_tree(best_model_index);
+            best_model_index = get_tree_from_majority_vote(best_trees_index);
+            mlpack::DecisionTree<> best_tree_epoch = vector_received_trees[best_model_index];
             arma::Row<size_t> predictions;
-            t.Classify(client_training_dataset, predictions);
+            best_tree_epoch.Classify(client_training_dataset, predictions);
             arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
             double total_error = calculate_total_error(train_result, weights);
-            vector_total_errors.push_back(total_error);
+            std::vector<double> total_clients_errors = broadcast_total_error_best_tree(total_error);
+            double mean_total_error = std::reduce(total_clients_errors.begin(), total_clients_errors.end()) / world_size;
+            double alpha = calculate_alpha(mean_total_error,static_cast<int>(unique_labels.size()),rank);
+            ensemble_learning.emplace_back(best_tree_epoch,alpha);
+            calculate_new_weights(train_result, alpha, weights);
+            auto end_epoch_timer = std::chrono::high_resolution_clock::now();
+            time_epoch =  std::chrono::duration<double>(end_epoch_timer - start_epoch).count();
+            average_time_epoch = (average_time_epoch + time_epoch)/2;
         }
-        arma::mat m = broadcast_vec_total_error(vector_total_errors);
-        int best_model_index = index_best_model(m);
-        std::vector<int> best_trees_index = broadcast_index_best_tree(best_model_index);
-        best_model_index = get_tree_from_majority_vote(best_trees_index);
-        mlpack::DecisionTree<> best_tree_epoch = vector_received_trees[best_model_index];
-        arma::Row<size_t> predictions;
-        best_tree_epoch.Classify(client_training_dataset, predictions);
-        arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
-        double total_error = calculate_total_error(train_result, weights);
-        std::vector<double> total_clients_errors = broadcast_total_error_best_tree(total_error);
-        double mean_total_error = std::reduce(total_clients_errors.begin(), total_clients_errors.end()) / world_size;
-        double alpha = calculate_alpha(mean_total_error,static_cast<int>(unique_labels.size()),rank);
-        ensemble_learning.emplace_back(best_tree_epoch,alpha);
-        calculate_new_weights(train_result, alpha, weights);
-    }
-    if (rank == 0) {
-        std::cout << "MASTER: Calculates the accuracy of the ensamble and its trees "<<std::endl;
-        std::cout <<"Ensabmle learning size = "<< ensemble_learning.size() <<std::endl;
+        auto end_total_timer = std::chrono::high_resolution_clock::now();
+        double time_total = std::chrono::duration<double>(end_total_timer - start).count();
+        if (rank == 0) {
+            std::cout << "MASTER: Calculates the accuracy of the ensamble and its trees "<<std::endl;
+            std::cout <<"Ensabmle learning size = "<< ensemble_learning.size() <<std::endl;
 
-        arma::mat testDataset;
-        arma::Row<size_t> test_labels;
+            arma::mat testDataset;
+            arma::Row<size_t> test_labels;
+            mlpack::data::DatasetInfo info_test, info_train;
+            load_datasets_and_labels(train_dataset,train_labels, info_test);
+            load_testData_and_labels(testDataset,test_labels,info_train);
+            accuracy_for_model(ensemble_learning, testDataset, test_labels);
+            arma::Mat<size_t> en_result = predict_all_dataset(ensemble_learning, testDataset);
+            double accuracy_ensabmle_test = accuracy_ensamble(en_result, ensemble_learning, test_labels);
+            en_result = predict_all_dataset(ensemble_learning, train_dataset);
+            double accuracy_ensabmle_train = accuracy_ensamble(en_result, ensemble_learning, train_labels);
+            std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
+            std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
+            // Nome del file di output
+            std::string fileName = " risultati_adaboost-mpi-v2.txt";
 
-        load_testData_and_labels(testDataset,test_labels,info);
+            // Creazione di un oggetto di tipo ofstream
+            std::ofstream outputFile(fileName, std::ios::app);
 
-        accuracy_for_model(ensemble_learning, testDataset, test_labels);
-        arma::Mat<size_t> en_result = predict_all_dataset(ensemble_learning, testDataset);
-        double accuracy_ensabmle = accuracy_ensamble(en_result, ensemble_learning, test_labels);
-        std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle <<" after " << epoch <<" epochs" <<std::endl;
+            // Controllo che il file sia stato aperto correttamente
+            if (!outputFile.is_open()) {
+                std::cerr << "Errore nell'apertura del file: " << fileName << std::endl;
+                return 1;
+            }
+
+            // Scrittura dei risultati nel file
+
+            outputFile << "--------------------------\n";
+            outputFile << "Machine: Macbook\n";
+            outputFile << "Number epoch: "<< e<<"\n";
+            outputFile << "Time epoch (T1): " << average_time_epoch << " seconds\n";
+            outputFile << "Time epochs (T1): " << time_total << " seconds\n";
+            outputFile << "Ensamble accuracy = " << accuracy_ensabmle_test <<" for test dataset\n";
+            outputFile << "Ensamble accuracy = " << accuracy_ensabmle_train <<" for training dataset\n";
+            // Chiusura del file
+            outputFile.close();
+            std::cout << "Risultati scritti con successo nel file: " << fileName <<" per il valore " << e<<std::endl;
+        }
+        weights = w_temp / static_cast<double>(client_training_dataset.n_cols);
+        ensemble_learning.clear();
     }
     MPI_Finalize();
 }

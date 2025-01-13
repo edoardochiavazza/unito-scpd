@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
 set(CMAKE_CXX_STANDARD 17)
 
-
-set(PROJECT_NAME adaboost_mpi)
+set(PROJECT_NAME adaboost-mpi)
 project(${PROJECT_NAME})
 set(EXECUTABLE_NAME ${PROJECT_NAME})
 # Change default build/lib directories
@@ -13,7 +12,6 @@ find_package(MPI REQUIRED)
 
 file(GLOB HEADERS src/*.hpp)
 file(GLOB SOURCES src/*.cpp)
-
 
 add_library(communication_lib STATIC)
 target_sources(communication_lib PUBLIC
@@ -27,8 +25,11 @@ target_sources(data_lib PUBLIC
         src/data_lib/datalib.cpp
         src/data_lib/datalib.hpp
 )
-target_include_directories(data_lib PUBLIC src/data_lib)
+include_directories(/opt/homebrew/include/)
+set(CMAKE_C_COMPILER /opt/homebrew/bin/gcc-13)
 
+# Enable OpenMP support
+target_include_directories(data_lib PUBLIC src/data_lib)
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
-target_link_libraries(adaboost_mpi PUBLIC MPI::MPI_CXX data_lib communication_lib)
+target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX data_lib communication_lib)
 

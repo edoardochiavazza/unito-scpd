@@ -4,7 +4,6 @@
 
 double calculate_total_error(const arma::rowvec& train_result, const arma::rowvec& weights){
     double total_error = arma::sum((1.0 - train_result) % weights);
-    std::cout << total_error<< std::endl;
     double epsilon = 1e-10;
     if (total_error == 0) {
         total_error = epsilon;
@@ -29,8 +28,6 @@ void calculate_new_weights(const arma::rowvec& train_result, const double& alpha
 
     arma::rowvec new_result = arma::exp(alpha * (1.0 - train_result));
     auto unique_w = arma::unique(new_result);
-    std::cout << unique_w<< std::endl;
-
     arma::rowvec new_weights =  new_result % weights;
     weights = (new_weights / arma::sum(new_weights));
 }
@@ -46,16 +43,13 @@ arma::Mat<size_t> predict_all_dataset(const std::vector<std::pair<mlpack::Decisi
     return prediction_matrix;
 }
 
-void accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<std::pair<mlpack::DecisionTree<>, double>>& ensemble,const arma::Row<size_t>& test_labels) {
-
-    std::cout<<"Weighted vote start"<< std::endl;
+double accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<std::pair<mlpack::DecisionTree<>, double>>& ensemble,const arma::Row<size_t>& test_labels, std::string dataset_type) {
     std::vector<double> final_predictions;
 
     for(int i = 0; i < prediction_matrix.n_cols; ++i) {
         arma::Row<size_t> models_prediction = prediction_matrix.col(i).t();
         std::unordered_map<int, double> frequency_map;
         // Conta le occorrenze dei valori nella colonna
-        std::cout<<"models_prediction.n_elem = "<< models_prediction.n_elem <<std::endl;
         for(int j = 0; j < models_prediction.n_elem; ++j){
             frequency_map[static_cast<int>(models_prediction(j))] += 1.0 * std::get<1>(ensemble[j]);
         }
@@ -76,7 +70,8 @@ void accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<std:
     auto prediction_result = arma::conv_to<arma::rowvec>::from(p == test_labels);
     double true_predictions = arma::sum((prediction_result) == 1.0) * 1.0;
     double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
-    std::cout<<"Ensamble accuracy = " << accuracy << std::endl;
+    std::cout<<"Ensamble accuracy = " << accuracy <<" for " << dataset_type<<" dataset"<<std::endl;
+    return accuracy;
 }
 
 void accuracy_for_model(const std::vector<std::pair<mlpack::DecisionTree<>,double>>& ensemble_learning, const arma::mat& testDataset, const arma::Row<size_t>&test_labels) {
@@ -94,7 +89,8 @@ void accuracy_for_model(const std::vector<std::pair<mlpack::DecisionTree<>,doubl
 
 int main() {
 
-    constexpr int n_model = 5;
+    constexpr int n_model = 40;
+    int epochs[7] = { 5,10,20,30,40,50,100};
     //Define path of test,train dataset and label as constexpr
     const std::string train_path = "../datasets/covertype.train.arff";
     const std::string train_labels_path = "../datasets/covertype.train.labels.csv";
@@ -119,32 +115,69 @@ int main() {
     mlpack::data::Load(train_path, trainDataset, info, true);
     mlpack::data::Load(train_labels_path, train_labels, true);
 // Add weights with value of 1/len(dataset) for implementing adaboost
+    for(auto e : epochs){
+        std::cout << "Create weights" << std::endl;
 
-    std::cout << "Create weights" << std::endl;
-
-    arma::rowvec weights(trainDataset.n_cols, arma::fill::ones);
-    weights /= static_cast<double>(trainDataset.n_cols); //2.4588e-06
-    arma::Row<size_t> unique_labels = arma::unique(train_labels);
-    int n_class = static_cast<int>(unique_labels.n_elem);
+        arma::rowvec weights(trainDataset.n_cols, arma::fill::ones);
+        weights /= static_cast<double>(trainDataset.n_cols); //2.4588e-06
+        arma::Row<size_t> unique_labels = arma::unique(train_labels);
+        int n_class = static_cast<int>(unique_labels.n_elem);
 
 // Create pair vector for store (model, alpha). Alpha rappresent the accuracy of the model.
-    std::vector<std::pair<mlpack::DecisionTree<>, double>> ensemble;
+        std::vector<std::pair<mlpack::DecisionTree<>, double>> ensemble;
+        double average_time_sequential_epoch = 0;
+        auto start = std::chrono::high_resolution_clock::now();
+        for(int i=0; i < e; ++i){
+            double time_sequential_epoch = 0;
+            auto start_epoch = std::chrono::high_resolution_clock::now();
+            arma::Row<size_t> predictions;
+            mlpack::DecisionTree tree(trainDataset, info, train_labels, unique_labels.size(), weights, 10, 1e-7, 10);
+            tree.Classify(trainDataset, predictions);
+            arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == train_labels);
+            double total_error = calculate_total_error(train_result,weights);
+            double alpha = calculate_alpha(total_error,n_class);
+            ensemble.emplace_back(tree, alpha);
+            calculate_new_weights(train_result, alpha, weights);
+            auto end_epoch_timer = std::chrono::high_resolution_clock::now();
+            time_sequential_epoch =  std::chrono::duration<double>(end_epoch_timer - start_epoch).count();
+            average_time_sequential_epoch = (average_time_sequential_epoch + time_sequential_epoch)/2;
+            std::cout << "Epoch " << i << " end in " << time_sequential_epoch << " seconds\n";
+        }
+        auto end_total_timer = std::chrono::high_resolution_clock::now();
+        double time_sequential_total = std::chrono::duration<double>(end_total_timer - start).count();
+        std::cout << "Time epoch (T1): " << average_time_sequential_epoch << " seconds\n";
+        std::cout << "Time epochs (T1): " << time_sequential_total << " seconds\n";
+        accuracy_for_model(ensemble,testDataset,test_labels);
+        arma::Mat<size_t> prediction_matrix_test = predict_all_dataset(ensemble, testDataset);
+        arma::Mat<size_t> prediction_matrix_training = predict_all_dataset(ensemble, trainDataset);
+        double acc_ensable_test = accuracy_ensamble(prediction_matrix_test,ensemble,test_labels, "test");
+        double acc_ensable_training  = accuracy_ensamble(prediction_matrix_training ,ensemble,train_labels, "training");
+        // Nome del file di output
+        std::string fileName = "risultati_adaboost-s.txt";
 
-    for(int i=0; i < n_model; ++i){
-        arma::Row<size_t> predictions;
-        std::cout << "Train tree n: " << i <<std::endl;
-        mlpack::DecisionTree tree(trainDataset, info, train_labels, unique_labels.size(), weights, 10, 1e-7, 10);
-        tree.Classify(trainDataset, predictions);
-        arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == train_labels);
-        double total_error = calculate_total_error(train_result,weights);
-        double alpha = calculate_alpha(total_error,n_class);
-        ensemble.emplace_back(tree, alpha);
-        calculate_new_weights(train_result, alpha, weights);
+        // Creazione di un oggetto di tipo ofstream
+        std::ofstream outputFile(fileName, std::ios::app);
+
+        // Controllo che il file sia stato aperto correttamente
+        if (!outputFile.is_open()) {
+            std::cerr << "Errore nell'apertura del file: " << fileName << std::endl;
+            return 1;
+        }
+
+        // Scrittura dei risultati nel file
+
+        outputFile << "--------------------------\n";
+        outputFile << "Machine: Macbook\n";
+        outputFile << "Number epoch: "<< e<<"\n";
+        outputFile << "Time epoch (T1): " << average_time_sequential_epoch << " seconds\n";
+        outputFile << "Time epochs (T1): " << time_sequential_total << " seconds\n";
+        outputFile << "Ensamble accuracy = " << acc_ensable_test <<" for test dataset\n";
+        outputFile << "Ensamble accuracy = " << acc_ensable_training <<" for training dataset\n";
+        // Chiusura del file
+        outputFile.close();
+        std::cout << "Risultati scritti con successo nel file: " << fileName <<"per il valore " << e<<std::endl;
     }
-    accuracy_for_model(ensemble,testDataset,test_labels);
-    arma::Mat<size_t> prediction_matrix = predict_all_dataset(ensemble, testDataset);
-    accuracy_ensamble(prediction_matrix,ensemble,test_labels);
     return 0;
-
 }
+
 

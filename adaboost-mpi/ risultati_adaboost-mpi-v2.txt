@@ -1,0 +1,7 @@
+--------------------------
+Machine: Macbook
+Number epoch: 5
+Time epoch (T1): 2.49719 seconds
+Time epochs (T1): 12.1387 seconds
+Ensamble accuracy = 0.588005 for test dataset
+Ensamble accuracy = 0.732802 for training dataset

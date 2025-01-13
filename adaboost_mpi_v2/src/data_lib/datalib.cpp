@@ -7,12 +7,10 @@
 
 void load_datasets_and_labels(arma::mat &train_dataset, arma::Row<size_t>& train_labels, mlpack::data::DatasetInfo& info) {
 
-    const std::string train_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.train.arff";
-    const std::string train_labels_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.train.labels.csv";
+    const std::string train_path = "/Users/edoardochiavazza/Desktop/unito-scpd/adaboost_mpi_v2/datasets/covertype.train.arff";
+    const std::string train_labels_path = "/Users/edoardochiavazza/Desktop/unito-scpd/adaboost_mpi_v2/datasets/covertype.train.labels.csv";
     mlpack::data::Load(train_path, train_dataset, info, true);
     mlpack::data::Load(train_labels_path, train_labels, true);
-    arma::rowvec labels_vec = arma::conv_to<arma::rowvec>::from(arma::conv_to<arma::Row<double>>::from(train_labels));
-    train_dataset.insert_rows(train_dataset.n_rows, labels_vec);
 }
 
 double calculate_total_error(const arma::rowvec& train_result, const arma::rowvec& weights){
@@ -52,8 +50,8 @@ int index_best_model(const arma::mat & trees_error){
 }
 
 void load_testData_and_labels(arma::mat& testDataset,arma::Row<size_t>& test_labels,  mlpack::data::DatasetInfo& info) {
-    const std::string test_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.test.arff";
-    const std::string test_labels_path = "/home/edoardo/Desktop/unito-scpd/adaboost-mpi/datasets/covertype.test.labels.csv";
+    const std::string test_path = "/Users/edoardochiavazza/Desktop/unito-scpd/adaboost_mpi_v2/datasets/covertype.test.arff";
+    const std::string test_labels_path = "/Users/edoardochiavazza/Desktop/unito-scpd/adaboost_mpi_v2/datasets/covertype.test.labels.csv";
     mlpack::data::Load(test_path, testDataset, info, true);
     mlpack::data::Load(test_labels_path, test_labels, true);
 }

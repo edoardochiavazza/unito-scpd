@@ -25,6 +25,10 @@ target_sources(data_lib PUBLIC
         src/data_lib/datalib.cpp
         src/data_lib/datalib.hpp
 )
+include_directories(/opt/homebrew/include/)
+set(CMAKE_C_COMPILER /opt/homebrew/bin/gcc-13)
+
+# Enable OpenMP support
 target_include_directories(data_lib PUBLIC src/data_lib)
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX data_lib communication_lib)
