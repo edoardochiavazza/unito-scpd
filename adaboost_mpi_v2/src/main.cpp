@@ -7,7 +7,7 @@
 
 int main(int argc, char ** argv) {
     int rank, world_size;
-    int epochs[7] = { 5,10,20,30,40,50,100};
+    int epochs[9] = {5,10,20,30,40,50,100,500,1000};
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -17,46 +17,36 @@ int main(int argc, char ** argv) {
     arma::Row<size_t> client_labels, unique_labels;
     arma::rowvec weights;
     mlpack::data::DatasetInfo info;
-    constexpr int epoch = 5;
     arma::mat temp_train;
-    arma::mat train_dataset;
-    arma::Row<size_t> train_labels;
 
     if (rank == 0) {
-        arma::mat client_dataset;
         // Master process
+        arma::mat train_dataset;
+        arma::Row<size_t> train_labels;
 
         std::cout << "Loading training data..." << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
-        arma::rowvec labels_vec = arma::conv_to<arma::rowvec>::from(arma::conv_to<arma::Row<double>>::from(train_labels));
-        train_dataset.insert_rows(train_dataset.n_rows, labels_vec);
+
+        train_dataset = repmat(train_dataset, world_size, 1);
 
         int n_example = static_cast<int>(train_dataset.n_cols);
-
         int perc_n_example = (n_example / world_size);
 
-        for (int i = 0; i < world_size; ++i) {
+        for (int i = 1; i < world_size; ++i) {
             train_dataset = shuffle(train_dataset, 1); // Shuffle columns
-            client_dataset = train_dataset.cols(0, perc_n_example);
-            if( i != 0) {
-                send_data_to_client(client_dataset, i);
-            }else {
-                temp_train = client_dataset;
-            }
+            client_training_dataset = train_dataset.cols(0, perc_n_example);
+            send_data_to_client(client_training_dataset, i);
         }
-        client_dataset = temp_train;
         broadcastDatasetInfo(info);
+        train_dataset = shuffle(train_dataset, 1); // Shuffle columns
+        client_training_dataset = train_dataset.cols(0, perc_n_example);
     } else {
         // Client processes
         client_training_dataset = receive_data_from_master();
         info = broadcastDatasetInfo(info);
     }
-    if (rank == 0) {
-        client_training_dataset = temp_train;
-    }
     client_labels = arma::conv_to<arma::Row<size_t>>::from(client_training_dataset.row(client_training_dataset.n_rows - 1));
     client_training_dataset.shed_row(client_training_dataset.n_rows - 1);
-
     arma::rowvec w_temp(client_training_dataset.n_cols, arma::fill::ones);
     weights = w_temp / static_cast<double>(client_training_dataset.n_cols);
     unique_labels = arma::unique(client_labels);
@@ -94,7 +84,7 @@ int main(int argc, char ** argv) {
             double total_error = calculate_total_error(train_result, weights);
             std::vector<double> total_clients_errors = broadcast_total_error_best_tree(total_error);
             double mean_total_error = std::reduce(total_clients_errors.begin(), total_clients_errors.end()) / world_size;
-            double alpha = calculate_alpha(mean_total_error,static_cast<int>(unique_labels.size()),rank);
+            double alpha = calculate_alpha(mean_total_error,static_cast<int>(unique_labels.size()));
             ensemble_learning.emplace_back(best_tree_epoch,alpha);
             calculate_new_weights(train_result, alpha, weights);
             auto end_epoch_timer = std::chrono::high_resolution_clock::now();
@@ -106,7 +96,8 @@ int main(int argc, char ** argv) {
         if (rank == 0) {
             std::cout << "MASTER: Calculates the accuracy of the ensamble and its trees "<<std::endl;
             std::cout <<"Ensabmle learning size = "<< ensemble_learning.size() <<std::endl;
-
+            arma::mat train_dataset;
+            arma::Row<size_t> train_labels;
             arma::mat testDataset;
             arma::Row<size_t> test_labels;
             mlpack::data::DatasetInfo info_test, info_train;
@@ -120,7 +111,7 @@ int main(int argc, char ** argv) {
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
             // Nome del file di output
-            std::string fileName = " risultati_adaboost-mpi-v2.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi-v2.txt";
 
             // Creazione di un oggetto di tipo ofstream
             std::ofstream outputFile(fileName, std::ios::app);
@@ -134,7 +125,10 @@ int main(int argc, char ** argv) {
             // Scrittura dei risultati nel file
 
             outputFile << "--------------------------\n";
-            outputFile << "Machine: Macbook\n";
+            outputFile << "Machine: Broadwell\n";
+            outputFile << "Num nodes: 1 \n";
+            outputFile << "Num tasks per node: 18 \n";
+            outputFile << "Total tasks: 18 \n";
             outputFile << "Number epoch: "<< e<<"\n";
             outputFile << "Time epoch (T1): " << average_time_epoch << " seconds\n";
             outputFile << "Time epochs (T1): " << time_total << " seconds\n";

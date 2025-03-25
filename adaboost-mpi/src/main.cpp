@@ -3,7 +3,6 @@
 #include <mlpack/methods/decision_tree/decision_tree.hpp>
 #include <iostream>
 #include <vector>
-#include <sstream>
 #include "communication_lib/libcomm.hpp"
 #include "data_lib/datalib.hpp"
 
@@ -21,8 +20,7 @@ int main(int argc, char** argv) {
     arma::mat train_dataset;
     arma::Row<size_t> train_labels;
     double alpha;
-    int epochs[7] = { 5,10,20,30,40,50,100};
-    constexpr int epoch = 5;
+    int epochs[9] = { 5,10,20,30,40,50,100, 500, 1000};
     double average_total_error;
 
     if (rank == 0) {
@@ -33,6 +31,7 @@ int main(int argc, char** argv) {
         load_datasets_and_labels(train_dataset, train_labels, info);
 
         unique_labels = arma::unique(train_labels);
+        std::cout<<unique_labels<<std::endl;
         n_class = static_cast<int>(unique_labels.n_elem);
 
         int n_example = static_cast<int>(train_dataset.n_cols);
@@ -140,13 +139,13 @@ int main(int argc, char** argv) {
             load_testData_and_labels(testDataset,test_labels,info_train);
             accuracy_for_model(ensemble_learning, testDataset, test_labels);
             arma::Mat<size_t> en_result = predict_all_dataset(ensemble_learning, testDataset);
-            double accuracy_ensabmle_test = accuracy_ensamble(en_result, ensemble_learning, test_labels);
+            double accuracy_ensabmle_test = accuracy_ensamble(en_result, ensemble_learning, test_labels, n_class);
             en_result = predict_all_dataset(ensemble_learning, train_dataset);
-            double accuracy_ensabmle_train = accuracy_ensamble(en_result, ensemble_learning, train_labels);
+            double accuracy_ensabmle_train = accuracy_ensamble(en_result, ensemble_learning, train_labels, n_class);
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
             // Nome del file di output
-            std::string fileName = " risultati_adaboost-mpi.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi-v2.txt";
 
             // Creazione di un oggetto di tipo ofstream
             std::ofstream outputFile(fileName, std::ios::app);
@@ -160,7 +159,10 @@ int main(int argc, char** argv) {
             // Scrittura dei risultati nel file
 
             outputFile << "--------------------------\n";
-            outputFile << "Machine: Macbook\n";
+            outputFile << "Machine: Broadwell\n";
+            outputFile << "Num nodes: 1 \n";
+            outputFile << "Num tasks per node: 18 \n";
+            outputFile << "Total tasks: 18 \n";
             outputFile << "Number epoch: "<< e<<"\n";
             outputFile << "Time epoch (T1): " << average_time_epoch << " seconds\n";
             outputFile << "Time epochs (T1): " << time_total << " seconds\n";

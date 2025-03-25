@@ -15,7 +15,7 @@ void load_datasets_and_labels(arma::mat &train_dataset, arma::Row<size_t>& train
 double calculate_total_error(const arma::rowvec& train_result, const arma::rowvec& weights);
 
 // Function to calculate the alpha parameter based on the total error and number of classes
-double calculate_alpha(const double& total_error , const int& n_class, const int& rank);
+double calculate_alpha(const double& total_error , const int& n_class);
 
 // Function to calculate the new weights based on the training results and alpha
 void calculate_new_weights(const arma::rowvec& train_result, const double& alpha, arma::rowvec& weights);

@@ -26,7 +26,7 @@ double calculate_total_error(const arma::rowvec& train_result, const arma::rowve
 
 }
 
-double calculate_alpha(const double& total_error , const int& n_class, const int &rank){
+double calculate_alpha(const double& total_error , const int& n_class){
     const double alpha = log((1.0 - total_error) / total_error) + log(n_class);
     if (std::isnan(alpha) || std::isinf(alpha)) {
         std::cerr << "Errore: alpha non valido" << std::endl;
