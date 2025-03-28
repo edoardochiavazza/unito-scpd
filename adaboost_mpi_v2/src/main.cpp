@@ -26,11 +26,14 @@ int main(int argc, char ** argv) {
 
         std::cout << "Loading training data..." << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
-
-        train_dataset = repmat(train_dataset, world_size, 1);
-
         int n_example = static_cast<int>(train_dataset.n_cols);
         int perc_n_example = (n_example / world_size);
+
+	//Weak scaling
+	//arma::mat inflatedData = train_dataset;
+        //for (size_t i = 1; i < weak_scale_factor * world_size; ++i) {
+            //inflatedData = arma::join_rows(inflatedData, train_dataset);
+        //}
 
         for (int i = 1; i < world_size; ++i) {
             train_dataset = shuffle(train_dataset, 1); // Shuffle columns
@@ -127,8 +130,8 @@ int main(int argc, char ** argv) {
             outputFile << "--------------------------\n";
             outputFile << "Machine: Broadwell\n";
             outputFile << "Num nodes: 1 \n";
-            outputFile << "Num tasks per node: 18 \n";
-            outputFile << "Total tasks: 18 \n";
+            outputFile << "Num tasks per node: 36 \n";
+            outputFile << "Total tasks: 36 \n";
             outputFile << "Number epoch: "<< e<<"\n";
             outputFile << "Time epoch (T1): " << average_time_epoch << " seconds\n";
             outputFile << "Time epochs (T1): " << time_total << " seconds\n";
