@@ -152,7 +152,7 @@ int main(int argc, char** argv) {
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi_strong_13_prest.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi_strong_10_prest.txt";
 	    int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);	    
             // Creazione di un oggetto di tipo ofstream
@@ -188,4 +188,4 @@ int main(int argc, char** argv) {
 
     MPI_Finalize();
     return 0;
-
+}

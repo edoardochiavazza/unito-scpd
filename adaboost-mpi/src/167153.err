@@ -1,0 +1,49 @@
+make: Warning: File 'Makefile' has modification time 0.77 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.55 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.54 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.54 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.42 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.42 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libcommunication_lib.a' has modification time 0.58 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  Mat::operator(): index out of bounds
+[broadwell-023:2286212] *** Process received signal ***
+[broadwell-023:2286212] Signal: Aborted (6)
+[broadwell-023:2286212] Signal code:  (-6)
+[broadwell-023:2286212] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f0656abb090]
+[broadwell-023:2286212] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f0656abb00b]
+[broadwell-023:2286212] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f0656a9a859]
+[broadwell-023:2286212] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f0656e72911]
+[broadwell-023:2286212] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f0656e7e38c]
+[broadwell-023:2286212] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f0656e7e3f7]
+[broadwell-023:2286212] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f0656e7e6a9]
+[broadwell-023:2286212] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xae8a)[0x564bca3dce8a]
+[broadwell-023:2286212] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x11ea9)[0x564bca3e3ea9]
+[broadwell-023:2286212] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x1e4ed)[0x564bca3f04ed]
+[broadwell-023:2286212] [10] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x16ec8)[0x564bca3e8ec8]
+[broadwell-023:2286212] [11] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xfd94)[0x564bca3e1d94]
+[broadwell-023:2286212] [12] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x9729)[0x564bca3db729]
+[broadwell-023:2286212] [13] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f0656a9c083]
+[broadwell-023:2286212] [14] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x871e)[0x564bca3da71e]
+[broadwell-023:2286212] *** End of error message ***
+srun: error: broadwell-023: task 77: Aborted (core dumped)
+slurmstepd: error:  mpi/pmix_v3: _errhandler: broadwell-023 [2]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.167153.0:77]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 167153.0 ON broadwell-021 CANCELLED AT 2025-03-28T23:47:00 ***
+srun: error: broadwell-022: tasks 34-67: Killed
+srun: error: broadwell-024: tasks 102-135: Killed
+srun: error: broadwell-021: tasks 0-33: Killed
+srun: error: broadwell-026: tasks 170-203: Killed
+srun: error: broadwell-030: tasks 306-339: Killed
+srun: error: broadwell-025: tasks 136-169: Killed
+srun: error: broadwell-023: tasks 68-76,78-101: Killed
+srun: error: broadwell-027: tasks 204-237: Killed
+srun: error: broadwell-028: tasks 238-271: Killed
+srun: error: broadwell-029: tasks 272-305: Killed

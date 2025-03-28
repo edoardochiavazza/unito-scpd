@@ -1,8 +1,8 @@
 #!/bin/sh
 #SBATCH -p broadwell
-#SBATCH --nodes=13
-#SBATCH --ntasks=468
-#SBATCH --ntasks-per-node=36
+#SBATCH --nodes=10
+#SBATCH --ntasks=330
+#SBATCH --ntasks-per-node=33
 #SBATCH -o %j.log
 #SBATCH -e %j.err
 #SBATCH -t 01:00:00
@@ -30,4 +30,4 @@ make -j
 
 # Esegui il programma con MPI dalla cartella bin
 cd $BIN_DIR
-srun --mpi=pmix -n 468 ./adaboost-mpi 13 36
+srun --mpi=pmix -n 330 ./adaboost-mpi 10 33
