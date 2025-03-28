@@ -86,10 +86,10 @@ int main(int argc, char** argv) {
 
                 average_total_error = arma::mean(arma_mat.col(best_model_index));
                 alpha = calculate_alpha(average_total_error, n_class);
-		if(alpha > 0){
-			ensemble_learning.emplace_back(trees_m[best_model_index],alpha);
-			std::cout << "MASTER:Skipped tree "<<std::endl;
-		}
+		        if(alpha > 0){
+			        ensemble_learning.emplace_back(trees_m[best_model_index],alpha);
+			        std::cout << "MASTER:Skipped tree "<<std::endl;
+		        }
                 broadcast_alpha(alpha);
                 broadcast_tree(ensemble_learning[t].first);
 
@@ -120,9 +120,9 @@ int main(int argc, char** argv) {
                 broadcast_alpha(alpha);
 
                 mlpack::DecisionTree<> best_tree = broadcast_tree(best_tree);
-		if(alpha > 0){
-			ensemble_learning.emplace_back(best_tree,alpha);
-		}
+		        if(alpha > 0){
+			        ensemble_learning.emplace_back(best_tree,alpha);
+		        }
                 best_tree.Classify(client_training_dataset, predictions);
                 arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
                 calculate_new_weights(train_result, alpha, weights);
