@@ -1,12 +1,12 @@
 #!/bin/sh
 #SBATCH -p broadwell
-#SBATCH --nodes=9
-#SBATCH --ntasks=324
+#SBATCH --nodes=13
+#SBATCH --ntasks=468
 #SBATCH --ntasks-per-node=36
 #SBATCH -o %j.log
 #SBATCH -e %j.err
 #SBATCH -t 01:00:00
-#SBATCH --job-name=adab_v1_9
+#SBATCH --job-name=adab_v1_13
 
 # Carica Spack
  . /beegfs/home/echiavazza/spack/share/spack/setup-env.sh
@@ -30,4 +30,4 @@ make -j
 
 # Esegui il programma con MPI dalla cartella bin
 cd $BIN_DIR
-srun --mpi=pmix -n 324 ./adaboost-mpi 9 36
+srun --mpi=pmix -n 468 ./adaboost-mpi 13 36

@@ -128,3 +128,13 @@ Time epoch (T1): 4.05269 seconds
 Time epochs (T1): 238.758 seconds
 Ensamble accuracy = 0.647791 for test dataset
 Ensamble accuracy = 0.699129 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 4
+Num tasks per node: 36
+Total tasks:144
+Number epoch: 100
+Time epoch (T1): 3.9141 seconds
+Time epochs (T1): 448.181 seconds
+Ensamble accuracy = 0.647791 for test dataset
+Ensamble accuracy = 0.699129 for training dataset

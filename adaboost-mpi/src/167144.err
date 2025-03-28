@@ -1,0 +1,127 @@
+make: Warning: File 'Makefile' has modification time 3.7 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 3.5 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 3.5 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 3.5 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 3.3 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 3.3 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libdata_lib.a' has modification time 3.1 s in the future
+/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/src/main.cpp: In function ‘int main(int, char**)’:
+/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/src/main.cpp:190:13: error: expected ‘}’ at end of input
+  190 |     return 0;
+      |             ^
+/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/src/main.cpp:9:33: note: to match this ‘{’
+    9 | int main(int argc, char** argv) {
+      |                                 ^
+make[2]: *** [CMakeFiles/adaboost-mpi.dir/build.make:76: CMakeFiles/adaboost-mpi.dir/src/main.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/adaboost-mpi.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
+terminate called after throwing an instance of 'std::out_of_range'
+terminate called after throwing an instance of 'std::out_of_range'
+terminate called after throwing an instance of 'std::out_of_range'
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  Mat::operator(): index out of bounds
+  what():  Mat::operator(): index out of bounds
+  what():  Mat::operator(): index out of bounds
+  what():  Mat::operator(): index out of bounds
+[broadwell-038:741035] *** Process received signal ***
+[broadwell-036:3611440] *** Process received signal ***
+[broadwell-033:526085] *** Process received signal ***
+[broadwell-032:3497427] *** Process received signal ***
+[broadwell-038:741035] Signal: Aborted (6)
+[broadwell-038:741035] Signal code:  (-6)
+[broadwell-036:3611440] Signal: Aborted (6)
+[broadwell-036:3611440] Signal code:  (-6)
+[broadwell-033:526085] Signal: Aborted (6)
+[broadwell-033:526085] Signal code:  (-6)
+[broadwell-032:3497427] Signal: Aborted (6)
+[broadwell-032:3497427] Signal code:  (-6)
+[broadwell-038:741035] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7ff1c7832090]
+[broadwell-036:3611440] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f5eeba20090]
+[broadwell-033:526085] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f4156fd2090]
+[broadwell-032:3497427] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fd6131a3090]
+[broadwell-038:741035] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7ff1c783200b]
+[broadwell-036:3611440] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f5eeba2000b]
+[broadwell-033:526085] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f4156fd200b]
+[broadwell-032:3497427] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fd6131a300b]
+[broadwell-038:741035] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7ff1c7811859]
+[broadwell-036:3611440] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f5eeb9ff859]
+[broadwell-033:526085] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f4156fb1859]
+[broadwell-032:3497427] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fd613182859]
+[broadwell-038:741035] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7ff1c7be9911]
+[broadwell-036:3611440] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f5eebdd7911]
+[broadwell-033:526085] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f4157389911]
+[broadwell-032:3497427] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fd61355a911]
+[broadwell-038:741035] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7ff1c7bf538c]
+[broadwell-036:3611440] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f5eebde338c]
+[broadwell-033:526085] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f415739538c]
+[broadwell-032:3497427] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fd61356638c]
+[broadwell-038:741035] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7ff1c7bf53f7]
+[broadwell-036:3611440] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f5eebde33f7]
+[broadwell-033:526085] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f41573953f7]
+[broadwell-032:3497427] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fd6135663f7]
+[broadwell-038:741035] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7ff1c7bf56a9]
+[broadwell-036:3611440] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f5eebde36a9]
+[broadwell-033:526085] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f41573956a9]
+[broadwell-032:3497427] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fd6135666a9]
+[broadwell-038:741035] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xae8a)[0x556a0abd4e8a]
+[broadwell-036:3611440] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xae8a)[0x560925f98e8a]
+[broadwell-033:526085] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xae8a)[0x557820bb1e8a]
+[broadwell-032:3497427] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xae8a)[0x55a740182e8a]
+[broadwell-038:741035] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x11ea9)[0x556a0abdbea9]
+[broadwell-036:3611440] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x11ea9)[0x560925f9fea9]
+[broadwell-033:526085] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x11ea9)[0x557820bb8ea9]
+[broadwell-032:3497427] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x11ea9)[0x55a740189ea9]
+[broadwell-038:741035] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x1e4ed)[0x556a0abe84ed]
+[broadwell-036:3611440] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x1e4ed)[0x560925fac4ed]
+[broadwell-033:526085] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x1e4ed)[0x557820bc54ed]
+[broadwell-032:3497427] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x1e4ed)[0x55a7401964ed]
+[broadwell-038:741035] [10] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x16ec8)[0x556a0abe0ec8]
+[broadwell-036:3611440] [10] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x16ec8)[0x560925fa4ec8]
+[broadwell-033:526085] [10] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x16ec8)[0x557820bbdec8]
+[broadwell-032:3497427] [10] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x16ec8)[0x55a74018eec8]
+[broadwell-038:741035] [11] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xfd94)[0x556a0abd9d94]
+[broadwell-036:3611440] [11] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xfd94)[0x560925f9dd94]
+[broadwell-033:526085] [11] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xfd94)[0x557820bb6d94]
+[broadwell-032:3497427] [11] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xfd94)[0x55a740187d94]
+[broadwell-038:741035] [12] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x9729)[0x556a0abd3729]
+[broadwell-036:3611440] [12] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x9729)[0x560925f97729]
+[broadwell-033:526085] [12] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x9729)[0x557820bb0729]
+[broadwell-032:3497427] [12] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x9729)[0x55a740181729]
+[broadwell-038:741035] [13] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7ff1c7813083]
+[broadwell-036:3611440] [13] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f5eeba01083]
+[broadwell-033:526085] [13] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f4156fb3083]
+[broadwell-032:3497427] [13] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fd613184083]
+[broadwell-038:741035] [14] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x871e)[0x556a0abd271e]
+[broadwell-036:3611440] [14] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x871e)[0x560925f9671e]
+[broadwell-033:526085] [14] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x871e)[0x557820baf71e]
+[broadwell-032:3497427] [14] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x871e)[0x55a74018071e]
+[broadwell-038:741035] *** End of error message ***
+[broadwell-036:3611440] *** End of error message ***
+[broadwell-033:526085] *** End of error message ***
+[broadwell-032:3497427] *** End of error message ***
+srun: error: broadwell-032: task 40: Aborted (core dumped)
+srun: error: broadwell-033: task 77: Aborted (core dumped)
+srun: error: broadwell-038: task 266: Aborted (core dumped)
+srun: error: broadwell-036: task 215: Aborted (core dumped)
+slurmstepd: error:  mpi/pmix_v3: _errhandler: broadwell-032 [1]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.167144.0:40]
+slurmstepd: error:  mpi/pmix_v3: _errhandler: broadwell-033 [2]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.167144.0:77]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error:  mpi/pmix_v3: _errhandler: broadwell-038 [7]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.167144.0:266]
+slurmstepd: error: *** STEP 167144.0 ON broadwell-031 CANCELLED AT 2025-03-28T23:02:51 ***
+slurmstepd: error:  mpi/pmix_v3: _errhandler: broadwell-036 [5]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.167144.0:215]
+srun: error: broadwell-032: tasks 36-39,41-71: Killed
+srun: error: broadwell-041: tasks 360-395: Killed
+srun: error: broadwell-038: tasks 252-265,267-287: Killed
+srun: error: broadwell-031: tasks 0-35: Killed
+srun: error: broadwell-033: tasks 72-76,78-107: Killed
+srun: error: broadwell-034: tasks 108-143: Killed
+srun: error: broadwell-039: tasks 288-323: Killed
+srun: error: broadwell-036: tasks 180-214: Killed
+srun: error: broadwell-037: tasks 216-251: Killed
+srun: error: broadwell-040: tasks 324-359: Killed
+srun: error: broadwell-035: tasks 144-179: Killed
