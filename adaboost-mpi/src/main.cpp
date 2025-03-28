@@ -86,14 +86,17 @@ int main(int argc, char** argv) {
 
                 average_total_error = arma::mean(arma_mat.col(best_model_index));
                 alpha = calculate_alpha(average_total_error, n_class);
-                ensemble_learning.emplace_back(trees_m[best_model_index],alpha);
+		if(alpha > 0){
+			ensemble_learning.emplace_back(trees_m[best_model_index],alpha);
+			std::cout << "MASTER:Skipped tree "<<std::endl;
+		}
                 broadcast_alpha(alpha);
                 broadcast_tree(ensemble_learning[t].first);
 
             } else {
                 // Client processes
                 mlpack::DecisionTree<> tree;
-                tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 20, 1e-2, 0);
+                tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 20, 1e-3, 0);
 
                 gather_tree(tree, rank, world_size);
 
@@ -117,8 +120,9 @@ int main(int argc, char** argv) {
                 broadcast_alpha(alpha);
 
                 mlpack::DecisionTree<> best_tree = broadcast_tree(best_tree);
-                ensemble_learning.emplace_back(best_tree,alpha);
-
+		if(alpha > 0){
+			ensemble_learning.emplace_back(best_tree,alpha);
+		}
                 best_tree.Classify(client_training_dataset, predictions);
                 arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
                 calculate_new_weights(train_result, alpha, weights);
@@ -148,7 +152,7 @@ int main(int argc, char** argv) {
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi_strong_1_new_param_20_e2.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi_strong_1_new_param_20_e3_skipping.txt";
 	    int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);	    
             // Creazione di un oggetto di tipo ofstream

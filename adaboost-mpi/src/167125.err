@@ -1,0 +1,20 @@
+make: Warning: File 'Makefile' has modification time 1.2 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.93 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.91 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.91 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.76 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.76 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libdata_lib.a' has modification time 0.17 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+Errore nell'apertura del file: ../res/precision/risultati_adaboost-mpi_strong_1_new_param_20_e3_skipping.txt
+srun: error: broadwell-000: task 0: Exited with exit code 1
+slurmstepd: error:  mpi/pmix_v3: _errhandler: broadwell-000 [0]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.167125.0:0]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 167125.0 ON broadwell-000 CANCELLED AT 2025-03-28T20:22:17 ***
+srun: error: broadwell-000: tasks 1-35: Killed
