@@ -86,12 +86,12 @@ int main(int argc, char** argv) {
 
                 average_total_error = arma::mean(arma_mat.col(best_model_index));
                 alpha = calculate_alpha(average_total_error, n_class);
-		        if(alpha > 0){
+		        if(alpha > 0.01){
 			        ensemble_learning.emplace_back(trees_m[best_model_index],alpha);
-			        std::cout << "MASTER:Skipped tree "<<std::endl;
+			        std::cout << "MASTER:added tree "<<std::endl;
 		        }
                 broadcast_alpha(alpha);
-                broadcast_tree(ensemble_learning[t].first);
+                broadcast_tree(trees_m[best_model_index]);
 
             } else {
                 // Client processes
@@ -120,7 +120,7 @@ int main(int argc, char** argv) {
                 broadcast_alpha(alpha);
 
                 mlpack::DecisionTree<> best_tree = broadcast_tree(best_tree);
-		        if(alpha > 0){
+		        if(alpha > 0.01){
 			        ensemble_learning.emplace_back(best_tree,alpha);
 		        }
                 best_tree.Classify(client_training_dataset, predictions);
@@ -152,7 +152,7 @@ int main(int argc, char** argv) {
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi_strong_1_new_param_20_e3_skipping.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi_strong_9_prest.txt";
 	    int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);	    
             // Creazione di un oggetto di tipo ofstream
