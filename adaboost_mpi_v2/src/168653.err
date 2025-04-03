@@ -1,0 +1,758 @@
+CMake Error at CMakeLists.txt:1 (make_minimum_required):
+  Unknown CMake command "make_minimum_required".
+
+
+CMake Warning (dev) in CMakeLists.txt:
+  No cmake_minimum_required command is present.  A line of code such as
+
+    cmake_minimum_required(VERSION 3.27)
+
+  should be added at the top of the file.  The version specified may be lower
+  if you wish to support older CMake versions for this project.  For more
+  information run "cmake --help-policy CMP0000".
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+make: *** No targets specified and no makefile found.  Stop.
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-001
+srun: jobid               : 168653
+srun: job-name            : submit.sh
+srun: mpi                 : pmix
+srun: nodes               : 1
+srun: ntasks              : 36
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168653: nodes(1):`broadwell-001', cpu counts: 36(x1)
+srun: CpuBindType=(null type)
+srun: launching StepId=168653.0 on host broadwell-001, 36 tasks: [0-35]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-001, 36 tasks started
+terminate called after throwing an instance of 'std::invalid_argument'
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324325] *** Process received signal ***
+[broadwell-001:1324325] Signal: Aborted (6)
+[broadwell-001:1324325] Signal code:  (-6)
+[broadwell-001:1324325] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fa19a25b090]
+[broadwell-001:1324325] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fa19a25b00b]
+[broadwell-001:1324325] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fa19a23a859]
+[broadwell-001:1324325] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fa19a612911]
+[broadwell-001:1324325] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fa19a61e38c]
+[broadwell-001:1324325] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fa19a61e3f7]
+[broadwell-001:1324325] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fa19a61e6a9]
+[broadwell-001:1324325] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55d56e1740b6]
+[broadwell-001:1324325] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55d56e16d1db]
+[broadwell-001:1324325] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55d56e16dfcd]
+[broadwell-001:1324325] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55d56e166c4e]
+[broadwell-001:1324325] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55d56e160539]
+[broadwell-001:1324325] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fa19a23c083]
+[broadwell-001:1324325] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55d56e15f7be]
+[broadwell-001:1324325] *** End of error message ***
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324313] *** Process received signal ***
+[broadwell-001:1324313] Signal: Aborted (6)
+[broadwell-001:1324313] Signal code:  (-6)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324299] *** Process received signal ***
+[broadwell-001:1324299] Signal: Aborted (6)
+[broadwell-001:1324299] Signal code:  (-6)
+[broadwell-001:1324299] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f334a76e090]
+[broadwell-001:1324299] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f334a76e00b]
+[broadwell-001:1324299] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f334a74d859]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324323] *** Process received signal ***
+[broadwell-001:1324323] Signal: Aborted (6)
+[broadwell-001:1324323] Signal code:  (-6)
+[broadwell-001:1324299] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f334ab25911]
+[broadwell-001:1324299] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f334ab3138c]
+[broadwell-001:1324299] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f334ab313f7]
+[broadwell-001:1324323] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fe3da596090]
+[broadwell-001:1324323] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fe3da59600b]
+[broadwell-001:1324323] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fe3da575859]
+[broadwell-001:1324299] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f334ab316a9]
+[broadwell-001:1324299] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x557d8286e0b6]
+[broadwell-001:1324299] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x557d828671db]
+[broadwell-001:1324299] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x557d82867fcd]
+[broadwell-001:1324299] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x557d82860c4e]
+[broadwell-001:1324299] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x557d8285a539]
+[broadwell-001:1324299] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f334a74f083]
+[broadwell-001:1324299] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x557d828597be]
+[broadwell-001:1324299] *** End of error message ***
+[broadwell-001:1324323] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fe3da94d911]
+[broadwell-001:1324323] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fe3da95938c]
+[broadwell-001:1324323] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fe3da9593f7]
+terminate called after throwing an instance of 'std::invalid_argument'
+[broadwell-001:1324323] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fe3da9596a9]
+[broadwell-001:1324323] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55ddd0ad60b6]
+[broadwell-001:1324323] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55ddd0acf1db]
+[broadwell-001:1324323] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55ddd0acffcd]
+[broadwell-001:1324323] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55ddd0ac8c4e]
+[broadwell-001:1324323] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55ddd0ac2539]
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324327] *** Process received signal ***
+[broadwell-001:1324327] Signal: Aborted (6)
+[broadwell-001:1324327] Signal code:  (-6)
+[broadwell-001:1324323] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fe3da577083]
+[broadwell-001:1324323] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55ddd0ac17be]
+[broadwell-001:1324323] *** End of error message ***
+[broadwell-001:1324327] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f468c89e090]
+[broadwell-001:1324327] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f468c89e00b]
+[broadwell-001:1324327] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f468c87d859]
+[broadwell-001:1324327] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f468cc55911]
+[broadwell-001:1324327] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f468cc6138c]
+[broadwell-001:1324327] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f468cc613f7]
+[broadwell-001:1324327] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f468cc616a9]
+[broadwell-001:1324327] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55fa146c00b6]
+[broadwell-001:1324327] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55fa146b91db]
+[broadwell-001:1324327] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55fa146b9fcd]
+[broadwell-001:1324327] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55fa146b2c4e]
+[broadwell-001:1324327] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55fa146ac539]
+[broadwell-001:1324327] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f468c87f083]
+[broadwell-001:1324327] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55fa146ab7be]
+[broadwell-001:1324327] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324311] *** Process received signal ***
+[broadwell-001:1324311] Signal: Aborted (6)
+[broadwell-001:1324311] Signal code:  (-6)
+[broadwell-001:1324311] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fa8a0636090]
+[broadwell-001:1324311] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fa8a063600b]
+[broadwell-001:1324311] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fa8a0615859]
+[broadwell-001:1324313] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f9ac45fe090]
+[broadwell-001:1324313] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f9ac45fe00b]
+[broadwell-001:1324311] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fa8a09ed911]
+[broadwell-001:1324313] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f9ac45dd859]
+[broadwell-001:1324313] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f9ac49b5911]
+[broadwell-001:1324311] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fa8a09f938c]
+[broadwell-001:1324313] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f9ac49c138c]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324311] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fa8a09f93f7]
+[broadwell-001:1324303] *** Process received signal ***
+[broadwell-001:1324303] Signal: Aborted (6)
+[broadwell-001:1324303] Signal code:  (-6)
+[broadwell-001:1324307] *** Process received signal ***
+[broadwell-001:1324307] Signal: Aborted (6)
+[broadwell-001:1324307] Signal code:  (-6)
+[broadwell-001:1324311] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fa8a09f96a9]
+[broadwell-001:1324311] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55c90a3410b6]
+[broadwell-001:1324311] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55c90a33a1db]
+[broadwell-001:1324311] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55c90a33afcd]
+[broadwell-001:1324311] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55c90a333c4e]
+[broadwell-001:1324311] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55c90a32d539]
+[broadwell-001:1324313] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f9ac49c13f7]
+[broadwell-001:1324313] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f9ac49c16a9]
+[broadwell-001:1324313] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x563ab9b6c0b6]
+[broadwell-001:1324313] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x563ab9b651db]
+[broadwell-001:1324313] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x563ab9b65fcd]
+[broadwell-001:1324313] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x563ab9b5ec4e]
+[broadwell-001:1324313] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x563ab9b58539]
+[broadwell-001:1324303] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f81d8760090]
+[broadwell-001:1324303] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f81d876000b]
+[broadwell-001:1324307] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fdc7e9c0090]
+[broadwell-001:1324311] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fa8a0617083]
+[broadwell-001:1324311] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55c90a32c7be]
+[broadwell-001:1324311] *** End of error message ***
+[broadwell-001:1324313] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f9ac45df083]
+[broadwell-001:1324313] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x563ab9b577be]
+[broadwell-001:1324313] *** End of error message ***
+[broadwell-001:1324303] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f81d873f859]
+[broadwell-001:1324307] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fdc7e9c000b]
+[broadwell-001:1324307] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fdc7e99f859]
+[broadwell-001:1324303] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f81d8b17911]
+[broadwell-001:1324307] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fdc7ed77911]
+[broadwell-001:1324303] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f81d8b2338c]
+[broadwell-001:1324307] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fdc7ed8338c]
+[broadwell-001:1324303] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f81d8b233f7]
+[broadwell-001:1324307] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fdc7ed833f7]
+[broadwell-001:1324303] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f81d8b236a9]
+[broadwell-001:1324303] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x555df43120b6]
+[broadwell-001:1324303] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x555df430b1db]
+[broadwell-001:1324303] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x555df430bfcd]
+[broadwell-001:1324303] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x555df4304c4e]
+[broadwell-001:1324303] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x555df42fe539]
+[broadwell-001:1324307] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fdc7ed836a9]
+[broadwell-001:1324307] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x5646fce1b0b6]
+[broadwell-001:1324307] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x5646fce141db]
+[broadwell-001:1324307] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x5646fce14fcd]
+[broadwell-001:1324307] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x5646fce0dc4e]
+[broadwell-001:1324307] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x5646fce07539]
+[broadwell-001:1324303] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f81d8741083]
+[broadwell-001:1324303] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x555df42fd7be]
+[broadwell-001:1324303] *** End of error message ***
+[broadwell-001:1324307] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fdc7e9a1083]
+[broadwell-001:1324307] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x5646fce067be]
+[broadwell-001:1324307] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324309] *** Process received signal ***
+[broadwell-001:1324309] Signal: Aborted (6)
+[broadwell-001:1324309] Signal code:  (-6)
+[broadwell-001:1324315] *** Process received signal ***
+[broadwell-001:1324315] Signal: Aborted (6)
+[broadwell-001:1324315] Signal code:  (-6)
+[broadwell-001:1324309] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7efd7320b090]
+[broadwell-001:1324315] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fc37afb4090]
+[broadwell-001:1324309] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7efd7320b00b]
+[broadwell-001:1324309] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7efd731ea859]
+[broadwell-001:1324315] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fc37afb400b]
+[broadwell-001:1324315] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fc37af93859]
+[broadwell-001:1324309] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7efd735c2911]
+[broadwell-001:1324315] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fc37b36b911]
+[broadwell-001:1324309] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7efd735ce38c]
+[broadwell-001:1324315] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fc37b37738c]
+[broadwell-001:1324309] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7efd735ce3f7]
+[broadwell-001:1324315] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fc37b3773f7]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324309] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7efd735ce6a9]
+[broadwell-001:1324309] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x5585eb4870b6]
+[broadwell-001:1324309] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x5585eb4801db]
+[broadwell-001:1324309] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x5585eb480fcd]
+[broadwell-001:1324309] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x5585eb479c4e]
+[broadwell-001:1324309] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x5585eb473539]
+[broadwell-001:1324309] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7efd731ec083]
+[broadwell-001:1324315] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fc37b3776a9]
+[broadwell-001:1324315] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x562d373010b6]
+[broadwell-001:1324315] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x562d372fa1db]
+[broadwell-001:1324315] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x562d372fafcd]
+[broadwell-001:1324315] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x562d372f3c4e]
+[broadwell-001:1324315] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x562d372ed539]
+[broadwell-001:1324301] *** Process received signal ***
+[broadwell-001:1324301] Signal: Aborted (6)
+[broadwell-001:1324301] Signal code:  (-6)
+[broadwell-001:1324309] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x5585eb4727be]
+[broadwell-001:1324309] *** End of error message ***
+[broadwell-001:1324315] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fc37af95083]
+[broadwell-001:1324315] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x562d372ec7be]
+[broadwell-001:1324315] *** End of error message ***
+[broadwell-001:1324301] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f517ef4b090]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324301] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f517ef4b00b]
+[broadwell-001:1324317] *** Process received signal ***
+[broadwell-001:1324317] Signal: Aborted (6)
+[broadwell-001:1324317] Signal code:  (-6)
+[broadwell-001:1324301] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f517ef2a859]
+[broadwell-001:1324301] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f517f302911]
+[broadwell-001:1324317] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f2007f12090]
+[broadwell-001:1324301] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f517f30e38c]
+[broadwell-001:1324317] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f2007f1200b]
+[broadwell-001:1324317] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f2007ef1859]
+[broadwell-001:1324301] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f517f30e3f7]
+[broadwell-001:1324317] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f20082c9911]
+[broadwell-001:1324301] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f517f30e6a9]
+[broadwell-001:1324301] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x559bf3a280b6]
+[broadwell-001:1324301] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x559bf3a211db]
+[broadwell-001:1324301] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x559bf3a21fcd]
+[broadwell-001:1324301] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x559bf3a1ac4e]
+[broadwell-001:1324301] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x559bf3a14539]
+[broadwell-001:1324317] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f20082d538c]
+[broadwell-001:1324301] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f517ef2c083]
+[broadwell-001:1324301] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x559bf3a137be]
+[broadwell-001:1324301] *** End of error message ***
+[broadwell-001:1324317] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f20082d53f7]
+[broadwell-001:1324317] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f20082d56a9]
+[broadwell-001:1324317] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x5556282080b6]
+[broadwell-001:1324317] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x5556282011db]
+[broadwell-001:1324317] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x555628201fcd]
+[broadwell-001:1324317] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x5556281fac4e]
+[broadwell-001:1324317] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x5556281f4539]
+[broadwell-001:1324317] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f2007ef3083]
+[broadwell-001:1324317] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x5556281f37be]
+[broadwell-001:1324317] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324297] *** Process received signal ***
+[broadwell-001:1324297] Signal: Aborted (6)
+[broadwell-001:1324297] Signal code:  (-6)
+[broadwell-001:1324297] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fb5e56a8090]
+[broadwell-001:1324297] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fb5e56a800b]
+[broadwell-001:1324297] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fb5e5687859]
+[broadwell-001:1324297] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fb5e5a5f911]
+[broadwell-001:1324297] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fb5e5a6b38c]
+[broadwell-001:1324297] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fb5e5a6b3f7]
+[broadwell-001:1324297] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fb5e5a6b6a9]
+[broadwell-001:1324297] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55d3816c70b6]
+[broadwell-001:1324297] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55d3816c01db]
+[broadwell-001:1324297] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55d3816c0fcd]
+[broadwell-001:1324297] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55d3816b9c4e]
+[broadwell-001:1324297] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55d3816b3539]
+[broadwell-001:1324297] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fb5e5689083]
+[broadwell-001:1324297] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55d3816b27be]
+[broadwell-001:1324297] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324318] *** Process received signal ***
+[broadwell-001:1324318] Signal: Aborted (6)
+[broadwell-001:1324318] Signal code:  (-6)
+[broadwell-001:1324318] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f9f2b8ca090]
+[broadwell-001:1324318] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f9f2b8ca00b]
+terminate called after throwing an instance of 'std::invalid_argument'
+[broadwell-001:1324318] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f9f2b8a9859]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324302] *** Process received signal ***
+[broadwell-001:1324302] Signal: Aborted (6)
+[broadwell-001:1324302] Signal code:  (-6)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324308] *** Process received signal ***
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324312] *** Process received signal ***
+[broadwell-001:1324312] Signal: Aborted (6)
+[broadwell-001:1324312] Signal code:  (-6)
+[broadwell-001:1324318] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f9f2bc81911]
+[broadwell-001:1324318] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f9f2bc8d38c]
+[broadwell-001:1324302] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f76a6e47090]
+[broadwell-001:1324308] Signal: Aborted (6)
+[broadwell-001:1324308] Signal code:  (-6)
+[broadwell-001:1324308] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f8939f24090]
+[broadwell-001:1324312] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fd63067b090]
+[broadwell-001:1324312] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fd63067b00b]
+[broadwell-001:1324312] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fd63065a859]
+[broadwell-001:1324318] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f9f2bc8d3f7]
+[broadwell-001:1324318] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f9f2bc8d6a9]
+[broadwell-001:1324318] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55c85e4c00b6]
+[broadwell-001:1324318] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55c85e4b91db]
+[broadwell-001:1324318] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55c85e4b9fcd]
+[broadwell-001:1324318] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55c85e4b2c4e]
+[broadwell-001:1324318] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55c85e4ac539]
+[broadwell-001:1324318] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f9f2b8ab083]
+[broadwell-001:1324318] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55c85e4ab7be]
+[broadwell-001:1324318] *** End of error message ***
+[broadwell-001:1324302] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f76a6e4700b]
+[broadwell-001:1324302] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f76a6e26859]
+[broadwell-001:1324302] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f76a71fe911]
+[broadwell-001:1324302] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f76a720a38c]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324305] *** Process received signal ***
+[broadwell-001:1324305] Signal: Aborted (6)
+[broadwell-001:1324305] Signal code:  (-6)
+[broadwell-001:1324308] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f8939f2400b]
+[broadwell-001:1324308] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f8939f03859]
+[broadwell-001:1324308] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f893a2db911]
+[broadwell-001:1324308] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f893a2e738c]
+[broadwell-001:1324312] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fd630a32911]
+[broadwell-001:1324312] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fd630a3e38c]
+[broadwell-001:1324312] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fd630a3e3f7]
+[broadwell-001:1324302] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f76a720a3f7]
+[broadwell-001:1324302] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f76a720a6a9]
+[broadwell-001:1324302] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x5616a9b780b6]
+[broadwell-001:1324302] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x5616a9b711db]
+[broadwell-001:1324302] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x5616a9b71fcd]
+[broadwell-001:1324302] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x5616a9b6ac4e]
+[broadwell-001:1324302] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x5616a9b64539]
+[broadwell-001:1324305] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fe8c6d55090]
+[broadwell-001:1324305] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fe8c6d5500b]
+[broadwell-001:1324305] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fe8c6d34859]
+[broadwell-001:1324308] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f893a2e73f7]
+[broadwell-001:1324308] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f893a2e76a9]
+[broadwell-001:1324308] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55beff17c0b6]
+[broadwell-001:1324308] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55beff1751db]
+[broadwell-001:1324308] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55beff175fcd]
+[broadwell-001:1324308] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55beff16ec4e]
+[broadwell-001:1324308] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55beff168539]
+[broadwell-001:1324308] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f8939f05083]
+[broadwell-001:1324312] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fd630a3e6a9]
+[broadwell-001:1324312] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x5643885e70b6]
+[broadwell-001:1324312] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x5643885e01db]
+[broadwell-001:1324312] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x5643885e0fcd]
+[broadwell-001:1324312] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x5643885d9c4e]
+[broadwell-001:1324312] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x5643885d3539]
+[broadwell-001:1324312] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fd63065c083]
+[broadwell-001:1324312] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x5643885d27be]
+[broadwell-001:1324312] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324316] *** Process received signal ***
+[broadwell-001:1324316] Signal: Aborted (6)
+[broadwell-001:1324316] Signal code:  (-6)
+[broadwell-001:1324316] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f4a3a6ea090]
+[broadwell-001:1324316] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f4a3a6ea00b]
+[broadwell-001:1324316] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f4a3a6c9859]
+[broadwell-001:1324302] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f76a6e28083]
+[broadwell-001:1324302] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x5616a9b637be]
+[broadwell-001:1324302] *** End of error message ***
+[broadwell-001:1324305] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fe8c710c911]
+[broadwell-001:1324305] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fe8c711838c]
+[broadwell-001:1324305] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fe8c71183f7]
+[broadwell-001:1324308] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55beff1677be]
+[broadwell-001:1324308] *** End of error message ***
+[broadwell-001:1324316] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f4a3aaa1911]
+[broadwell-001:1324316] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f4a3aaad38c]
+[broadwell-001:1324305] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fe8c71186a9]
+[broadwell-001:1324305] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x56198ac720b6]
+[broadwell-001:1324305] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x56198ac6b1db]
+[broadwell-001:1324305] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x56198ac6bfcd]
+[broadwell-001:1324305] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x56198ac64c4e]
+[broadwell-001:1324305] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x56198ac5e539]
+[broadwell-001:1324305] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fe8c6d36083]
+[broadwell-001:1324316] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f4a3aaad3f7]
+[broadwell-001:1324316] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f4a3aaad6a9]
+[broadwell-001:1324316] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55e7464a30b6]
+[broadwell-001:1324305] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x56198ac5d7be]
+[broadwell-001:1324305] *** End of error message ***
+[broadwell-001:1324316] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55e74649c1db]
+[broadwell-001:1324316] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55e74649cfcd]
+[broadwell-001:1324316] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55e746495c4e]
+[broadwell-001:1324316] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55e74648f539]
+[broadwell-001:1324316] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f4a3a6cb083]
+[broadwell-001:1324316] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55e74648e7be]
+[broadwell-001:1324316] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324295] *** Process received signal ***
+[broadwell-001:1324295] Signal: Aborted (6)
+[broadwell-001:1324295] Signal code:  (-6)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324328] *** Process received signal ***
+[broadwell-001:1324328] Signal: Aborted (6)
+[broadwell-001:1324328] Signal code:  (-6)
+[broadwell-001:1324295] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f54e5d48090]
+[broadwell-001:1324295] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f54e5d4800b]
+[broadwell-001:1324328] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f2839508090]
+[broadwell-001:1324295] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f54e5d27859]
+[broadwell-001:1324328] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f283950800b]
+[broadwell-001:1324328] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f28394e7859]
+[broadwell-001:1324295] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f54e60ff911]
+[broadwell-001:1324295] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f54e610b38c]
+[broadwell-001:1324328] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f28398bf911]
+[broadwell-001:1324295] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f54e610b3f7]
+[broadwell-001:1324328] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f28398cb38c]
+[broadwell-001:1324295] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f54e610b6a9]
+[broadwell-001:1324295] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55b34971b0b6]
+[broadwell-001:1324295] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55b3497141db]
+[broadwell-001:1324295] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55b349714fcd]
+[broadwell-001:1324295] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55b34970dc4e]
+[broadwell-001:1324295] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55b349707539]
+[broadwell-001:1324328] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f28398cb3f7]
+[broadwell-001:1324328] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f28398cb6a9]
+[broadwell-001:1324328] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x555c6901a0b6]
+[broadwell-001:1324328] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x555c690131db]
+[broadwell-001:1324328] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x555c69013fcd]
+[broadwell-001:1324328] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x555c6900cc4e]
+[broadwell-001:1324295] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f54e5d29083]
+[broadwell-001:1324295] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55b3497067be]
+[broadwell-001:1324295] *** End of error message ***
+[broadwell-001:1324328] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x555c69006539]
+[broadwell-001:1324328] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f28394e9083]
+[broadwell-001:1324328] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x555c690057be]
+[broadwell-001:1324328] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324314] *** Process received signal ***
+[broadwell-001:1324314] Signal: Aborted (6)
+[broadwell-001:1324314] Signal code:  (-6)
+[broadwell-001:1324314] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fb364a77090]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324314] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fb364a7700b]
+[broadwell-001:1324314] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fb364a56859]
+[broadwell-001:1324319] *** Process received signal ***
+[broadwell-001:1324319] Signal: Aborted (6)
+[broadwell-001:1324319] Signal code:  (-6)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324314] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fb364e2e911]
+[broadwell-001:1324314] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fb364e3a38c]
+[broadwell-001:1324304] *** Process received signal ***
+[broadwell-001:1324304] Signal: Aborted (6)
+[broadwell-001:1324304] Signal code:  (-6)
+[broadwell-001:1324314] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fb364e3a3f7]
+[broadwell-001:1324319] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7ff474f8e090]
+[broadwell-001:1324319] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7ff474f8e00b]
+[broadwell-001:1324319] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7ff474f6d859]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324324] *** Process received signal ***
+[broadwell-001:1324324] Signal: Aborted (6)
+[broadwell-001:1324324] Signal code:  (-6)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324326] *** Process received signal ***
+[broadwell-001:1324326] Signal: Aborted (6)
+[broadwell-001:1324326] Signal code:  (-6)
+[broadwell-001:1324304] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fad9c6eb090]
+[broadwell-001:1324304] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fad9c6eb00b]
+[broadwell-001:1324304] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fad9c6ca859]
+[broadwell-001:1324314] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fb364e3a6a9]
+[broadwell-001:1324314] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x5644d77230b6]
+[broadwell-001:1324314] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x5644d771c1db]
+[broadwell-001:1324314] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x5644d771cfcd]
+[broadwell-001:1324314] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x5644d7715c4e]
+[broadwell-001:1324314] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x5644d770f539]
+[broadwell-001:1324314] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fb364a58083]
+[broadwell-001:1324314] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x5644d770e7be]
+[broadwell-001:1324314] *** End of error message ***
+[broadwell-001:1324319] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7ff475345911]
+[broadwell-001:1324319] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7ff47535138c]
+[broadwell-001:1324319] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7ff4753513f7]
+[broadwell-001:1324324] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f8177d61090]
+[broadwell-001:1324324] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f8177d6100b]
+[broadwell-001:1324324] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f8177d40859]
+[broadwell-001:1324324] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f8178118911]
+[broadwell-001:1324326] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fc78b4bc090]
+[broadwell-001:1324326] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fc78b4bc00b]
+[broadwell-001:1324326] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fc78b49b859]
+[broadwell-001:1324326] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fc78b873911]
+[broadwell-001:1324304] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fad9caa2911]
+[broadwell-001:1324304] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fad9caae38c]
+[broadwell-001:1324304] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fad9caae3f7]
+[broadwell-001:1324319] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7ff4753516a9]
+[broadwell-001:1324319] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55b273ac40b6]
+[broadwell-001:1324319] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55b273abd1db]
+[broadwell-001:1324319] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55b273abdfcd]
+[broadwell-001:1324319] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55b273ab6c4e]
+[broadwell-001:1324319] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55b273ab0539]
+[broadwell-001:1324319] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7ff474f6f083]
+[broadwell-001:1324319] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55b273aaf7be]
+[broadwell-001:1324319] *** End of error message ***
+[broadwell-001:1324324] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f817812438c]
+[broadwell-001:1324324] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f81781243f7]
+[broadwell-001:1324304] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fad9caae6a9]
+[broadwell-001:1324304] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55ad82cc50b6]
+[broadwell-001:1324304] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55ad82cbe1db]
+[broadwell-001:1324304] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55ad82cbefcd]
+[broadwell-001:1324304] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55ad82cb7c4e]
+[broadwell-001:1324304] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55ad82cb1539]
+[broadwell-001:1324304] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fad9c6cc083]
+[broadwell-001:1324304] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55ad82cb07be]
+[broadwell-001:1324304] *** End of error message ***
+[broadwell-001:1324324] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f81781246a9]
+[broadwell-001:1324324] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55cd1b8710b6]
+[broadwell-001:1324324] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55cd1b86a1db]
+[broadwell-001:1324324] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55cd1b86afcd]
+[broadwell-001:1324324] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55cd1b863c4e]
+[broadwell-001:1324324] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55cd1b85d539]
+[broadwell-001:1324324] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f8177d42083]
+[broadwell-001:1324324] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55cd1b85c7be]
+[broadwell-001:1324324] *** End of error message ***
+[broadwell-001:1324326] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fc78b87f38c]
+[broadwell-001:1324326] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fc78b87f3f7]
+[broadwell-001:1324326] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fc78b87f6a9]
+[broadwell-001:1324326] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55bbb8a750b6]
+[broadwell-001:1324326] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55bbb8a6e1db]
+[broadwell-001:1324326] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55bbb8a6efcd]
+[broadwell-001:1324326] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55bbb8a67c4e]
+[broadwell-001:1324326] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55bbb8a61539]
+[broadwell-001:1324326] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fc78b49d083]
+[broadwell-001:1324326] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55bbb8a607be]
+[broadwell-001:1324326] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324329] *** Process received signal ***
+[broadwell-001:1324329] Signal: Aborted (6)
+[broadwell-001:1324329] Signal code:  (-6)
+[broadwell-001:1324329] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f8d7b46f090]
+[broadwell-001:1324329] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f8d7b46f00b]
+[broadwell-001:1324329] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f8d7b44e859]
+[broadwell-001:1324329] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f8d7b826911]
+[broadwell-001:1324329] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f8d7b83238c]
+[broadwell-001:1324329] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f8d7b8323f7]
+[broadwell-001:1324329] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f8d7b8326a9]
+[broadwell-001:1324329] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55ca404db0b6]
+[broadwell-001:1324329] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55ca404d41db]
+[broadwell-001:1324329] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55ca404d4fcd]
+[broadwell-001:1324329] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55ca404cdc4e]
+[broadwell-001:1324329] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55ca404c7539]
+[broadwell-001:1324329] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f8d7b450083]
+[broadwell-001:1324329] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55ca404c67be]
+[broadwell-001:1324329] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324310] *** Process received signal ***
+[broadwell-001:1324310] Signal: Aborted (6)
+[broadwell-001:1324310] Signal code:  (-6)
+[broadwell-001:1324310] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f8469574090]
+[broadwell-001:1324310] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f846957400b]
+[broadwell-001:1324310] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f8469553859]
+[broadwell-001:1324310] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f846992b911]
+[broadwell-001:1324310] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f846993738c]
+[broadwell-001:1324310] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f84699373f7]
+[broadwell-001:1324310] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f84699376a9]
+[broadwell-001:1324310] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x5562b9b790b6]
+[broadwell-001:1324310] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x5562b9b721db]
+[broadwell-001:1324310] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x5562b9b72fcd]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324310] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x5562b9b6bc4e]
+[broadwell-001:1324310] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x5562b9b65539]
+[broadwell-001:1324310] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f8469555083]
+[broadwell-001:1324310] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x5562b9b647be]
+[broadwell-001:1324310] *** End of error message ***
+[broadwell-001:1324300] *** Process received signal ***
+[broadwell-001:1324300] Signal: Aborted (6)
+[broadwell-001:1324300] Signal code:  (-6)
+[broadwell-001:1324300] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f034e68a090]
+[broadwell-001:1324300] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f034e68a00b]
+[broadwell-001:1324300] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f034e669859]
+[broadwell-001:1324300] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f034ea41911]
+[broadwell-001:1324300] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f034ea4d38c]
+[broadwell-001:1324300] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f034ea4d3f7]
+[broadwell-001:1324300] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f034ea4d6a9]
+[broadwell-001:1324300] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x560c6d70c0b6]
+[broadwell-001:1324300] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x560c6d7051db]
+[broadwell-001:1324300] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x560c6d705fcd]
+[broadwell-001:1324300] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x560c6d6fec4e]
+[broadwell-001:1324300] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x560c6d6f8539]
+[broadwell-001:1324300] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f034e66b083]
+[broadwell-001:1324300] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x560c6d6f77be]
+[broadwell-001:1324300] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324321] *** Process received signal ***
+[broadwell-001:1324321] Signal: Aborted (6)
+[broadwell-001:1324321] Signal code:  (-6)
+[broadwell-001:1324321] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f77359fa090]
+[broadwell-001:1324321] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f77359fa00b]
+[broadwell-001:1324321] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f77359d9859]
+[broadwell-001:1324321] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f7735db1911]
+[broadwell-001:1324321] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f7735dbd38c]
+[broadwell-001:1324321] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f7735dbd3f7]
+[broadwell-001:1324321] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f7735dbd6a9]
+[broadwell-001:1324321] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x558eb90770b6]
+[broadwell-001:1324321] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x558eb90701db]
+[broadwell-001:1324321] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x558eb9070fcd]
+[broadwell-001:1324321] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x558eb9069c4e]
+[broadwell-001:1324321] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x558eb9063539]
+[broadwell-001:1324321] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f77359db083]
+[broadwell-001:1324321] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x558eb90627be]
+[broadwell-001:1324321] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324306] *** Process received signal ***
+[broadwell-001:1324306] Signal: Aborted (6)
+[broadwell-001:1324306] Signal code:  (-6)
+[broadwell-001:1324306] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f9a21b91090]
+[broadwell-001:1324306] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f9a21b9100b]
+[broadwell-001:1324306] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f9a21b70859]
+[broadwell-001:1324306] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f9a21f48911]
+[broadwell-001:1324306] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f9a21f5438c]
+[broadwell-001:1324306] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f9a21f543f7]
+[broadwell-001:1324306] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f9a21f546a9]
+[broadwell-001:1324306] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55e38bddd0b6]
+[broadwell-001:1324306] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55e38bdd61db]
+[broadwell-001:1324306] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55e38bdd6fcd]
+[broadwell-001:1324306] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55e38bdcfc4e]
+[broadwell-001:1324306] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55e38bdc9539]
+[broadwell-001:1324306] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f9a21b72083]
+[broadwell-001:1324306] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55e38bdc87be]
+[broadwell-001:1324306] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324320] *** Process received signal ***
+[broadwell-001:1324320] Signal: Aborted (6)
+[broadwell-001:1324320] Signal code:  (-6)
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324320] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f0543bef090]
+[broadwell-001:1324320] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f0543bef00b]
+[broadwell-001:1324298] *** Process received signal ***
+[broadwell-001:1324298] Signal: Aborted (6)
+[broadwell-001:1324298] Signal code:  (-6)
+[broadwell-001:1324320] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f0543bce859]
+[broadwell-001:1324320] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f0543fa6911]
+[broadwell-001:1324298] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fbfbd6e6090]
+[broadwell-001:1324298] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fbfbd6e600b]
+[broadwell-001:1324298] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fbfbd6c5859]
+[broadwell-001:1324320] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f0543fb238c]
+[broadwell-001:1324320] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f0543fb23f7]
+[broadwell-001:1324298] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fbfbda9d911]
+[broadwell-001:1324298] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fbfbdaa938c]
+[broadwell-001:1324320] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f0543fb26a9]
+[broadwell-001:1324320] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55f10f5410b6]
+[broadwell-001:1324320] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55f10f53a1db]
+[broadwell-001:1324320] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55f10f53afcd]
+[broadwell-001:1324320] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55f10f533c4e]
+[broadwell-001:1324320] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55f10f52d539]
+[broadwell-001:1324320] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f0543bd0083]
+[broadwell-001:1324320] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55f10f52c7be]
+[broadwell-001:1324298] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fbfbdaa93f7]
+[broadwell-001:1324320] *** End of error message ***
+[broadwell-001:1324298] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fbfbdaa96a9]
+[broadwell-001:1324298] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x556f151920b6]
+[broadwell-001:1324298] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x556f1518b1db]
+[broadwell-001:1324298] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x556f1518bfcd]
+[broadwell-001:1324298] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x556f15184c4e]
+[broadwell-001:1324298] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x556f1517e539]
+[broadwell-001:1324298] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fbfbd6c7083]
+[broadwell-001:1324298] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x556f1517d7be]
+[broadwell-001:1324298] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324296] *** Process received signal ***
+[broadwell-001:1324296] Signal: Aborted (6)
+[broadwell-001:1324296] Signal code:  (-6)
+[broadwell-001:1324296] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f3b276cc090]
+[broadwell-001:1324296] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f3b276cc00b]
+[broadwell-001:1324296] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f3b276ab859]
+[broadwell-001:1324296] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f3b27a83911]
+[broadwell-001:1324296] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f3b27a8f38c]
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324296] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f3b27a8f3f7]
+[broadwell-001:1324330] *** Process received signal ***
+[broadwell-001:1324330] Signal: Aborted (6)
+[broadwell-001:1324330] Signal code:  (-6)
+[broadwell-001:1324296] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f3b27a8f6a9]
+[broadwell-001:1324296] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x556157da30b6]
+[broadwell-001:1324296] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x556157d9c1db]
+[broadwell-001:1324296] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x556157d9cfcd]
+[broadwell-001:1324296] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x556157d95c4e]
+[broadwell-001:1324330] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f79d7bbf090]
+[broadwell-001:1324296] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x556157d8f539]
+[broadwell-001:1324296] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f3b276ad083]
+[broadwell-001:1324296] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x556157d8e7be]
+[broadwell-001:1324296] *** End of error message ***
+[broadwell-001:1324330] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f79d7bbf00b]
+[broadwell-001:1324330] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f79d7b9e859]
+[broadwell-001:1324330] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f79d7f76911]
+[broadwell-001:1324330] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f79d7f8238c]
+[broadwell-001:1324330] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f79d7f823f7]
+[broadwell-001:1324330] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f79d7f826a9]
+[broadwell-001:1324330] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x55e36446f0b6]
+[broadwell-001:1324330] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x55e3644681db]
+[broadwell-001:1324330] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x55e364468fcd]
+[broadwell-001:1324330] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x55e364461c4e]
+[broadwell-001:1324330] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x55e36445b539]
+[broadwell-001:1324330] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f79d7ba0083]
+[broadwell-001:1324330] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x55e36445a7be]
+[broadwell-001:1324330] *** End of error message ***
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  requested type of dimension 54, but dataset only has 54 dimensions
+[broadwell-001:1324322] *** Process received signal ***
+[broadwell-001:1324322] Signal: Aborted (6)
+[broadwell-001:1324322] Signal code:  (-6)
+[broadwell-001:1324322] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7f38b3bd8090]
+[broadwell-001:1324322] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7f38b3bd800b]
+[broadwell-001:1324322] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7f38b3bb7859]
+[broadwell-001:1324322] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7f38b3f8f911]
+[broadwell-001:1324322] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7f38b3f9b38c]
+[broadwell-001:1324322] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7f38b3f9b3f7]
+[broadwell-001:1324322] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7f38b3f9b6a9]
+[broadwell-001:1324322] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x1d0b6)[0x5603587910b6]
+[broadwell-001:1324322] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x161db)[0x56035878a1db]
+[broadwell-001:1324322] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x16fcd)[0x56035878afcd]
+[broadwell-001:1324322] [10] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0xfc4e)[0x560358783c4e]
+[broadwell-001:1324322] [11] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x9539)[0x56035877d539]
+[broadwell-001:1324322] [12] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7f38b3bb9083]
+[broadwell-001:1324322] [13] /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/./adaboost_mpi_v2(+0x87be)[0x56035877c7be]
+[broadwell-001:1324322] *** End of error message ***
+srun: Received task exit notification for 26 tasks of StepId=168653.0 (status=0x0006).
+srun: error: broadwell-001: tasks 0-1,3,5-11,13,15-17,19,21,23-27,29,31,33-35: Aborted
+srun: Received task exit notification for 5 tasks of StepId=168653.0 (status=0x0086).
+srun: error: broadwell-001: tasks 4,14,18,22,30: Aborted (core dumped)
+srun: Received task exit notification for 5 tasks of StepId=168653.0 (status=0x0086).
+srun: error: broadwell-001: tasks 2,12,20,28,32: Aborted (core dumped)

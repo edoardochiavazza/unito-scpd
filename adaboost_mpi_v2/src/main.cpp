@@ -1,6 +1,8 @@
 #include <mpi.h>
 #include <mlpack/core.hpp>
+#include <mlpack/methods/decision_tree/decision_tree.hpp>
 #include <iostream>
+#include <vector>
 #include "communication_lib/libcomm.hpp"
 #include "data_lib/datalib.hpp"
 #include <algorithm>
@@ -17,27 +19,26 @@ int main(int argc, char ** argv) {
     arma::Row<size_t> client_labels, unique_labels;
     arma::rowvec weights;
     mlpack::data::DatasetInfo info;
-    arma::mat temp_train;
-
+ 
     if (rank == 0) {
         // Master process
         arma::mat train_dataset;
         arma::Row<size_t> train_labels;
-	    int num_node = std::atoi(argv[1]);
+	int num_node = std::atoi(argv[1]);
         std::cout << "Loading training data..." << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
         int n_example = static_cast<int>(train_dataset.n_cols);
         int perc_n_example = (n_example / world_size);
-	
-	    std::cout << "inflated data start" << std::endl;
-	    //arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
-	    std::cout << "inflated data end" << std::endl;
-
+	//std::cout << "inflated data start" << std::endl;
+	//arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
+	//std::cout << "inflated data end" << std::endl;
+	std::cout << "send start"<< std::endl;
         for (int i = 1; i < world_size; ++i) {
             train_dataset = shuffle(train_dataset, 1); // Shuffle columns
             client_training_dataset = train_dataset.cols(0, perc_n_example);
             send_data_to_client(client_training_dataset, i);
         }
+	std::cout << "send end"<< std::endl;
         broadcastDatasetInfo(info);
         train_dataset = shuffle(train_dataset, 1); // Shuffle columns
         client_training_dataset = train_dataset.cols(0, perc_n_example);
@@ -115,7 +116,7 @@ int main(int argc, char ** argv) {
 	        int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi-v2_s7.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi-v2_s1.txt";
 
             // Creazione di un oggetto di tipo ofstream
             std::ofstream outputFile(fileName, std::ios::app);

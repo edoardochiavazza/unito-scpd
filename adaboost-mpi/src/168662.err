@@ -1,0 +1,134 @@
+make: Warning: File 'Makefile' has modification time 0.95 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.76 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.74 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.74 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.64 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.64 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libdata_lib.a' has modification time 0.07 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-[001-009]
+srun: jobid               : 168662
+srun: job-name            : adab_v1
+srun: mpi                 : pmix
+srun: nodes               : 9
+srun: ntasks              : 324
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168662: nodes(9):`broadwell-[001-009]', cpu counts: 36(x9)
+srun: CpuBindType=(null type)
+srun: launching StepId=168662.0 on host broadwell-001, 36 tasks: [0-35]
+srun: launching StepId=168662.0 on host broadwell-002, 36 tasks: [36-71]
+srun: launching StepId=168662.0 on host broadwell-003, 36 tasks: [72-107]
+srun: launching StepId=168662.0 on host broadwell-004, 36 tasks: [108-143]
+srun: launching StepId=168662.0 on host broadwell-005, 36 tasks: [144-179]
+srun: launching StepId=168662.0 on host broadwell-006, 36 tasks: [180-215]
+srun: launching StepId=168662.0 on host broadwell-007, 36 tasks: [216-251]
+srun: launching StepId=168662.0 on host broadwell-008, 36 tasks: [252-287]
+srun: launching StepId=168662.0 on host broadwell-009, 36 tasks: [288-323]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-001, 36 tasks started
+srun: Node broadwell-007, 36 tasks started
+srun: Node broadwell-002, 36 tasks started
+srun: Node broadwell-003, 36 tasks started
+srun: Node broadwell-005, 36 tasks started
+srun: Node broadwell-006, 36 tasks started
+srun: Node broadwell-009, 36 tasks started
+srun: Node broadwell-008, 36 tasks started
+srun: Node broadwell-004, 36 tasks started
+broadwell-002.4009559PSM2 can't open hfi unit: 0 (err=23)
+--------------------------------------------------------------------------
+Open MPI failed an OFI Libfabric library call (fi_endpoint).  This is highly
+unusual; your job may behave unpredictably (and/or abort) after this.
+
+  Local host: broadwell-002
+  Location: mtl_ofi_component.c:512
+  Error: Invalid argument (22)
+--------------------------------------------------------------------------
+broadwell-002.4009543PSM2 can't open hfi unit: 0 (err=23)
+--------------------------------------------------------------------------
+Open MPI failed an OFI Libfabric library call (fi_endpoint).  This is highly
+unusual; your job may behave unpredictably (and/or abort) after this.
+
+  Local host: broadwell-002
+  Location: mtl_ofi_component.c:512
+  Error: Invalid argument (22)
+--------------------------------------------------------------------------
+[broadwell-002:4009559] [[25866,19980],57] selected pml ob1, but peer [[25866,19980],0] on broadwell-001 selected pml cm
+[broadwell-002:4009543] [[25866,19980],41] selected pml ob1, but peer [[25866,19980],0] on broadwell-001 selected pml cm
+--------------------------------------------------------------------------
+MPI_INIT has failed because at least one MPI process is unreachable
+from another.  This *usually* means that an underlying communication
+plugin -- such as a BTL or an MTL -- has either not loaded or not
+allowed itself to be used.  Your MPI job will now abort.
+
+You may wish to try to narrow down the problem;
+
+ * Check the output of ompi_info to see which BTL/MTL plugins are
+   available.
+ * Run your application with MPI_THREAD_SINGLE.
+ * Set the MCA parameter btl_base_verbose to 100 (or mtl_base_verbose,
+   if using MTL-based communications) to see exactly which
+   communication plugins were considered and/or discarded.
+--------------------------------------------------------------------------
+[broadwell-002:4009543] *** An error occurred in MPI_Init
+[broadwell-002:4009543] *** reported by process [1695174156,41]
+[broadwell-002:4009543] *** on a NULL communicator
+[broadwell-002:4009543] *** Unknown error
+[broadwell-002:4009543] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[broadwell-002:4009543] ***    and potentially your MPI job)
+--------------------------------------------------------------------------
+MPI_INIT has failed because at least one MPI process is unreachable
+srun: Complete StepId=168662.0 received
+from another.  This *usually* means that an underlying communication
+plugin -- such as a BTL or an MTL -- has either not loaded or not
+allowed itself to be used.  Your MPI job will now abort.
+
+You may wish to try to narrow down the problem;
+
+ * Check the output of ompi_info to see which BTL/MTL plugins are
+   available.
+ * Run your application with MPI_THREAD_SINGLE.
+ * Set the MCA parameter btl_base_verbose to 100 (or mtl_base_verbose,
+   if using MTL-based communications) to see exactly which
+   communication plugins were considered and/or discarded.
+srun: Complete StepId=168662.0 received
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+--------------------------------------------------------------------------
+[broadwell-002:4009559] *** An error occurred in MPI_Init
+[broadwell-002:4009559] *** reported by process [1695174156,57]
+[broadwell-002:4009559] *** on a NULL communicator
+[broadwell-002:4009559] *** Unknown error
+srun: Complete StepId=168662.0 received
+[broadwell-002:4009559] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[broadwell-002:4009559] ***    and potentially your MPI job)
+slurmstepd: error: *** STEP 168662.0 ON broadwell-001 CANCELLED AT 2025-04-03T18:46:35 ***
+srun: Received task exit notification for 36 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-001: tasks 0-35: Killed
+srun: Received task exit notification for 36 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-005: tasks 144-179: Killed
+srun: Received task exit notification for 36 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-003: tasks 72-107: Killed
+srun: Received task exit notification for 36 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-007: tasks 216-251: Killed
+srun: Received task exit notification for 34 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-002: tasks 36-40,42-56,58-71: Killed
+srun: Received task exit notification for 2 tasks of StepId=168662.0 (status=0x0100).
+srun: error: broadwell-002: tasks 41,57: Exited with exit code 1
+srun: Received task exit notification for 36 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-009: tasks 288-323: Killed
+srun: Received task exit notification for 36 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-006: tasks 180-215: Killed
+srun: Received task exit notification for 36 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-008: tasks 252-287: Killed
+srun: Received task exit notification for 36 tasks of StepId=168662.0 (status=0x0009).
+srun: error: broadwell-004: tasks 108-143: Killed
