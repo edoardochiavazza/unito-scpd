@@ -1,0 +1,10 @@
+--------------------------
+Machine: Broadwell
+Num nodes: 3
+Num tasks per node: 36
+Total tasks:108
+Number epoch: 5
+Time epoch (T1): 0.479435 seconds
+Time epochs (T1): 2.4975 seconds
+Ensamble accuracy = 0.660029 for test dataset
+Ensamble accuracy = 0.695819 for training dataset

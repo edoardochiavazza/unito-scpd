@@ -1,0 +1,43 @@
+make: Warning: File 'Makefile' has modification time 1.8 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 1.7 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.64 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.64 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.54 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.54 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/obj/libcommunication_lib.a' has modification time 1.7 s in the future
+/beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/src/main.cpp: In function ‘int main(int, char**)’:
+/beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/src/main.cpp:55:43: error: expected ‘;’ before ‘MPI_Barrier’
+   55 |     static_cast<int>(unique_labels.size())
+      |                                           ^
+      |                                           ;
+   56 |     MPI_Barrier(MPI_COMM_WORLD);
+      |     ~~~~~~~~~~~                            
+make[2]: *** [CMakeFiles/adaboost_mpi_v2.dir/build.make:76: CMakeFiles/adaboost_mpi_v2.dir/src/main.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/adaboost_mpi_v2.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-000
+srun: jobid               : 168709
+srun: job-name            : submit.sh
+srun: mpi                 : pmix
+srun: nodes               : 1
+srun: ntasks              : 36
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168709: nodes(1):`broadwell-000', cpu counts: 36(x1)
+srun: CpuBindType=(null type)
+srun: launching StepId=168709.0 on host broadwell-000, 36 tasks: [0-35]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-000, 36 tasks started
+srun: Complete StepId=168709.0 received
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 168709.0 ON broadwell-000 CANCELLED AT 2025-04-03T22:58:28 ***
+slurmstepd: error: *** JOB 168709 ON broadwell-000 CANCELLED AT 2025-04-03T22:58:28 ***

@@ -52,11 +52,10 @@ int main(int argc, char ** argv) {
     client_training_dataset.shed_row(client_training_dataset.n_rows - 1);
     arma::rowvec w_temp(client_training_dataset.n_cols, arma::fill::ones);
     weights = w_temp / static_cast<double>(client_training_dataset.n_cols);
-    unique_labels = arma::unique(client_labels);
     MPI_Barrier(MPI_COMM_WORLD);
     for (auto e : epochs){
         auto start = std::chrono::high_resolution_clock::now();
-        double average_time_epoch = std::numeric_limits<double>::max();
+        double average_time_epoch = 100000;
         for (int i = 0; i < e; ++i) {
             double time_epoch = 0;
             auto start_epoch = std::chrono::high_resolution_clock::now();
@@ -74,9 +73,6 @@ int main(int argc, char ** argv) {
                 vector_total_errors.push_back(total_error);
             }
             arma::mat m = broadcast_vec_total_error(vector_total_errors);
-            if(rank ==0) {
-                m.print();
-            }
             int best_model_index = index_best_model(m);
             std::vector<int> best_trees_index = broadcast_index_best_tree(best_model_index);
             best_model_index = get_tree_from_majority_vote(best_trees_index);
@@ -107,7 +103,7 @@ int main(int argc, char ** argv) {
             mlpack::data::DatasetInfo info_test, info_train;
             load_datasets_and_labels(train_dataset,train_labels, info_test);
             load_testData_and_labels(testDataset,test_labels,info_train);
-            int n_class = static_cast<int>(train_dataset.n_cols);
+            int n_class = static_cast<int>(unique_labels.size());
             accuracy_for_model(ensemble_learning, testDataset, test_labels);
             arma::Mat<size_t> en_result = predict_all_dataset(ensemble_learning, testDataset);
             double accuracy_ensabmle_test = accuracy_ensamble(en_result, ensemble_learning, test_labels, n_class);

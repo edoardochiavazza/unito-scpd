@@ -1,7 +1,7 @@
 #!/bin/sh
 #SBATCH -p broadwell
-#SBATCH --nodes=3
-#SBATCH --ntasks=108
+#SBATCH --nodes=1
+#SBATCH --ntasks=36
 #SBATCH --ntasks-per-node=36
 #SBATCH -o %j.log
 #SBATCH -e %j.err
@@ -14,21 +14,23 @@
 # Carica MPI e mlpack
 spack load openmpi  
 spack load mlpack
+spack load cmake
 
-export CC=mpicc
-export CXX=mpicxx
+#export CC=mpicc
+#export CXX=mpicxx
 
-# Cartelle di build ed esecuzione
-BUILD_DIR="/beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2"
-BIN_DIR="/beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin"
+cd /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2
+# Crea o pulisci le directory bin e build
+mkdir -p bin
+mkdir -p build
+rm -rf build/*
 
 # Compilazione
-cd $BUILD_DIR
-rm -rf build/ && mkdir build && cd build
+cd build
 cmake ..
-make -j
+make -j $(nproc)
 
 # Esegui il programma con MPI dalla cartella bin
-cd $BIN_DIR
+cd ../bin
 
-srun --mpi=pmix --verbose -n 108 ./adaboost_mpi_v2 3 36
+srun --mpi=pmix --verbose -n 36 ./adaboost_mpi_v2 1 36
