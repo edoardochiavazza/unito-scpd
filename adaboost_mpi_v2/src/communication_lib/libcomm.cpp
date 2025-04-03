@@ -326,20 +326,16 @@ std::vector<int> broadcast_index_best_tree(const int& index) {
     return all_values;
 }
 
-std::vector<double> broadcast_total_error_best_tree(const double& total_error) {
+double average_total_error_best_tree(const double& total_error) {
     int rank, size;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    // Ogni processo ha un valore unico
+    double value = total_error;
+    MPI_Allreduce(MPI_IN_PLACE, &value, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+    double avg = value / size;
 
-    // Buffer per raccogliere i valori di tutti i processi
-    std::vector<double> all_values(size);
-
-    // Raccoglie i valori di tutti i processi
-    MPI_Allgather(&total_error, 1, MPI_DOUBLE, all_values.data(), 1, MPI_DOUBLE, MPI_COMM_WORLD);
-
-    return all_values;
+    return avg;
 }
 
 

@@ -1,0 +1,151 @@
+make: Warning: File 'Makefile' has modification time 0.75 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.55 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.53 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.53 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.44 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.44 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libcommunication_lib.a' has modification time 0.9 s in the future
+/usr/bin/ld: cannot find CMakeFiles/adaboost-mpi.dir/src/communication_lib/libcomm.cpp.o: No such file or directory
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/adaboost-mpi.dir/build.make:131: /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/adaboost-mpi] Error 1
+make[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/adaboost-mpi.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-[011-013]
+srun: jobid               : 168150
+srun: job-name            : adab_v1
+srun: mpi                 : pmix
+srun: nodes               : 3
+srun: ntasks              : 108
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168150: nodes(3):`broadwell-[011-013]', cpu counts: 36(x3)
+srun: CpuBindType=(null type)
+srun: launching StepId=168150.0 on host broadwell-011, 36 tasks: [0-35]
+srun: launching StepId=168150.0 on host broadwell-012, 36 tasks: [36-71]
+srun: launching StepId=168150.0 on host broadwell-013, 36 tasks: [72-107]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-012, 36 tasks started
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+srun: Node broadwell-011, 36 tasks started
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+srun: Node broadwell-013, 36 tasks started
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi: No such file or directory
+srun: Received task exit notification for 36 tasks of StepId=168150.0 (status=0x0200).
+srun: error: broadwell-011: tasks 0-35: Exited with exit code 2
+srun: Received task exit notification for 36 tasks of StepId=168150.0 (status=0x0200).
+srun: error: broadwell-013: tasks 72-107: Exited with exit code 2
+srun: Received task exit notification for 36 tasks of StepId=168150.0 (status=0x0200).
+srun: error: broadwell-012: tasks 36-71: Exited with exit code 2

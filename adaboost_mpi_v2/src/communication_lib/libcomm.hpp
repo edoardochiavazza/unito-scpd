@@ -56,7 +56,7 @@ std::vector<mlpack::DecisionTree<>> broadcast_t(mlpack::DecisionTree<> t);
 
 std::vector<int> broadcast_index_best_tree(const int& index);
 
-std::vector<double> broadcast_total_error_best_tree(const double& total_error);
+double average_total_error_best_tree(const double& total_error);
 
 
 

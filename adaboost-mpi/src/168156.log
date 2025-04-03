@@ -1,0 +1,620 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /beegfs/home/echiavazza/spack/opt/spack/linux-ubuntu20.04-cascadelake/gcc-9.4.0/openmpi-5.0.3-ocjjgvvgpy4ulxfz3damtdseryljeeuh/bin/mpicc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /beegfs/home/echiavazza/spack/opt/spack/linux-ubuntu20.04-cascadelake/gcc-9.4.0/openmpi-5.0.3-ocjjgvvgpy4ulxfz3damtdseryljeeuh/bin/mpicxx - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found MPI_C: mpicc (found version "3.1") 
+-- Found MPI_CXX: mpicxx (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1")  
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Checking for module 'mlpack'
+--   Found mlpack, version 4.2.0
+-- Configuring done (8.4s)
+-- Generating done (0.1s)
+-- Build files have been written to: /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/build
+[ 25%] Building CXX object CMakeFiles/communication_lib.dir/src/communication_lib/libcomm.cpp.o
+[ 25%] Building CXX object CMakeFiles/data_lib.dir/src/data_lib/datalib.cpp.o
+[ 37%] Linking CXX static library /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libcommunication_lib.a
+[ 37%] Built target communication_lib
+[ 50%] Linking CXX static library /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libdata_lib.a
+[ 50%] Built target data_lib
+[ 87%] Building CXX object CMakeFiles/adaboost-mpi.dir/src/communication_lib/libcomm.cpp.o
+[ 87%] Building CXX object CMakeFiles/adaboost-mpi.dir/src/main.cpp.o
+[ 87%] Building CXX object CMakeFiles/adaboost-mpi.dir/src/data_lib/datalib.cpp.o
+[100%] Linking CXX executable /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/adaboost-mpi
+[100%] Built target adaboost-mpi
+MASTER: Uploads and distributes data among 323 clients 
+MASTER: start send
+MASTER: end send
+RANK1: NUM DATA 1260
+MASTER:added tree 
+MASTER: Epoch 0 end with average total error = 0.373942 and alpha = 2.3071
+MASTER:added tree 
+MASTER: Epoch 1 end with average total error = 0.488082 and alpha = 1.83944
+MASTER:added tree 
+MASTER: Epoch 2 end with average total error = 0.548135 and alpha = 1.59862
+MASTER:added tree 
+MASTER: Epoch 3 end with average total error = 0.586636 and alpha = 1.44168
+MASTER:added tree 
+MASTER: Epoch 4 end with average total error = 0.652521 and alpha = 1.16162
+MASTER: Calculates the accuracy of the ensamble and its trees 
+Ensabmle learning size = 5
+Tree trained in epoch = 0 Accuracy = 0.599594
+Tree trained in epoch = 1 Accuracy = 0.493864
+Tree trained in epoch = 2 Accuracy = 0.43184
+Tree trained in epoch = 3 Accuracy = 0.470634
+Tree trained in epoch = 4 Accuracy = 0.463136
+Accuracy Ensabmle = 0.593162 for the test dataset  in 5 epochs
+Accuracy Ensabmle = 0.612069 for the train dataset  in 5 epochs
+Risultati scritti con successo nel file: ../res/risultati_adaboost-mpi_s9.txt per il valore 5
+MASTER:added tree 
+MASTER: Epoch 0 end with average total error = 0.373942 and alpha = 2.3071
+MASTER:added tree 
+MASTER: Epoch 1 end with average total error = 0.488082 and alpha = 1.83944
+MASTER:added tree 
+MASTER: Epoch 2 end with average total error = 0.548135 and alpha = 1.59862
+MASTER:added tree 
+MASTER: Epoch 3 end with average total error = 0.586636 and alpha = 1.44168
+MASTER:added tree 
+MASTER: Epoch 4 end with average total error = 0.652521 and alpha = 1.16162
+MASTER:added tree 
+MASTER: Epoch 5 end with average total error = 0.673148 and alpha = 1.0693
+MASTER:added tree 
+MASTER: Epoch 6 end with average total error = 0.647522 and alpha = 1.18359
+MASTER:added tree 
+MASTER: Epoch 7 end with average total error = 0.677748 and alpha = 1.04832
+MASTER:added tree 
+MASTER: Epoch 8 end with average total error = 0.677883 and alpha = 1.0477
+MASTER:added tree 
+MASTER: Epoch 9 end with average total error = 0.661185 and alpha = 1.12318
+MASTER: Calculates the accuracy of the ensamble and its trees 
+Ensabmle learning size = 10
+Tree trained in epoch = 0 Accuracy = 0.599594
+Tree trained in epoch = 1 Accuracy = 0.493864
+Tree trained in epoch = 2 Accuracy = 0.43184
+Tree trained in epoch = 3 Accuracy = 0.470634
+Tree trained in epoch = 4 Accuracy = 0.463136
+Tree trained in epoch = 5 Accuracy = 0.468655
+Tree trained in epoch = 6 Accuracy = 0.388266
+Tree trained in epoch = 7 Accuracy = 0.370957
+Tree trained in epoch = 8 Accuracy = 0.408157
+Tree trained in epoch = 9 Accuracy = 0.350728
+Accuracy Ensabmle = 0.598584 for the test dataset  in 10 epochs
+Accuracy Ensabmle = 0.615846 for the train dataset  in 10 epochs
+Risultati scritti con successo nel file: ../res/risultati_adaboost-mpi_s9.txt per il valore 10
+MASTER:added tree 
+MASTER: Epoch 0 end with average total error = 0.373942 and alpha = 2.3071
+MASTER:added tree 
+MASTER: Epoch 1 end with average total error = 0.488082 and alpha = 1.83944
+MASTER:added tree 
+MASTER: Epoch 2 end with average total error = 0.548135 and alpha = 1.59862
+MASTER:added tree 
+MASTER: Epoch 3 end with average total error = 0.586636 and alpha = 1.44168
+MASTER:added tree 
+MASTER: Epoch 4 end with average total error = 0.652521 and alpha = 1.16162
+MASTER:added tree 
+MASTER: Epoch 5 end with average total error = 0.673148 and alpha = 1.0693
+MASTER:added tree 
+MASTER: Epoch 6 end with average total error = 0.647522 and alpha = 1.18359
+MASTER:added tree 
+MASTER: Epoch 7 end with average total error = 0.677748 and alpha = 1.04832
+MASTER:added tree 
+MASTER: Epoch 8 end with average total error = 0.677883 and alpha = 1.0477
+MASTER:added tree 
+MASTER: Epoch 9 end with average total error = 0.661185 and alpha = 1.12318
+MASTER:added tree 
+MASTER: Epoch 10 end with average total error = 0.680726 and alpha = 1.03465
+MASTER:added tree 
+MASTER: Epoch 11 end with average total error = 0.723626 and alpha = 0.829242
+MASTER:added tree 
+MASTER: Epoch 12 end with average total error = 0.746546 and alpha = 0.711487
+MASTER:added tree 
+MASTER: Epoch 13 end with average total error = 0.74741 and alpha = 0.706915
+MASTER:added tree 
+MASTER: Epoch 14 end with average total error = 0.770977 and alpha = 0.577923
+MASTER:added tree 
+MASTER: Epoch 15 end with average total error = 0.765738 and alpha = 0.607359
+MASTER:added tree 
+MASTER: Epoch 16 end with average total error = 0.784808 and alpha = 0.49785
+MASTER:added tree 
+MASTER: Epoch 17 end with average total error = 0.827004 and alpha = 0.227221
+MASTER:added tree 
+MASTER: Epoch 18 end with average total error = 0.833066 and alpha = 0.184246
+MASTER:added tree 
+MASTER: Epoch 19 end with average total error = 0.816399 and alpha = 0.299622
+MASTER: Calculates the accuracy of the ensamble and its trees 
+Ensabmle learning size = 20
+Tree trained in epoch = 0 Accuracy = 0.599594
+Tree trained in epoch = 1 Accuracy = 0.493864
+Tree trained in epoch = 2 Accuracy = 0.43184
+Tree trained in epoch = 3 Accuracy = 0.470634
+Tree trained in epoch = 4 Accuracy = 0.463136
+Tree trained in epoch = 5 Accuracy = 0.468655
+Tree trained in epoch = 6 Accuracy = 0.388266
+Tree trained in epoch = 7 Accuracy = 0.370957
+Tree trained in epoch = 8 Accuracy = 0.408157
+Tree trained in epoch = 9 Accuracy = 0.350728
+Tree trained in epoch = 10 Accuracy = 0.40145
+Tree trained in epoch = 11 Accuracy = 0.362243
+Tree trained in epoch = 12 Accuracy = 0.36794
+Tree trained in epoch = 13 Accuracy = 0.422758
+Tree trained in epoch = 14 Accuracy = 0.401491
+Tree trained in epoch = 15 Accuracy = 0.330442
+Tree trained in epoch = 16 Accuracy = 0.452362
+Tree trained in epoch = 17 Accuracy = 0.478121
+Tree trained in epoch = 18 Accuracy = 0.444605
+Tree trained in epoch = 19 Accuracy = 0.413057
+Accuracy Ensabmle = 0.60517 for the test dataset  in 20 epochs
+Accuracy Ensabmle = 0.633598 for the train dataset  in 20 epochs
+Risultati scritti con successo nel file: ../res/risultati_adaboost-mpi_s9.txt per il valore 20
+MASTER:added tree 
+MASTER: Epoch 0 end with average total error = 0.373942 and alpha = 2.3071
+MASTER:added tree 
+MASTER: Epoch 1 end with average total error = 0.488082 and alpha = 1.83944
+MASTER:added tree 
+MASTER: Epoch 2 end with average total error = 0.548135 and alpha = 1.59862
+MASTER:added tree 
+MASTER: Epoch 3 end with average total error = 0.586636 and alpha = 1.44168
+MASTER:added tree 
+MASTER: Epoch 4 end with average total error = 0.652521 and alpha = 1.16162
+MASTER:added tree 
+MASTER: Epoch 5 end with average total error = 0.673148 and alpha = 1.0693
+MASTER:added tree 
+MASTER: Epoch 6 end with average total error = 0.647522 and alpha = 1.18359
+MASTER:added tree 
+MASTER: Epoch 7 end with average total error = 0.677748 and alpha = 1.04832
+MASTER:added tree 
+MASTER: Epoch 8 end with average total error = 0.677883 and alpha = 1.0477
+MASTER:added tree 
+MASTER: Epoch 9 end with average total error = 0.661185 and alpha = 1.12318
+MASTER:added tree 
+MASTER: Epoch 10 end with average total error = 0.680726 and alpha = 1.03465
+MASTER:added tree 
+MASTER: Epoch 11 end with average total error = 0.723626 and alpha = 0.829242
+MASTER:added tree 
+MASTER: Epoch 12 end with average total error = 0.746546 and alpha = 0.711487
+MASTER:added tree 
+MASTER: Epoch 13 end with average total error = 0.74741 and alpha = 0.706915
+MASTER:added tree 
+MASTER: Epoch 14 end with average total error = 0.770977 and alpha = 0.577923
+MASTER:added tree 
+MASTER: Epoch 15 end with average total error = 0.765738 and alpha = 0.607359
+MASTER:added tree 
+MASTER: Epoch 16 end with average total error = 0.784808 and alpha = 0.49785
+MASTER:added tree 
+MASTER: Epoch 17 end with average total error = 0.827004 and alpha = 0.227221
+MASTER:added tree 
+MASTER: Epoch 18 end with average total error = 0.833066 and alpha = 0.184246
+MASTER:added tree 
+MASTER: Epoch 19 end with average total error = 0.816399 and alpha = 0.299622
+MASTER:added tree 
+MASTER: Epoch 20 end with average total error = 0.814744 and alpha = 0.310627
+MASTER:added tree 
+MASTER: Epoch 21 end with average total error = 0.799584 and alpha = 0.408064
+MASTER:added tree 
+MASTER: Epoch 22 end with average total error = 0.826433 and alpha = 0.231208
+MASTER:added tree 
+MASTER: Epoch 23 end with average total error = 0.837583 and alpha = 0.151408
+MASTER:added tree 
+MASTER: Epoch 24 end with average total error = 0.824892 and alpha = 0.241912
+MASTER:added tree 
+MASTER: Epoch 25 end with average total error = 0.808671 and alpha = 0.350365
+MASTER: Epoch 26 end with average total error = 0.860247 and alpha = -0.0255846
+MASTER:added tree 
+MASTER: Epoch 27 end with average total error = 0.810628 and alpha = 0.337664
+MASTER:added tree 
+MASTER: Epoch 28 end with average total error = 0.840925 and alpha = 0.126635
+MASTER: Epoch 29 end with average total error = 0.856614 and alpha = 0.00430853
+MASTER: Calculates the accuracy of the ensamble and its trees 
+Ensabmle learning size = 28
+Tree trained in epoch = 0 Accuracy = 0.599594
+Tree trained in epoch = 1 Accuracy = 0.493864
+Tree trained in epoch = 2 Accuracy = 0.43184
+Tree trained in epoch = 3 Accuracy = 0.470634
+Tree trained in epoch = 4 Accuracy = 0.463136
+Tree trained in epoch = 5 Accuracy = 0.468655
+Tree trained in epoch = 6 Accuracy = 0.388266
+Tree trained in epoch = 7 Accuracy = 0.370957
+Tree trained in epoch = 8 Accuracy = 0.408157
+Tree trained in epoch = 9 Accuracy = 0.350728
+Tree trained in epoch = 10 Accuracy = 0.40145
+Tree trained in epoch = 11 Accuracy = 0.362243
+Tree trained in epoch = 12 Accuracy = 0.36794
+Tree trained in epoch = 13 Accuracy = 0.422758
+Tree trained in epoch = 14 Accuracy = 0.401491
+Tree trained in epoch = 15 Accuracy = 0.330442
+Tree trained in epoch = 16 Accuracy = 0.452362
+Tree trained in epoch = 17 Accuracy = 0.478121
+Tree trained in epoch = 18 Accuracy = 0.444605
+Tree trained in epoch = 19 Accuracy = 0.413057
+Tree trained in epoch = 20 Accuracy = 0.425948
+Tree trained in epoch = 21 Accuracy = 0.337871
+Tree trained in epoch = 22 Accuracy = 0.383671
+Tree trained in epoch = 23 Accuracy = 0.416723
+Tree trained in epoch = 24 Accuracy = 0.336575
+Tree trained in epoch = 25 Accuracy = 0.380722
+Tree trained in epoch = 26 Accuracy = 0.355685
+Tree trained in epoch = 27 Accuracy = 0.362547
+Accuracy Ensabmle = 0.611659 for the test dataset  in 30 epochs
+Accuracy Ensabmle = 0.639991 for the train dataset  in 30 epochs
+Risultati scritti con successo nel file: ../res/risultati_adaboost-mpi_s9.txt per il valore 30
+MASTER:added tree 
+MASTER: Epoch 0 end with average total error = 0.373942 and alpha = 2.3071
+MASTER:added tree 
+MASTER: Epoch 1 end with average total error = 0.488082 and alpha = 1.83944
+MASTER:added tree 
+MASTER: Epoch 2 end with average total error = 0.548135 and alpha = 1.59862
+MASTER:added tree 
+MASTER: Epoch 3 end with average total error = 0.586636 and alpha = 1.44168
+MASTER:added tree 
+MASTER: Epoch 4 end with average total error = 0.652521 and alpha = 1.16162
+MASTER:added tree 
+MASTER: Epoch 5 end with average total error = 0.673148 and alpha = 1.0693
+MASTER:added tree 
+MASTER: Epoch 6 end with average total error = 0.647522 and alpha = 1.18359
+MASTER:added tree 
+MASTER: Epoch 7 end with average total error = 0.677748 and alpha = 1.04832
+MASTER:added tree 
+MASTER: Epoch 8 end with average total error = 0.677883 and alpha = 1.0477
+MASTER:added tree 
+MASTER: Epoch 9 end with average total error = 0.661185 and alpha = 1.12318
+MASTER:added tree 
+MASTER: Epoch 10 end with average total error = 0.680726 and alpha = 1.03465
+MASTER:added tree 
+MASTER: Epoch 11 end with average total error = 0.723626 and alpha = 0.829242
+MASTER:added tree 
+MASTER: Epoch 12 end with average total error = 0.746546 and alpha = 0.711487
+MASTER:added tree 
+MASTER: Epoch 13 end with average total error = 0.74741 and alpha = 0.706915
+MASTER:added tree 
+MASTER: Epoch 14 end with average total error = 0.770977 and alpha = 0.577923
+MASTER:added tree 
+MASTER: Epoch 15 end with average total error = 0.765738 and alpha = 0.607359
+MASTER:added tree 
+MASTER: Epoch 16 end with average total error = 0.784808 and alpha = 0.49785
+MASTER:added tree 
+MASTER: Epoch 17 end with average total error = 0.827004 and alpha = 0.227221
+MASTER:added tree 
+MASTER: Epoch 18 end with average total error = 0.833066 and alpha = 0.184246
+MASTER:added tree 
+MASTER: Epoch 19 end with average total error = 0.816399 and alpha = 0.299622
+MASTER:added tree 
+MASTER: Epoch 20 end with average total error = 0.814744 and alpha = 0.310627
+MASTER:added tree 
+MASTER: Epoch 21 end with average total error = 0.799584 and alpha = 0.408064
+MASTER:added tree 
+MASTER: Epoch 22 end with average total error = 0.826433 and alpha = 0.231208
+MASTER:added tree 
+MASTER: Epoch 23 end with average total error = 0.837583 and alpha = 0.151408
+MASTER:added tree 
+MASTER: Epoch 24 end with average total error = 0.824892 and alpha = 0.241912
+MASTER:added tree 
+MASTER: Epoch 25 end with average total error = 0.808671 and alpha = 0.350365
+MASTER: Epoch 26 end with average total error = 0.860247 and alpha = -0.0255846
+MASTER:added tree 
+MASTER: Epoch 27 end with average total error = 0.810628 and alpha = 0.337664
+MASTER:added tree 
+MASTER: Epoch 28 end with average total error = 0.840925 and alpha = 0.126635
+MASTER: Epoch 29 end with average total error = 0.856614 and alpha = 0.00430853
+MASTER: Epoch 30 end with average total error = 0.858211 and alpha = -0.00875129
+MASTER: Epoch 31 end with average total error = 0.856328 and alpha = 0.00664165
+MASTER: Epoch 32 end with average total error = 0.857105 and alpha = 0.000312487
+MASTER: Epoch 33 end with average total error = 0.857141 and alpha = 1.46816e-05
+MASTER: Epoch 34 end with average total error = 0.857143 and alpha = 6.89737e-07
+MASTER: Epoch 35 end with average total error = 0.857143 and alpha = 3.24036e-08
+MASTER: Epoch 36 end with average total error = 0.857143 and alpha = 1.52231e-09
+MASTER: Epoch 37 end with average total error = 0.857143 and alpha = 7.15148e-11
+MASTER: Epoch 38 end with average total error = 0.857143 and alpha = 3.35953e-12
+MASTER: Epoch 39 end with average total error = 0.857143 and alpha = 1.62537e-13
+MASTER: Calculates the accuracy of the ensamble and its trees 
+Ensabmle learning size = 28
+Tree trained in epoch = 0 Accuracy = 0.599594
+Tree trained in epoch = 1 Accuracy = 0.493864
+Tree trained in epoch = 2 Accuracy = 0.43184
+Tree trained in epoch = 3 Accuracy = 0.470634
+Tree trained in epoch = 4 Accuracy = 0.463136
+Tree trained in epoch = 5 Accuracy = 0.468655
+Tree trained in epoch = 6 Accuracy = 0.388266
+Tree trained in epoch = 7 Accuracy = 0.370957
+Tree trained in epoch = 8 Accuracy = 0.408157
+Tree trained in epoch = 9 Accuracy = 0.350728
+Tree trained in epoch = 10 Accuracy = 0.40145
+Tree trained in epoch = 11 Accuracy = 0.362243
+Tree trained in epoch = 12 Accuracy = 0.36794
+Tree trained in epoch = 13 Accuracy = 0.422758
+Tree trained in epoch = 14 Accuracy = 0.401491
+Tree trained in epoch = 15 Accuracy = 0.330442
+Tree trained in epoch = 16 Accuracy = 0.452362
+Tree trained in epoch = 17 Accuracy = 0.478121
+Tree trained in epoch = 18 Accuracy = 0.444605
+Tree trained in epoch = 19 Accuracy = 0.413057
+Tree trained in epoch = 20 Accuracy = 0.425948
+Tree trained in epoch = 21 Accuracy = 0.337871
+Tree trained in epoch = 22 Accuracy = 0.383671
+Tree trained in epoch = 23 Accuracy = 0.416723
+Tree trained in epoch = 24 Accuracy = 0.336575
+Tree trained in epoch = 25 Accuracy = 0.380722
+Tree trained in epoch = 26 Accuracy = 0.355685
+Tree trained in epoch = 27 Accuracy = 0.362547
+Accuracy Ensabmle = 0.611659 for the test dataset  in 40 epochs
+Accuracy Ensabmle = 0.639991 for the train dataset  in 40 epochs
+Risultati scritti con successo nel file: ../res/risultati_adaboost-mpi_s9.txt per il valore 40
+MASTER:added tree 
+MASTER: Epoch 0 end with average total error = 0.373942 and alpha = 2.3071
+MASTER:added tree 
+MASTER: Epoch 1 end with average total error = 0.488082 and alpha = 1.83944
+MASTER:added tree 
+MASTER: Epoch 2 end with average total error = 0.548135 and alpha = 1.59862
+MASTER:added tree 
+MASTER: Epoch 3 end with average total error = 0.586636 and alpha = 1.44168
+MASTER:added tree 
+MASTER: Epoch 4 end with average total error = 0.652521 and alpha = 1.16162
+MASTER:added tree 
+MASTER: Epoch 5 end with average total error = 0.673148 and alpha = 1.0693
+MASTER:added tree 
+MASTER: Epoch 6 end with average total error = 0.647522 and alpha = 1.18359
+MASTER:added tree 
+MASTER: Epoch 7 end with average total error = 0.677748 and alpha = 1.04832
+MASTER:added tree 
+MASTER: Epoch 8 end with average total error = 0.677883 and alpha = 1.0477
+MASTER:added tree 
+MASTER: Epoch 9 end with average total error = 0.661185 and alpha = 1.12318
+MASTER:added tree 
+MASTER: Epoch 10 end with average total error = 0.680726 and alpha = 1.03465
+MASTER:added tree 
+MASTER: Epoch 11 end with average total error = 0.723626 and alpha = 0.829242
+MASTER:added tree 
+MASTER: Epoch 12 end with average total error = 0.746546 and alpha = 0.711487
+MASTER:added tree 
+MASTER: Epoch 13 end with average total error = 0.74741 and alpha = 0.706915
+MASTER:added tree 
+MASTER: Epoch 14 end with average total error = 0.770977 and alpha = 0.577923
+MASTER:added tree 
+MASTER: Epoch 15 end with average total error = 0.765738 and alpha = 0.607359
+MASTER:added tree 
+MASTER: Epoch 16 end with average total error = 0.784808 and alpha = 0.49785
+MASTER:added tree 
+MASTER: Epoch 17 end with average total error = 0.827004 and alpha = 0.227221
+MASTER:added tree 
+MASTER: Epoch 18 end with average total error = 0.833066 and alpha = 0.184246
+MASTER:added tree 
+MASTER: Epoch 19 end with average total error = 0.816399 and alpha = 0.299622
+MASTER:added tree 
+MASTER: Epoch 20 end with average total error = 0.814744 and alpha = 0.310627
+MASTER:added tree 
+MASTER: Epoch 21 end with average total error = 0.799584 and alpha = 0.408064
+MASTER:added tree 
+MASTER: Epoch 22 end with average total error = 0.826433 and alpha = 0.231208
+MASTER:added tree 
+MASTER: Epoch 23 end with average total error = 0.837583 and alpha = 0.151408
+MASTER:added tree 
+MASTER: Epoch 24 end with average total error = 0.824892 and alpha = 0.241912
+MASTER:added tree 
+MASTER: Epoch 25 end with average total error = 0.808671 and alpha = 0.350365
+MASTER: Epoch 26 end with average total error = 0.860247 and alpha = -0.0255846
+MASTER:added tree 
+MASTER: Epoch 27 end with average total error = 0.810628 and alpha = 0.337664
+MASTER:added tree 
+MASTER: Epoch 28 end with average total error = 0.840925 and alpha = 0.126635
+MASTER: Epoch 29 end with average total error = 0.856614 and alpha = 0.00430853
+MASTER: Epoch 30 end with average total error = 0.858211 and alpha = -0.00875129
+MASTER: Epoch 31 end with average total error = 0.856328 and alpha = 0.00664165
+MASTER: Epoch 32 end with average total error = 0.857105 and alpha = 0.000312487
+MASTER: Epoch 33 end with average total error = 0.857141 and alpha = 1.46816e-05
+MASTER: Epoch 34 end with average total error = 0.857143 and alpha = 6.89737e-07
+MASTER: Epoch 35 end with average total error = 0.857143 and alpha = 3.24036e-08
+MASTER: Epoch 36 end with average total error = 0.857143 and alpha = 1.52231e-09
+MASTER: Epoch 37 end with average total error = 0.857143 and alpha = 7.15148e-11
+MASTER: Epoch 38 end with average total error = 0.857143 and alpha = 3.35953e-12
+MASTER: Epoch 39 end with average total error = 0.857143 and alpha = 1.62537e-13
+MASTER: Epoch 40 end with average total error = 0.857143 and alpha = 6.66134e-15
+MASTER: Epoch 41 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 42 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 43 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 44 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 45 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 46 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 47 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 48 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 49 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Calculates the accuracy of the ensamble and its trees 
+Ensabmle learning size = 28
+Tree trained in epoch = 0 Accuracy = 0.599594
+Tree trained in epoch = 1 Accuracy = 0.493864
+Tree trained in epoch = 2 Accuracy = 0.43184
+Tree trained in epoch = 3 Accuracy = 0.470634
+Tree trained in epoch = 4 Accuracy = 0.463136
+Tree trained in epoch = 5 Accuracy = 0.468655
+Tree trained in epoch = 6 Accuracy = 0.388266
+Tree trained in epoch = 7 Accuracy = 0.370957
+Tree trained in epoch = 8 Accuracy = 0.408157
+Tree trained in epoch = 9 Accuracy = 0.350728
+Tree trained in epoch = 10 Accuracy = 0.40145
+Tree trained in epoch = 11 Accuracy = 0.362243
+Tree trained in epoch = 12 Accuracy = 0.36794
+Tree trained in epoch = 13 Accuracy = 0.422758
+Tree trained in epoch = 14 Accuracy = 0.401491
+Tree trained in epoch = 15 Accuracy = 0.330442
+Tree trained in epoch = 16 Accuracy = 0.452362
+Tree trained in epoch = 17 Accuracy = 0.478121
+Tree trained in epoch = 18 Accuracy = 0.444605
+Tree trained in epoch = 19 Accuracy = 0.413057
+Tree trained in epoch = 20 Accuracy = 0.425948
+Tree trained in epoch = 21 Accuracy = 0.337871
+Tree trained in epoch = 22 Accuracy = 0.383671
+Tree trained in epoch = 23 Accuracy = 0.416723
+Tree trained in epoch = 24 Accuracy = 0.336575
+Tree trained in epoch = 25 Accuracy = 0.380722
+Tree trained in epoch = 26 Accuracy = 0.355685
+Tree trained in epoch = 27 Accuracy = 0.362547
+Accuracy Ensabmle = 0.611659 for the test dataset  in 50 epochs
+Accuracy Ensabmle = 0.639991 for the train dataset  in 50 epochs
+Risultati scritti con successo nel file: ../res/risultati_adaboost-mpi_s9.txt per il valore 50
+MASTER:added tree 
+MASTER: Epoch 0 end with average total error = 0.373942 and alpha = 2.3071
+MASTER:added tree 
+MASTER: Epoch 1 end with average total error = 0.488082 and alpha = 1.83944
+MASTER:added tree 
+MASTER: Epoch 2 end with average total error = 0.548135 and alpha = 1.59862
+MASTER:added tree 
+MASTER: Epoch 3 end with average total error = 0.586636 and alpha = 1.44168
+MASTER:added tree 
+MASTER: Epoch 4 end with average total error = 0.652521 and alpha = 1.16162
+MASTER:added tree 
+MASTER: Epoch 5 end with average total error = 0.673148 and alpha = 1.0693
+MASTER:added tree 
+MASTER: Epoch 6 end with average total error = 0.647522 and alpha = 1.18359
+MASTER:added tree 
+MASTER: Epoch 7 end with average total error = 0.677748 and alpha = 1.04832
+MASTER:added tree 
+MASTER: Epoch 8 end with average total error = 0.677883 and alpha = 1.0477
+MASTER:added tree 
+MASTER: Epoch 9 end with average total error = 0.661185 and alpha = 1.12318
+MASTER:added tree 
+MASTER: Epoch 10 end with average total error = 0.680726 and alpha = 1.03465
+MASTER:added tree 
+MASTER: Epoch 11 end with average total error = 0.723626 and alpha = 0.829242
+MASTER:added tree 
+MASTER: Epoch 12 end with average total error = 0.746546 and alpha = 0.711487
+MASTER:added tree 
+MASTER: Epoch 13 end with average total error = 0.74741 and alpha = 0.706915
+MASTER:added tree 
+MASTER: Epoch 14 end with average total error = 0.770977 and alpha = 0.577923
+MASTER:added tree 
+MASTER: Epoch 15 end with average total error = 0.765738 and alpha = 0.607359
+MASTER:added tree 
+MASTER: Epoch 16 end with average total error = 0.784808 and alpha = 0.49785
+MASTER:added tree 
+MASTER: Epoch 17 end with average total error = 0.827004 and alpha = 0.227221
+MASTER:added tree 
+MASTER: Epoch 18 end with average total error = 0.833066 and alpha = 0.184246
+MASTER:added tree 
+MASTER: Epoch 19 end with average total error = 0.816399 and alpha = 0.299622
+MASTER:added tree 
+MASTER: Epoch 20 end with average total error = 0.814744 and alpha = 0.310627
+MASTER:added tree 
+MASTER: Epoch 21 end with average total error = 0.799584 and alpha = 0.408064
+MASTER:added tree 
+MASTER: Epoch 22 end with average total error = 0.826433 and alpha = 0.231208
+MASTER:added tree 
+MASTER: Epoch 23 end with average total error = 0.837583 and alpha = 0.151408
+MASTER:added tree 
+MASTER: Epoch 24 end with average total error = 0.824892 and alpha = 0.241912
+MASTER:added tree 
+MASTER: Epoch 25 end with average total error = 0.808671 and alpha = 0.350365
+MASTER: Epoch 26 end with average total error = 0.860247 and alpha = -0.0255846
+MASTER:added tree 
+MASTER: Epoch 27 end with average total error = 0.810628 and alpha = 0.337664
+MASTER:added tree 
+MASTER: Epoch 28 end with average total error = 0.840925 and alpha = 0.126635
+MASTER: Epoch 29 end with average total error = 0.856614 and alpha = 0.00430853
+MASTER: Epoch 30 end with average total error = 0.858211 and alpha = -0.00875129
+MASTER: Epoch 31 end with average total error = 0.856328 and alpha = 0.00664165
+MASTER: Epoch 32 end with average total error = 0.857105 and alpha = 0.000312487
+MASTER: Epoch 33 end with average total error = 0.857141 and alpha = 1.46816e-05
+MASTER: Epoch 34 end with average total error = 0.857143 and alpha = 6.89737e-07
+MASTER: Epoch 35 end with average total error = 0.857143 and alpha = 3.24036e-08
+MASTER: Epoch 36 end with average total error = 0.857143 and alpha = 1.52231e-09
+MASTER: Epoch 37 end with average total error = 0.857143 and alpha = 7.15148e-11
+MASTER: Epoch 38 end with average total error = 0.857143 and alpha = 3.35953e-12
+MASTER: Epoch 39 end with average total error = 0.857143 and alpha = 1.62537e-13
+MASTER: Epoch 40 end with average total error = 0.857143 and alpha = 6.66134e-15
+MASTER: Epoch 41 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 42 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 43 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 44 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 45 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 46 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 47 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 48 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 49 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 50 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 51 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 52 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 53 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 54 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 55 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 56 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 57 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 58 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 59 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 60 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 61 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 62 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 63 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 64 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 65 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 66 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 67 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 68 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 69 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 70 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 71 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 72 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 73 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 74 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 75 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 76 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 77 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 78 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 79 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 80 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 81 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 82 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 83 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 84 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 85 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 86 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 87 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 88 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 89 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 90 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 91 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 92 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 93 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 94 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 95 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 96 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 97 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Epoch 98 end with average total error = 0.857143 and alpha = 4.44089e-16
+MASTER: Epoch 99 end with average total error = 0.857143 and alpha = -6.66134e-16
+MASTER: Calculates the accuracy of the ensamble and its trees 
+Ensabmle learning size = 28
+Tree trained in epoch = 0 Accuracy = 0.599594
+Tree trained in epoch = 1 Accuracy = 0.493864
+Tree trained in epoch = 2 Accuracy = 0.43184
+Tree trained in epoch = 3 Accuracy = 0.470634
+Tree trained in epoch = 4 Accuracy = 0.463136
+Tree trained in epoch = 5 Accuracy = 0.468655
+Tree trained in epoch = 6 Accuracy = 0.388266
+Tree trained in epoch = 7 Accuracy = 0.370957
+Tree trained in epoch = 8 Accuracy = 0.408157
+Tree trained in epoch = 9 Accuracy = 0.350728
+Tree trained in epoch = 10 Accuracy = 0.40145
+Tree trained in epoch = 11 Accuracy = 0.362243
+Tree trained in epoch = 12 Accuracy = 0.36794
+Tree trained in epoch = 13 Accuracy = 0.422758
+Tree trained in epoch = 14 Accuracy = 0.401491
+Tree trained in epoch = 15 Accuracy = 0.330442
+Tree trained in epoch = 16 Accuracy = 0.452362
+Tree trained in epoch = 17 Accuracy = 0.478121
+Tree trained in epoch = 18 Accuracy = 0.444605
+Tree trained in epoch = 19 Accuracy = 0.413057
+Tree trained in epoch = 20 Accuracy = 0.425948
+Tree trained in epoch = 21 Accuracy = 0.337871
+Tree trained in epoch = 22 Accuracy = 0.383671
+Tree trained in epoch = 23 Accuracy = 0.416723
+Tree trained in epoch = 24 Accuracy = 0.336575
+Tree trained in epoch = 25 Accuracy = 0.380722
+Tree trained in epoch = 26 Accuracy = 0.355685
+Tree trained in epoch = 27 Accuracy = 0.362547
+Accuracy Ensabmle = 0.611659 for the test dataset  in 100 epochs
+Accuracy Ensabmle = 0.639991 for the train dataset  in 100 epochs
+Risultati scritti con successo nel file: ../res/risultati_adaboost-mpi_s9.txt per il valore 100

@@ -1,0 +1,27 @@
+make: Warning: File 'Makefile' has modification time 0.18 s in the future
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libdata_lib.a' has modification time 0.016 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-[009-010]
+srun: jobid               : 168149
+srun: job-name            : adab_v1
+srun: mpi                 : pmix
+srun: nodes               : 2
+srun: ntasks              : 72
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168149: nodes(2):`broadwell-[009-010]', cpu counts: 36(x2)
+srun: CpuBindType=(null type)
+srun: launching StepId=168149.0 on host broadwell-009, 36 tasks: [0-35]
+srun: launching StepId=168149.0 on host broadwell-010, 36 tasks: [36-71]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-010, 36 tasks started
+srun: Node broadwell-009, 36 tasks started
+srun: Received task exit notification for 36 tasks of StepId=168149.0 (status=0x0000).
+srun: broadwell-010: tasks 36-71: Completed
+srun: Received task exit notification for 36 tasks of StepId=168149.0 (status=0x0000).
+srun: broadwell-009: tasks 0-35: Completed

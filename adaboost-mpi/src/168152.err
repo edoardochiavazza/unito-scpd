@@ -1,0 +1,49 @@
+make: Warning: File 'Makefile' has modification time 2.9 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 2.7 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 2.7 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 2.7 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 2.5 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 2.5 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libdata_lib.a' has modification time 2.5 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-[018-022]
+srun: jobid               : 168152
+srun: job-name            : adab_v1
+srun: mpi                 : pmix
+srun: nodes               : 5
+srun: ntasks              : 180
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168152: nodes(5):`broadwell-[018-022]', cpu counts: 36(x5)
+srun: CpuBindType=(null type)
+srun: launching StepId=168152.0 on host broadwell-018, 36 tasks: [0-35]
+srun: launching StepId=168152.0 on host broadwell-019, 36 tasks: [36-71]
+srun: launching StepId=168152.0 on host broadwell-020, 36 tasks: [72-107]
+srun: launching StepId=168152.0 on host broadwell-021, 36 tasks: [108-143]
+srun: launching StepId=168152.0 on host broadwell-022, 36 tasks: [144-179]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-019, 36 tasks started
+srun: Node broadwell-020, 36 tasks started
+srun: Node broadwell-018, 36 tasks started
+srun: Node broadwell-022, 36 tasks started
+srun: Node broadwell-021, 36 tasks started
+srun: Received task exit notification for 36 tasks of StepId=168152.0 (status=0x0000).
+srun: broadwell-019: tasks 36-71: Completed
+srun: Received task exit notification for 36 tasks of StepId=168152.0 (status=0x0000).
+srun: broadwell-022: tasks 144-179: Completed
+srun: Received task exit notification for 36 tasks of StepId=168152.0 (status=0x0000).
+srun: broadwell-020: tasks 72-107: Completed
+srun: Received task exit notification for 36 tasks of StepId=168152.0 (status=0x0000).
+srun: broadwell-021: tasks 108-143: Completed
+srun: Received task exit notification for 36 tasks of StepId=168152.0 (status=0x0000).
+srun: broadwell-018: tasks 0-35: Completed

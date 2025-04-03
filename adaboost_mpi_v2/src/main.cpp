@@ -3,11 +3,11 @@
 #include <iostream>
 #include "communication_lib/libcomm.hpp"
 #include "data_lib/datalib.hpp"
-
+#include <algorithm>
 
 int main(int argc, char ** argv) {
     int rank, world_size;
-    int epochs[9] = {5,10,20,30,40,50,100,500,1000};
+    int epochs[7] = {5,10,20,30,40,50,100};
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -23,17 +23,15 @@ int main(int argc, char ** argv) {
         // Master process
         arma::mat train_dataset;
         arma::Row<size_t> train_labels;
-
+	int num_node = std::atoi(argv[1]);
         std::cout << "Loading training data..." << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
         int n_example = static_cast<int>(train_dataset.n_cols);
         int perc_n_example = (n_example / world_size);
-
-	//Weak scaling
-	//arma::mat inflatedData = train_dataset;
-        //for (size_t i = 1; i < weak_scale_factor * world_size; ++i) {
-            //inflatedData = arma::join_rows(inflatedData, train_dataset);
-        //}
+	
+	std::cout << "inflated data start" << std::endl;
+	//arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
+	std::cout << "inflated data end" << std::endl;
 
         for (int i = 1; i < world_size; ++i) {
             train_dataset = shuffle(train_dataset, 1); // Shuffle columns
@@ -61,7 +59,7 @@ int main(int argc, char ** argv) {
             double time_epoch = 0;
             auto start_epoch = std::chrono::high_resolution_clock::now();
             mlpack::DecisionTree<> tree;
-            tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 10, 1e-7, 10);
+            tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 20, 1e-3, 0);
             std::vector<mlpack::DecisionTree<>> vector_received_trees = broadcast_t(tree);
 
             //Calcolate total error
@@ -85,14 +83,15 @@ int main(int argc, char ** argv) {
             best_tree_epoch.Classify(client_training_dataset, predictions);
             arma::rowvec train_result = arma::conv_to<arma::rowvec>::from(predictions == client_labels);
             double total_error = calculate_total_error(train_result, weights);
-            std::vector<double> total_clients_errors = broadcast_total_error_best_tree(total_error);
-            double mean_total_error = std::reduce(total_clients_errors.begin(), total_clients_errors.end()) / world_size;
+            double mean_total_error = average_total_error_best_tree(total_error);
             double alpha = calculate_alpha(mean_total_error,static_cast<int>(unique_labels.size()));
-            ensemble_learning.emplace_back(best_tree_epoch,alpha);
+	    if(alpha > 0.01){
+                                ensemble_learning.emplace_back(best_tree,alpha);
+                        }
             calculate_new_weights(train_result, alpha, weights);
             auto end_epoch_timer = std::chrono::high_resolution_clock::now();
             time_epoch =  std::chrono::duration<double>(end_epoch_timer - start_epoch).count();
-            average_time_epoch = (average_time_epoch + time_epoch)/2;
+            average_time_epoch = std::min(average_time_epoch, time_epoch);
         }
         auto end_total_timer = std::chrono::high_resolution_clock::now();
         double time_total = std::chrono::duration<double>(end_total_timer - start).count();
@@ -113,8 +112,10 @@ int main(int argc, char ** argv) {
             double accuracy_ensabmle_train = accuracy_ensamble(en_result, ensemble_learning, train_labels);
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
+	    int num_node = std::atoi(argv[1]);
+            int num_task_for_node = std::atoi(argv[2]);
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi-v2.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi-v2_s7.txt";
 
             // Creazione di un oggetto di tipo ofstream
             std::ofstream outputFile(fileName, std::ios::app);
@@ -129,9 +130,9 @@ int main(int argc, char ** argv) {
 
             outputFile << "--------------------------\n";
             outputFile << "Machine: Broadwell\n";
-            outputFile << "Num nodes: 1 \n";
-            outputFile << "Num tasks per node: 36 \n";
-            outputFile << "Total tasks: 36 \n";
+            outputFile << "Num nodes: "<< num_node<<"\n";
+            outputFile << "Num tasks per node: "<<num_task_for_node<<"\n";
+            outputFile << "Total tasks:"<<num_node * num_task_for_node<<"\n"
             outputFile << "Number epoch: "<< e<<"\n";
             outputFile << "Time epoch (T1): " << average_time_epoch << " seconds\n";
             outputFile << "Time epochs (T1): " << time_total << " seconds\n";

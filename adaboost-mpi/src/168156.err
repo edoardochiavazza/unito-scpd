@@ -1,0 +1,65 @@
+make: Warning: File 'Makefile' has modification time 1 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.76 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.74 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.74 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.62 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.62 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libdata_lib.a' has modification time 0.86 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-[044-052]
+srun: jobid               : 168156
+srun: job-name            : adab_v1
+srun: mpi                 : pmix
+srun: nodes               : 9
+srun: ntasks              : 324
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168156: nodes(9):`broadwell-[044-052]', cpu counts: 36(x9)
+srun: CpuBindType=(null type)
+srun: launching StepId=168156.0 on host broadwell-044, 36 tasks: [0-35]
+srun: launching StepId=168156.0 on host broadwell-045, 36 tasks: [36-71]
+srun: launching StepId=168156.0 on host broadwell-046, 36 tasks: [72-107]
+srun: launching StepId=168156.0 on host broadwell-047, 36 tasks: [108-143]
+srun: launching StepId=168156.0 on host broadwell-048, 36 tasks: [144-179]
+srun: launching StepId=168156.0 on host broadwell-049, 36 tasks: [180-215]
+srun: launching StepId=168156.0 on host broadwell-050, 36 tasks: [216-251]
+srun: launching StepId=168156.0 on host broadwell-051, 36 tasks: [252-287]
+srun: launching StepId=168156.0 on host broadwell-052, 36 tasks: [288-323]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-044, 36 tasks started
+srun: Node broadwell-052, 36 tasks started
+srun: Node broadwell-051, 36 tasks started
+srun: Node broadwell-049, 36 tasks started
+srun: Node broadwell-046, 36 tasks started
+srun: Node broadwell-050, 36 tasks started
+srun: Node broadwell-045, 36 tasks started
+srun: Node broadwell-048, 36 tasks started
+srun: Node broadwell-047, 36 tasks started
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-048: tasks 144-179: Completed
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-049: tasks 180-215: Completed
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-046: tasks 72-107: Completed
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-050: tasks 216-251: Completed
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-052: tasks 288-323: Completed
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-047: tasks 108-143: Completed
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-051: tasks 252-287: Completed
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-045: tasks 36-71: Completed
+srun: Received task exit notification for 36 tasks of StepId=168156.0 (status=0x0000).
+srun: broadwell-044: tasks 0-35: Completed

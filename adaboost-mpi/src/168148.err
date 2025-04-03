@@ -1,0 +1,39 @@
+make: Warning: File 'Makefile' has modification time 0.95 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.72 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.7 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.7 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.58 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.58 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libcommunication_lib.a' has modification time 0.32 s in the future
+/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/src/communication_lib/libcomm.cpp:255:1: fatal error: opening dependency file CMakeFiles/adaboost-mpi.dir/src/communication_lib/libcomm.cpp.o.d: No such file or directory
+  255 | }
+      | ^
+compilation terminated.
+make[2]: *** [CMakeFiles/adaboost-mpi.dir/build.make:104: CMakeFiles/adaboost-mpi.dir/src/communication_lib/libcomm.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/adaboost-mpi.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-008
+srun: jobid               : 168148
+srun: job-name            : adab_v1
+srun: mpi                 : pmix
+srun: nodes               : 1
+srun: ntasks              : 36
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168148: nodes(1):`broadwell-008', cpu counts: 36(x1)
+srun: CpuBindType=(null type)
+srun: launching StepId=168148.0 on host broadwell-008, 36 tasks: [0-35]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-008, 36 tasks started
+srun: Received task exit notification for 34 tasks of StepId=168148.0 (status=0x0000).
+srun: broadwell-008: tasks 0-27,29-31,33-35: Completed
+srun: Received task exit notification for 2 tasks of StepId=168148.0 (status=0x0000).
+srun: broadwell-008: tasks 28,32: Completed

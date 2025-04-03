@@ -25,36 +25,37 @@ int main(int argc, char** argv) {
     if (rank == 0) {
         // Master process
 
-
+	int num_node = std::atoi(argv[1]);
         std::cout << "MASTER: Uploads and distributes data among "<< world_size - 1 <<" clients " << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
 
         unique_labels = arma::unique(train_labels);
         n_class = static_cast<int>(unique_labels.n_elem);
-
-	//arma::mat inflatedData = train_dataset;
-        //for (size_t i = 1; i < weak_scale_factor * world_size; ++i) {
-            //inflatedData = arma::join_rows(inflatedData, train_dataset);
-        //}
-        	
+	
+	// Replichiamo le colonne (gli esempi) mantenendo inalterate le feature:
+	//std::cout << "MASTER: start replicated data process " << std::endl;
+	//arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
+	//std::cout << "MASTER: end replicated data process " << std::endl;
+	//train_dataset = data_replicated;
+	std::cout << "MASTER: start send"<< std::endl;	
         int n_example = static_cast<int>(train_dataset.n_cols);
         int perc_n_example = n_example / (world_size - 1);
-
         for (int i = 1; i < world_size; ++i) {
             arma::mat shuffled_train_dataset = shuffle(train_dataset, 1); // Shuffle columns
             arma::mat client_dataset = shuffled_train_dataset.cols(0, perc_n_example);
             send_data_to_client(client_dataset, i);
         }
-
+	std::cout << "MASTER: end send"<< std::endl;
         broadcastDatasetInfo(info);
     } else {
         // Client processes
         client_training_dataset = receive_data_from_master();
         info = broadcastDatasetInfo(info);
-
         client_labels = arma::conv_to<arma::Row<size_t>>::from(client_training_dataset.row(client_training_dataset.n_rows - 1));
         client_training_dataset.shed_row(client_training_dataset.n_rows - 1);
-
+	if(rank == 1){
+		std::cout << "RANK1: NUM DATA "<< static_cast<int>(client_training_dataset.n_cols)<<std::endl;
+	}
         arma::rowvec w_temp(client_training_dataset.n_cols, arma::fill::ones);
         weights = w_temp / static_cast<double>(client_training_dataset.n_cols);
         unique_labels = arma::unique(client_labels);
@@ -96,7 +97,7 @@ int main(int argc, char** argv) {
             } else {
                 // Client processes
                 mlpack::DecisionTree<> tree;
-                tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 20, 1e-3, 0);
+                tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 20, 1e-4, 0);
 
                 gather_tree(tree, rank, world_size);
 
@@ -152,7 +153,7 @@ int main(int argc, char** argv) {
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi_strong_10_prest.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi_s9.txt";
 	    int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);	    
             // Creazione di un oggetto di tipo ofstream
