@@ -6,7 +6,6 @@
 #include "libcomm.hpp"
 #include <mlpack/core.hpp>
 #include <mlpack/methods/decision_tree/decision_tree.hpp>
-#include <iostream>
 #include <vector>
 #include <sstream>
 #include <cereal/archives/binary.hpp>  // Include Cereal
@@ -129,8 +128,7 @@ std::vector<mlpack::DecisionTree<>> gather_tree(mlpack::DecisionTree<> &tree, co
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     size_t localLength;
     std::vector<char> localBuffer;
-    std::string serializedTree;
-    serializedTree = serialize_obj(tree);
+    std::string serializedTree = serialize_obj(tree);
     // Determinare la lunghezza del buffer serializzato
     localLength = serializedTree.size();
     localBuffer.resize(localLength);

@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.27)
+make_minimum_required(VERSION 3.16)
 set(CMAKE_CXX_STANDARD 17)
 
-set(PROJECT_NAME adaboost_mpi_v2)
+set(PROJECT_NAME adaboost-mpi_v2)
 project(${PROJECT_NAME})
 set(EXECUTABLE_NAME ${PROJECT_NAME})
 
@@ -45,4 +45,3 @@ target_link_libraries(data_lib PUBLIC MPI::MPI_CXX)
 # Main executable
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} PUBLIC MPI::MPI_CXX data_lib communication_lib ${mlpack_LIBRARIES})
-

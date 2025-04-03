@@ -7,8 +7,8 @@
 
 void load_datasets_and_labels(arma::mat &train_dataset, arma::Row<size_t>& train_labels, mlpack::data::DatasetInfo& info) {
 
-    const std::string train_path = "../../datasets/covertype.train.arff";
-    const std::string train_labels_path = "../../datasets/covertype.train.labels.csv";
+    const std::string train_path = "../datasets/covertype.train.arff";
+    const std::string train_labels_path = "../datasets/covertype.train.labels.csv";
     mlpack::data::Load(train_path, train_dataset, info, true);
     mlpack::data::Load(train_labels_path, train_labels, true);
 }
@@ -50,8 +50,8 @@ int index_best_model(const arma::mat & trees_error){
 }
 
 void load_testData_and_labels(arma::mat& testDataset,arma::Row<size_t>& test_labels,  mlpack::data::DatasetInfo& info) {
-    const std::string test_path = "../../datasets/covertype.test.arff";
-    const std::string test_labels_path = "../../datasets/covertype.test.labels.csv";
+    const std::string test_path = "../datasets/covertype.test.arff";
+    const std::string test_labels_path = "../datasets/covertype.test.labels.csv";
     mlpack::data::Load(test_path, testDataset, info, true);
     mlpack::data::Load(test_labels_path, test_labels, true);
 }
@@ -106,23 +106,23 @@ double accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<st
 
     arma::rowvec p(final_predictions);
 
-    auto prediction_result = arma::conv_to<arma::rowvec>::from(p == test_labels);
-    double true_predictions = arma::sum((prediction_result) == 1.0) * 1.0;
-    double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
+    const auto prediction_result = arma::conv_to<arma::rowvec>::from(p == test_labels);
+    const double true_predictions = arma::sum((prediction_result) == 1.0) * 1.0;
+    const double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
     return accuracy;
 }
 int get_tree_from_majority_vote(const std::vector<int>& best_trees_index) {
-    std::unordered_map<int, int> freq_map;
 
-    for (int num : best_trees_index) {
-        freq_map[num]++;
+    std::vector<int> vector_tree_freq(size(best_trees_index), 0);
+    for (const int num : best_trees_index) {
+        vector_tree_freq[num]++;
     }
-    int most_frequent_value = best_trees_index[0];
-    int max_frequency = 0;
-    for (const auto&[fst, snd] : freq_map) {
-        if (snd > max_frequency) {
-            most_frequent_value = fst;
-            max_frequency = snd;
+    int most_frequent_value = -1;
+    int max_frequency = -1;
+    for (int z = 0; z < vector_tree_freq.size(); ++z) {
+        if (vector_tree_freq[z] > max_frequency) {
+            max_frequency = vector_tree_freq[z];
+            most_frequent_value = z;
         }
     }
     return most_frequent_value;

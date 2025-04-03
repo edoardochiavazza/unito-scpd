@@ -23,15 +23,15 @@ int main(int argc, char ** argv) {
         // Master process
         arma::mat train_dataset;
         arma::Row<size_t> train_labels;
-	int num_node = std::atoi(argv[1]);
+	    int num_node = std::atoi(argv[1]);
         std::cout << "Loading training data..." << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
         int n_example = static_cast<int>(train_dataset.n_cols);
         int perc_n_example = (n_example / world_size);
 	
-	std::cout << "inflated data start" << std::endl;
-	//arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
-	std::cout << "inflated data end" << std::endl;
+	    std::cout << "inflated data start" << std::endl;
+	    //arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
+	    std::cout << "inflated data end" << std::endl;
 
         for (int i = 1; i < world_size; ++i) {
             train_dataset = shuffle(train_dataset, 1); // Shuffle columns
@@ -85,9 +85,9 @@ int main(int argc, char ** argv) {
             double total_error = calculate_total_error(train_result, weights);
             double mean_total_error = average_total_error_best_tree(total_error);
             double alpha = calculate_alpha(mean_total_error,static_cast<int>(unique_labels.size()));
-	    if(alpha > 0.01){
-                                ensemble_learning.emplace_back(best_tree,alpha);
-                        }
+	        if(mean_total_error < 0.5){
+	            ensemble_learning.emplace_back(best_tree_epoch,alpha);
+	        }
             calculate_new_weights(train_result, alpha, weights);
             auto end_epoch_timer = std::chrono::high_resolution_clock::now();
             time_epoch =  std::chrono::duration<double>(end_epoch_timer - start_epoch).count();
@@ -112,7 +112,7 @@ int main(int argc, char ** argv) {
             double accuracy_ensabmle_train = accuracy_ensamble(en_result, ensemble_learning, train_labels);
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
-	    int num_node = std::atoi(argv[1]);
+	        int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);
             // Nome del file di output
             std::string fileName = "../res/risultati_adaboost-mpi-v2_s7.txt";
@@ -132,7 +132,7 @@ int main(int argc, char ** argv) {
             outputFile << "Machine: Broadwell\n";
             outputFile << "Num nodes: "<< num_node<<"\n";
             outputFile << "Num tasks per node: "<<num_task_for_node<<"\n";
-            outputFile << "Total tasks:"<<num_node * num_task_for_node<<"\n"
+            outputFile << "Total tasks:"<<num_node * num_task_for_node<<"\n";
             outputFile << "Number epoch: "<< e<<"\n";
             outputFile << "Time epoch (T1): " << average_time_epoch << " seconds\n";
             outputFile << "Time epochs (T1): " << time_total << " seconds\n";
