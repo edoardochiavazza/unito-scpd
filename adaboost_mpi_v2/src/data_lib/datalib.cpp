@@ -67,7 +67,6 @@ void accuracy_for_model(const std::vector<std::pair<mlpack::DecisionTree<>,doubl
         auto prediction_result = arma::conv_to<arma::rowvec>::from(test_predictions == test_labels);
         double true_predictions = static_cast<double>(arma::sum(prediction_result == 1.0));
         double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
-        std::cout<<"Tree trained in epoch = " << count << " Accuracy = " << accuracy << std::endl;
         ++count;
     }
 }
@@ -83,36 +82,33 @@ arma::Mat<size_t> predict_all_dataset(const std::vector<std::pair<mlpack::Decisi
     return prediction_matrix;
 }
 
-double accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<std::pair<mlpack::DecisionTree<>, double>>& ensemble,const arma::Row<size_t>& test_labels) {
-
+double accuracy_ensamble(arma::Mat<size_t>prediction_matrix,const std::vector<std::pair<mlpack::DecisionTree<>, double>>& ensemble,const arma::Row<size_t>& test_labels, const int& n_class) {
     std::vector<double> final_predictions;
-
     for(int i = 0; i < prediction_matrix.n_cols; ++i) {
         arma::Row<size_t> models_prediction = prediction_matrix.col(i).t();
-        std::unordered_map<int, double> frequency_map;
 
+        std::vector<double> weighted_predictions(n_class, 0.0);
         for(int j = 0; j < models_prediction.n_elem; ++j){
-            frequency_map[static_cast<int>(models_prediction(j))] += 1.0 * std::get<1>(ensemble[j]);
+            weighted_predictions[static_cast<int>(models_prediction(j))] += 1.0 * std::get<1>(ensemble[j]);
         }
         int most_frequent_value = -1;
         double max_count = 0;
-        for (const auto &[class_num, frequency]: frequency_map) {
-            if (frequency > max_count) {
-                max_count = frequency;
-                most_frequent_value = class_num;
+        for (int z = 0; z < weighted_predictions.size(); ++z) {
+            if (weighted_predictions[z] > max_count) {
+                max_count = weighted_predictions[z];
+                most_frequent_value = z;
             }
 
         }
         final_predictions.push_back(most_frequent_value);
     }
-
-    arma::rowvec p(final_predictions);
-
+    const arma::rowvec p(final_predictions);
     const auto prediction_result = arma::conv_to<arma::rowvec>::from(p == test_labels);
     const double true_predictions = arma::sum((prediction_result) == 1.0) * 1.0;
     const double accuracy = true_predictions / static_cast<double>(prediction_result.n_elem);
     return accuracy;
 }
+
 int get_tree_from_majority_vote(const std::vector<int>& best_trees_index) {
 
     std::vector<int> vector_tree_freq(size(best_trees_index), 0);

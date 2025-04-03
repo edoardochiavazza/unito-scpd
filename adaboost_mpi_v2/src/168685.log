@@ -21,13 +21,3 @@
 -- Build files have been written to: /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/build
 [ 25%] Building CXX object CMakeFiles/communication_lib.dir/src/communication_lib/libcomm.cpp.o
 [ 25%] Building CXX object CMakeFiles/data_lib.dir/src/data_lib/datalib.cpp.o
-[ 37%] Linking CXX static library /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/obj/libdata_lib.a
-[ 50%] Linking CXX static library /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/obj/libcommunication_lib.a
-[ 50%] Built target data_lib
-[ 50%] Built target communication_lib
-[ 87%] Building CXX object CMakeFiles/adaboost-mpi_v2.dir/src/main.cpp.o
-[ 87%] Building CXX object CMakeFiles/adaboost-mpi_v2.dir/src/data_lib/datalib.cpp.o
-[ 87%] Building CXX object CMakeFiles/adaboost-mpi_v2.dir/src/communication_lib/libcomm.cpp.o
-[100%] Linking CXX executable /beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/bin/adaboost-mpi_v2
-[100%] Built target adaboost-mpi_v2
-Loading training data...

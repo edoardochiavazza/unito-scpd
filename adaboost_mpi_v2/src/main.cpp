@@ -6,6 +6,7 @@
 #include "communication_lib/libcomm.hpp"
 #include "data_lib/datalib.hpp"
 #include <algorithm>
+#include <limits>
 
 int main(int argc, char ** argv) {
     int rank, world_size;
@@ -24,21 +25,21 @@ int main(int argc, char ** argv) {
         // Master process
         arma::mat train_dataset;
         arma::Row<size_t> train_labels;
-	int num_node = std::atoi(argv[1]);
+	    int num_node = std::atoi(argv[1]);
         std::cout << "Loading training data..." << std::endl;
         load_datasets_and_labels(train_dataset, train_labels, info);
         int n_example = static_cast<int>(train_dataset.n_cols);
         int perc_n_example = (n_example / world_size);
-	//std::cout << "inflated data start" << std::endl;
-	//arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
-	//std::cout << "inflated data end" << std::endl;
-	std::cout << "send start"<< std::endl;
+	    //std::cout << "inflated data start" << std::endl;
+	    //arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
+	    //std::cout << "inflated data end" << std::endl;
+	    std::cout << "send start"<< std::endl;
         for (int i = 1; i < world_size; ++i) {
             train_dataset = shuffle(train_dataset, 1); // Shuffle columns
             client_training_dataset = train_dataset.cols(0, perc_n_example);
             send_data_to_client(client_training_dataset, i);
         }
-	std::cout << "send end"<< std::endl;
+	    std::cout << "send end"<< std::endl;
         broadcastDatasetInfo(info);
         train_dataset = shuffle(train_dataset, 1); // Shuffle columns
         client_training_dataset = train_dataset.cols(0, perc_n_example);
@@ -55,7 +56,7 @@ int main(int argc, char ** argv) {
     MPI_Barrier(MPI_COMM_WORLD);
     for (auto e : epochs){
         auto start = std::chrono::high_resolution_clock::now();
-        double average_time_epoch = 0;
+        double average_time_epoch = std::numeric_limits<double>::max();
         for (int i = 0; i < e; ++i) {
             double time_epoch = 0;
             auto start_epoch = std::chrono::high_resolution_clock::now();
@@ -106,17 +107,18 @@ int main(int argc, char ** argv) {
             mlpack::data::DatasetInfo info_test, info_train;
             load_datasets_and_labels(train_dataset,train_labels, info_test);
             load_testData_and_labels(testDataset,test_labels,info_train);
+            int n_class = static_cast<int>(train_dataset.n_cols);
             accuracy_for_model(ensemble_learning, testDataset, test_labels);
             arma::Mat<size_t> en_result = predict_all_dataset(ensemble_learning, testDataset);
-            double accuracy_ensabmle_test = accuracy_ensamble(en_result, ensemble_learning, test_labels);
+            double accuracy_ensabmle_test = accuracy_ensamble(en_result, ensemble_learning, test_labels, n_class);
             en_result = predict_all_dataset(ensemble_learning, train_dataset);
-            double accuracy_ensabmle_train = accuracy_ensamble(en_result, ensemble_learning, train_labels);
+            double accuracy_ensabmle_train = accuracy_ensamble(en_result, ensemble_learning, train_labels, n_class);
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
 	        int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi-v2_s1.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi-v2_s3.txt";
 
             // Creazione di un oggetto di tipo ofstream
             std::ofstream outputFile(fileName, std::ios::app);
