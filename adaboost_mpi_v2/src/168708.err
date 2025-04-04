@@ -1,0 +1,69 @@
+make: Warning: File 'Makefile' has modification time 1.6 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 1.4 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 1.4 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 1.4 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 1.3 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 1.3 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/obj/libdata_lib.a' has modification time 0.06 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-000
+srun: jobid               : 168708
+srun: job-name            : submit.sh
+srun: mpi                 : pmix
+srun: nodes               : 1
+srun: ntasks              : 36
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 168708: nodes(1):`broadwell-000', cpu counts: 36(x1)
+srun: CpuBindType=(null type)
+srun: launching StepId=168708.0 on host broadwell-000, 36 tasks: [0-35]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-000, 36 tasks started
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+slurmstepd: error: execve(): /beegfs/home/echiavazza/./adaboost_mpi_v2: No such file or directory
+srun: Received task exit notification for 36 tasks of StepId=168708.0 (status=0x0200).
+srun: error: broadwell-000: tasks 0-35: Exited with exit code 2
