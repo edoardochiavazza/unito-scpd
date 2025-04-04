@@ -1,0 +1,210 @@
+--------------------------
+Machine: Broadwell
+Num nodes: 6
+Num tasks per node: 36
+Total tasks:216
+Number epoch: 5
+Time epoch (T1): 0.331945 seconds
+Time epochs (T1): 1.75253 seconds
+Ensamble accuracy = 0.616249 for test dataset
+Ensamble accuracy = 0.648282 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 6
+Num tasks per node: 36
+Total tasks:216
+Number epoch: 10
+Time epoch (T1): 0.303958 seconds
+Time epochs (T1): 3.49712 seconds
+Ensamble accuracy = 0.616249 for test dataset
+Ensamble accuracy = 0.648282 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 6
+Num tasks per node: 36
+Total tasks:216
+Number epoch: 20
+Time epoch (T1): 0.302294 seconds
+Time epochs (T1): 7.25481 seconds
+Ensamble accuracy = 0.616249 for test dataset
+Ensamble accuracy = 0.648282 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 6
+Num tasks per node: 36
+Total tasks:216
+Number epoch: 30
+Time epoch (T1): 0.302681 seconds
+Time epochs (T1): 10.8433 seconds
+Ensamble accuracy = 0.616249 for test dataset
+Ensamble accuracy = 0.648282 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 6
+Num tasks per node: 36
+Total tasks:216
+Number epoch: 40
+Time epoch (T1): 0.303754 seconds
+Time epochs (T1): 14.3835 seconds
+Ensamble accuracy = 0.616249 for test dataset
+Ensamble accuracy = 0.648282 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 6
+Num tasks per node: 36
+Total tasks:216
+Number epoch: 50
+Time epoch (T1): 0.303463 seconds
+Time epochs (T1): 18.0072 seconds
+Ensamble accuracy = 0.616249 for test dataset
+Ensamble accuracy = 0.648282 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 6
+Num tasks per node: 36
+Total tasks:216
+Number epoch: 100
+Time epoch (T1): 0.30348 seconds
+Time epochs (T1): 36.0931 seconds
+Ensamble accuracy = 0.616249 for test dataset
+Ensamble accuracy = 0.648282 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 5
+Time epoch (T1): 0.305042 seconds
+Time epochs (T1): 1.64306 seconds
+Ensamble accuracy = 0.622904 for test dataset
+Ensamble accuracy = 0.641178 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 10
+Time epoch (T1): 0.302401 seconds
+Time epochs (T1): 3.24879 seconds
+Ensamble accuracy = 0.622904 for test dataset
+Ensamble accuracy = 0.641178 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 20
+Time epoch (T1): 0.286109 seconds
+Time epochs (T1): 6.53205 seconds
+Ensamble accuracy = 0.622904 for test dataset
+Ensamble accuracy = 0.641178 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 30
+Time epoch (T1): 0.289982 seconds
+Time epochs (T1): 9.93249 seconds
+Ensamble accuracy = 0.622904 for test dataset
+Ensamble accuracy = 0.641178 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 40
+Time epoch (T1): 0.290996 seconds
+Time epochs (T1): 13.1933 seconds
+Ensamble accuracy = 0.622904 for test dataset
+Ensamble accuracy = 0.641178 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 50
+Time epoch (T1): 0.296395 seconds
+Time epochs (T1): 16.4016 seconds
+Ensamble accuracy = 0.622904 for test dataset
+Ensamble accuracy = 0.641178 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 100
+Time epoch (T1): 0.290256 seconds
+Time epochs (T1): 32.7597 seconds
+Ensamble accuracy = 0.622904 for test dataset
+Ensamble accuracy = 0.641178 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 5
+Num tasks per node: 36
+Total tasks:180
+Number epoch: 5
+Time epoch (T1): 1.97964 seconds
+Time epochs (T1): 13.9405 seconds
+Ensamble accuracy = 0.65097 for test dataset
+Ensamble accuracy = 0.685795 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 5
+Num tasks per node: 36
+Total tasks:180
+Number epoch: 10
+Time epoch (T1): 2.08882 seconds
+Time epochs (T1): 24.8674 seconds
+Ensamble accuracy = 0.65097 for test dataset
+Ensamble accuracy = 0.685795 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 5
+Num tasks per node: 36
+Total tasks:180
+Number epoch: 20
+Time epoch (T1): 1.76869 seconds
+Time epochs (T1): 48.3139 seconds
+Ensamble accuracy = 0.65097 for test dataset
+Ensamble accuracy = 0.685795 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 5
+Num tasks per node: 36
+Total tasks:180
+Number epoch: 30
+Time epoch (T1): 1.79593 seconds
+Time epochs (T1): 73.7707 seconds
+Ensamble accuracy = 0.65097 for test dataset
+Ensamble accuracy = 0.685795 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 5
+Num tasks per node: 36
+Total tasks:180
+Number epoch: 40
+Time epoch (T1): 1.88949 seconds
+Time epochs (T1): 97.0285 seconds
+Ensamble accuracy = 0.65097 for test dataset
+Ensamble accuracy = 0.685795 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 5
+Num tasks per node: 36
+Total tasks:180
+Number epoch: 50
+Time epoch (T1): 1.88272 seconds
+Time epochs (T1): 120.603 seconds
+Ensamble accuracy = 0.65097 for test dataset
+Ensamble accuracy = 0.685795 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 5
+Num tasks per node: 36
+Total tasks:180
+Number epoch: 100
+Time epoch (T1): 1.81397 seconds
+Time epochs (T1): 239.971 seconds
+Ensamble accuracy = 0.65097 for test dataset
+Ensamble accuracy = 0.685795 for training dataset
