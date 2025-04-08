@@ -1,0 +1,37 @@
+make: Warning: File 'Makefile' has modification time 0.23 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.015 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.002 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.0015 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost_mpi_v2/obj/libdata_lib.a' has modification time 0.36 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-[003-005]
+srun: jobid               : 171029
+srun: job-name            : submit.sh
+srun: mpi                 : pmix
+srun: nodes               : 3
+srun: ntasks              : 108
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 171029: nodes(3):`broadwell-[003-005]', cpu counts: 36(x3)
+srun: CpuBindType=(null type)
+srun: launching StepId=171029.0 on host broadwell-003, 36 tasks: [0-35]
+srun: launching StepId=171029.0 on host broadwell-004, 36 tasks: [36-71]
+srun: launching StepId=171029.0 on host broadwell-005, 36 tasks: [72-107]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-003, 36 tasks started
+srun: Node broadwell-005, 36 tasks started
+srun: Node broadwell-004, 36 tasks started
+srun: Received task exit notification for 36 tasks of StepId=171029.0 (status=0x0000).
+srun: broadwell-005: tasks 72-107: Completed
+srun: Received task exit notification for 36 tasks of StepId=171029.0 (status=0x0000).
+srun: broadwell-004: tasks 36-71: Completed
+srun: Received task exit notification for 36 tasks of StepId=171029.0 (status=0x0000).
+srun: broadwell-003: tasks 0-35: Completed

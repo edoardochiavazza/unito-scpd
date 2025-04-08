@@ -1,0 +1,122 @@
+make: Warning: File 'Makefile' has modification time 0.89 s in the future
+make[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 0.64 s in the future
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.62 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.62 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File 'CMakeFiles/communication_lib.dir/build.make' has modification time 0.5 s in the future
+make[2]: Warning: File 'CMakeFiles/data_lib.dir/build.make' has modification time 0.5 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Warning: File '/beegfs/home/echiavazza/unito-scpd/adaboost-mpi/obj/libdata_lib.a' has modification time 0.32 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+srun: defined options
+srun: -------------------- --------------------
+srun: (null)              : broadwell-[003-010,066-067]
+srun: jobid               : 171044
+srun: job-name            : adab_v1
+srun: mpi                 : pmix
+srun: nodes               : 10
+srun: ntasks              : 360
+srun: ntasks-per-node     : 36
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: jobid 171044: nodes(10):`broadwell-[003-010,066-067]', cpu counts: 36(x10)
+srun: CpuBindType=(null type)
+srun: launching StepId=171044.0 on host broadwell-003, 36 tasks: [0-35]
+srun: launching StepId=171044.0 on host broadwell-004, 36 tasks: [36-71]
+srun: launching StepId=171044.0 on host broadwell-005, 36 tasks: [72-107]
+srun: launching StepId=171044.0 on host broadwell-006, 36 tasks: [108-143]
+srun: launching StepId=171044.0 on host broadwell-007, 36 tasks: [144-179]
+srun: launching StepId=171044.0 on host broadwell-008, 36 tasks: [180-215]
+srun: launching StepId=171044.0 on host broadwell-009, 36 tasks: [216-251]
+srun: launching StepId=171044.0 on host broadwell-010, 36 tasks: [252-287]
+srun: launching StepId=171044.0 on host broadwell-066, 36 tasks: [288-323]
+srun: launching StepId=171044.0 on host broadwell-067, 36 tasks: [324-359]
+srun: topology/default: init: topology Default plugin loaded
+srun: Node broadwell-005, 36 tasks started
+srun: Node broadwell-066, 36 tasks started
+srun: Node broadwell-007, 36 tasks started
+srun: Node broadwell-006, 36 tasks started
+srun: Node broadwell-010, 36 tasks started
+srun: Node broadwell-067, 36 tasks started
+srun: Node broadwell-008, 36 tasks started
+srun: Node broadwell-003, 36 tasks started
+srun: Node broadwell-009, 36 tasks started
+srun: Node broadwell-004, 36 tasks started
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  Mat::operator(): index out of bounds
+[broadwell-005:4164499] *** Process received signal ***
+[broadwell-005:4164499] Signal: Aborted (6)
+[broadwell-005:4164499] Signal code:  (-6)
+[broadwell-005:4164499] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7fc76e64b090]
+[broadwell-005:4164499] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7fc76e64b00b]
+terminate called after throwing an instance of 'std::out_of_range'
+[broadwell-005:4164499] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7fc76e62a859]
+  what():  Mat::operator(): index out of bounds
+[broadwell-005:4164499] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7fc76ea02911]
+[broadwell-008:3343450] *** Process received signal ***
+[broadwell-005:4164499] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7fc76ea0e38c]
+[broadwell-008:3343450] Signal: Aborted (6)
+[broadwell-008:3343450] Signal code:  (-6)
+[broadwell-005:4164499] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7fc76ea0e3f7]
+[broadwell-008:3343450] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x43090)[0x7efc79678090]
+[broadwell-005:4164499] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7fc76ea0e6a9]
+[broadwell-008:3343450] [ 1] /lib/x86_64-linux-gnu/libc.so.6(gsignal+0xcb)[0x7efc7967800b]
+[broadwell-005:4164499] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xaf3a)[0x563ef9727f3a]
+[broadwell-008:3343450] [ 2] /lib/x86_64-linux-gnu/libc.so.6(abort+0x12b)[0x7efc79657859]
+[broadwell-005:4164499] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x11f59)[0x563ef972ef59]
+[broadwell-008:3343450] [ 3] /lib/x86_64-linux-gnu/libstdc++.so.6(+0x9e911)[0x7efc79a2f911]
+[broadwell-005:4164499] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x1e59d)[0x563ef973b59d]
+[broadwell-008:3343450] [ 4] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa38c)[0x7efc79a3b38c]
+[broadwell-005:4164499] [10] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x16f78)[0x563ef9733f78]
+[broadwell-008:3343450] [ 5] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa3f7)[0x7efc79a3b3f7]
+[broadwell-005:4164499] [11] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xfe44)[0x563ef972ce44]
+[broadwell-008:3343450] [ 6] /lib/x86_64-linux-gnu/libstdc++.so.6(+0xaa6a9)[0x7efc79a3b6a9]
+[broadwell-005:4164499] [12] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x97d9)[0x563ef97267d9]
+[broadwell-008:3343450] [ 7] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xaf3a)[0x563db4395f3a]
+[broadwell-005:4164499] [13] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7fc76e62c083]
+[broadwell-008:3343450] [ 8] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x11f59)[0x563db439cf59]
+[broadwell-005:4164499] [14] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x871e)[0x563ef972571e]
+[broadwell-008:3343450] [ 9] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x1e59d)[0x563db43a959d]
+[broadwell-005:4164499] *** End of error message ***
+[broadwell-008:3343450] [10] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x16f78)[0x563db43a1f78]
+[broadwell-008:3343450] [11] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0xfe44)[0x563db439ae44]
+[broadwell-008:3343450] [12] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x97d9)[0x563db43947d9]
+[broadwell-008:3343450] [13] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x7efc79659083]
+[broadwell-008:3343450] [14] /beegfs/home/echiavazza/unito-scpd/adaboost-mpi/bin/./adaboost-mpi(+0x871e)[0x563db439371e]
+[broadwell-008:3343450] *** End of error message ***
+srun: Received task exit notification for 1 task of StepId=171044.0 (status=0x0086).
+srun: error: broadwell-005: task 77: Aborted (core dumped)
+srun: Received task exit notification for 1 task of StepId=171044.0 (status=0x0086).
+srun: error: broadwell-008: task 215: Aborted (core dumped)
+slurmstepd: error:  mpi/pmix_v3: _errhandler: broadwell-005 [2]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.171044.0:77]
+srun: Complete StepId=171044.0 received
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 171044.0 ON broadwell-003 CANCELLED AT 2025-04-07T18:01:52 ***
+srun: Complete StepId=171044.0 received
+slurmstepd: error:  mpi/pmix_v3: _errhandler: broadwell-008 [5]: pmixp_client_v2.c:211: Error handler invoked: status = -25, source = [slurm.pmix.171044.0:215]
+srun: Complete StepId=171044.0 received
+srun: Received task exit notification for 35 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-005: tasks 72-76,78-107: Killed
+srun: Received task exit notification for 36 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-007: tasks 144-179: Killed
+srun: Received task exit notification for 36 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-066: tasks 288-323: Killed
+srun: Received task exit notification for 36 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-010: tasks 252-287: Killed
+srun: Received task exit notification for 35 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-008: tasks 180-214: Killed
+srun: Received task exit notification for 36 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-006: tasks 108-143: Killed
+srun: Received task exit notification for 36 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-009: tasks 216-251: Killed
+srun: Received task exit notification for 36 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-067: tasks 324-359: Killed
+srun: Received task exit notification for 36 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-003: tasks 0-35: Killed
+srun: Received task exit notification for 36 tasks of StepId=171044.0 (status=0x0009).
+srun: error: broadwell-004: tasks 36-71: Killed

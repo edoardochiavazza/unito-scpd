@@ -138,3 +138,73 @@ Time epoch (T1): 0.288246 seconds
 Time epochs (T1): 32.7823 seconds
 Ensamble accuracy = 0.622904 for test dataset
 Ensamble accuracy = 0.641178 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 5
+Time epoch (T1): 0.304571 seconds
+Time epochs (T1): 1.62552 seconds
+Ensamble accuracy = 0 for test dataset
+Ensamble accuracy = 0 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 10
+Time epoch (T1): 0.294352 seconds
+Time epochs (T1): 3.20451 seconds
+Ensamble accuracy = 0 for test dataset
+Ensamble accuracy = 0 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 20
+Time epoch (T1): 0.286323 seconds
+Time epochs (T1): 6.4785 seconds
+Ensamble accuracy = 0 for test dataset
+Ensamble accuracy = 0 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 30
+Time epoch (T1): 0.291749 seconds
+Time epochs (T1): 9.81394 seconds
+Ensamble accuracy = 0 for test dataset
+Ensamble accuracy = 0 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 40
+Time epoch (T1): 0.291888 seconds
+Time epochs (T1): 13.0698 seconds
+Ensamble accuracy = 0 for test dataset
+Ensamble accuracy = 0 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 50
+Time epoch (T1): 0.286352 seconds
+Time epochs (T1): 16.2698 seconds
+Ensamble accuracy = 0 for test dataset
+Ensamble accuracy = 0 for training dataset
+--------------------------
+Machine: Broadwell
+Num nodes: 8
+Num tasks per node: 36
+Total tasks:288
+Number epoch: 100
+Time epoch (T1): 0.285638 seconds
+Time epochs (T1): 32.4925 seconds
+Ensamble accuracy = 0 for test dataset
+Ensamble accuracy = 0 for training dataset

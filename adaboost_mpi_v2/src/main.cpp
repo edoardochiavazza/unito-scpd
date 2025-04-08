@@ -30,9 +30,10 @@ int main(int argc, char ** argv) {
         load_datasets_and_labels(train_dataset, train_labels, info);
         int n_example = static_cast<int>(train_dataset.n_cols);
         int perc_n_example = (n_example / world_size);
-	    //std::cout << "inflated data start" << std::endl;
-	    //arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
-	    //std::cout << "inflated data end" << std::endl;
+	std::cout << "inflated data start" << std::endl;
+	arma::mat data_replicated = arma::repmat(train_dataset, 1, num_node);
+	train_dataset = data_replicated;
+	std::cout << "inflated data end" << std::endl;
 	    std::cout << "send start"<< std::endl;
         for (int i = 1; i < world_size; ++i) {
             train_dataset = shuffle(train_dataset, 1); // Shuffle columns
@@ -84,10 +85,8 @@ int main(int argc, char ** argv) {
             double total_error = calculate_total_error(train_result, weights);
             double mean_total_error = average_total_error_best_tree(total_error);
             double alpha = calculate_alpha(mean_total_error,static_cast<int>(unique_labels.size()));
-	        if(mean_total_error < 0.5){
-	            ensemble_learning.emplace_back(best_tree_epoch,alpha);
-	        }
             calculate_new_weights(train_result, alpha, weights);
+	    ensemble_learning.emplace_back(best_tree_epoch, alpha);
             auto end_epoch_timer = std::chrono::high_resolution_clock::now();
             time_epoch =  std::chrono::duration<double>(end_epoch_timer - start_epoch).count();
             average_time_epoch = std::min(average_time_epoch, time_epoch);
@@ -114,7 +113,7 @@ int main(int argc, char ** argv) {
 	        int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi-v2_s3.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi-v2_w9.txt";
 
             // Creazione di un oggetto di tipo ofstream
             std::ofstream outputFile(fileName, std::ios::app);

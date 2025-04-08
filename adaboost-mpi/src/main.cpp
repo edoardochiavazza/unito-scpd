@@ -53,9 +53,6 @@ int main(int argc, char** argv) {
         info = broadcastDatasetInfo(info);
         client_labels = arma::conv_to<arma::Row<size_t>>::from(client_training_dataset.row(client_training_dataset.n_rows - 1));
         client_training_dataset.shed_row(client_training_dataset.n_rows - 1);
-	if(rank == 1){
-		std::cout << "RANK1: NUM DATA "<< static_cast<int>(client_training_dataset.n_cols)<<std::endl;
-	}
         arma::rowvec w_temp(client_training_dataset.n_cols, arma::fill::ones);
         weights = w_temp / static_cast<double>(client_training_dataset.n_cols);
         unique_labels = arma::unique(client_labels);
@@ -73,31 +70,32 @@ int main(int argc, char** argv) {
                 std::vector<double> local_data;
                 mlpack::DecisionTree<> model;
                 std::vector<mlpack::DecisionTree<>> trees_m = gather_tree(model, rank, world_size);
-
+		
                 for (int i = 0; i < world_size - 1; ++i) {
                     broadcast_tree(trees_m[i]);
                 }
-
+		
                 std::vector<double> client_tree_errors = gather_trees_error(local_data, rank, world_size, 0);
-
+	
                 arma::vec arma_vec(client_tree_errors);
                 arma::mat arma_mat = arma::reshape(arma_vec, world_size - 1, world_size - 1).t();
 
                 int best_model_index = index_best_model(arma_mat);
-
                 average_total_error = arma::mean(arma_mat.col(best_model_index));
                 alpha = calculate_alpha(average_total_error, n_class);
-		        if(alpha > 0.01){
-			        ensemble_learning.emplace_back(trees_m[best_model_index],alpha);
-			        std::cout << "MASTER:added tree "<<std::endl;
-		        }
+		if(alpha > 0.01){
+			ensemble_learning.emplace_back(trees_m[best_model_index],alpha);
+			std::cout << "MASTER:added tree "<<std::endl;
+		}
                 broadcast_alpha(alpha);
                 broadcast_tree(trees_m[best_model_index]);
 
             } else {
+		    
                 // Client processes
                 mlpack::DecisionTree<> tree;
                 tree.Train(client_training_dataset, info, client_labels, unique_labels.size(), weights, 20, 1e-4, 0);
+	
 
                 gather_tree(tree, rank, world_size);
 
@@ -106,7 +104,7 @@ int main(int argc, char** argv) {
                     tree = broadcast_tree(tree);
                     trees.push_back(tree);
                 }
-
+		
                 arma::Row<size_t> predictions;
                 std::vector<double> trees_error;
 
@@ -153,7 +151,7 @@ int main(int argc, char** argv) {
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_test <<" for the test dataset "<< " in " << e <<" epochs"<<std::endl;
             std::cout << "Accuracy Ensabmle = " << accuracy_ensabmle_train <<" for the train dataset "<< " in " << e << " epochs"<<std::endl;
             // Nome del file di output
-            std::string fileName = "../res/risultati_adaboost-mpi_s9.txt";
+            std::string fileName = "../res/risultati_adaboost-mpi_s10.txt";
 	    int num_node = std::atoi(argv[1]);
             int num_task_for_node = std::atoi(argv[2]);	    
             // Creazione di un oggetto di tipo ofstream
